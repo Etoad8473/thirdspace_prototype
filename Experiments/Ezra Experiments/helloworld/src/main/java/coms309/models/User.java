@@ -2,28 +2,44 @@ package coms309.models;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "users")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    Long id;
+    public User(String name, String password, int type)
+    {
+        userName = name;
+        this.password = password;
+        personality = type;
+    }
 
-    private Personality personality;
+    @Override
+    public String toString() {
+        return "User{" +
+                "personality=" + personality +
+                ", userName='" + userName + '\'' +
+                ", password (FOR TESTING PURPOSES) ='" + password + '\'' +
+                '}';
+    }
 
-    public Personality getPersonality() {
+    //private Personality personality;
+    private int personality;
+
+    private String userName;
+
+    private String password;
+
+
+    public int getPersonality() {
         return personality;
     }
 
-    public void setPersonality(Personality personality) {
+    public void setPersonality(int personality) {
         this.personality = personality;
     }
 
     public String getUserName() {
         return userName;
     }
+
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -37,9 +53,6 @@ public class User {
         this.password = password;
     }
 
-    private String userName;
-
-    private String password;
 
 
 }

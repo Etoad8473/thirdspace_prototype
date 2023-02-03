@@ -9,6 +9,11 @@ public class Personality
         personalityType = type;
     }
 
+    Personality()
+    {
+        personalityType = 1;
+    }
+
     public int getPersonalityType() {
         return personalityType;
     }

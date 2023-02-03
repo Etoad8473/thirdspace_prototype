@@ -48,4 +48,13 @@ class UserController {
 
         return user.toString() +"\n\n"+ userFriends;
     }
+
+
+    @DeleteMapping("/user/{name}")
+    public @ResponseBody String removePerson(@PathVariable String name)
+    {
+        String out = "Before:\n" + userList.toString();
+        userList.remove(name);
+        return out + "\n\n\nAfter:\n" + userList.toString();
+    }
 }

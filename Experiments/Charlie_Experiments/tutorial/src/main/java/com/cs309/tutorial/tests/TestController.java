@@ -13,8 +13,8 @@ public class TestController {
 	
 	
 	@GetMapping("/getTest")
-	public String getTest(@RequestParam(value = "username", defaultValue = "World") String message) {
-		return String.format("Hello, %s! You sent a get request with a parameter!", message);
+	public String getTest(@RequestParam(value = "username", defaultValue = "there") String message) {
+		return String.format("Hello %s! You sent a get request with a parameter!", message);
 	}
 	
 	@PostMapping("/postTest1")

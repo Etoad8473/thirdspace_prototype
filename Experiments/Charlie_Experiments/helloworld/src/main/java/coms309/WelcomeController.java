@@ -9,7 +9,7 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Hello and welcome to COMS 309";
+        return "Hello and welcome to group cw_2's project page.  We are currently experimenting in the development of an app which can be used to find friends.";
     }
 
     @GetMapping("/{name}")

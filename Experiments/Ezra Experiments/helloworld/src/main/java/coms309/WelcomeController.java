@@ -10,12 +10,12 @@ class WelcomeController {
 
     @GetMapping("/")
     public String welcome() {
-        return "Hello and welcome to COMS 309";
+        return "yeah imig";
     }
 
     @GetMapping("/{user}")
     public String welcome(@PathVariable String user) {
-        return "Hello and welcome to COMS 309: " + user;
+        return "you will never get away with this " + user + "!";
     }
 
     @PostMapping("/users")

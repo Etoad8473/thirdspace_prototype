@@ -1,4 +1,4 @@
-package coms309;
+package coms309.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +18,6 @@ class WelcomeController {
         return "you will never get away with this " + user + "!";
     }
 
-    @PostMapping("/users")
-    public String returnUsers(){return }
+    @PostMapping("/userRepository")
+    public String returnUsers(){return "a";}
 }

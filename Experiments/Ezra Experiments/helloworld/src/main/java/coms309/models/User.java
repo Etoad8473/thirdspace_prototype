@@ -4,12 +4,22 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class user {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     Long id;
+
+    private Personality personality;
+
+    public Personality getPersonality() {
+        return personality;
+    }
+
+    public void setPersonality(Personality personality) {
+        this.personality = personality;
+    }
 
     public String getUserName() {
         return userName;

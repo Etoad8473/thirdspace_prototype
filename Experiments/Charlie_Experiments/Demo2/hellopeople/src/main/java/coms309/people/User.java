@@ -36,4 +36,9 @@ public class User {
     public boolean passwordCheck(String pass1, String pass2){
         return pass1.equals(pass2);
     }
+
+    //used to check if the username entered matches the stored username during login
+    public boolean usernameCheck(String enteredName){
+        return this.username.equals(enteredName);
+    }
 }

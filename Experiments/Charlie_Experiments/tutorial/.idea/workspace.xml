@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cf1eb5fc-5bb2-4c9f-b0e8-7170ce765505" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../hellopeople/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/src/main/java/coms309/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/src/main/java/coms309/ExceptionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/src/main/java/coms309/WelcomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/src/main/java/coms309/people/PeopleController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/src/main/java/coms309/people/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hellopeople/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld/src/main/java/coms309/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld/src/main/java/coms309/WelcomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../helloworld/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.mvn/wrapper/MavenWrapperDownloader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/java/com/cs309/tutorial/TutorialApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/test/java/com/cs309/tutorial/TutorialApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs309/tutorial/TutorialApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs309/tutorial/tests/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cs309/tutorial/tests/TestData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/cs309/tutorial/TutorialApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../tutorials" beforeDir="false" afterPath="$PROJECT_DIR$/../../../tutorials" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2LDNj8fS1asRqVTClotJvAPdqyD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/git_309/Demo1/1_cw_2/Experiments/Charlie_Experiments/Demo2/springboot_example",
+    "settings.editor.selected.configurable": "MavenSettings"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cf1eb5fc-5bb2-4c9f-b0e8-7170ce765505" name="Changes" comment="" />
+      <created>1675401826610</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675401826610</updated>
+    </task>
+    <servers />
+  </component>
+</project>

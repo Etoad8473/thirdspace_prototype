@@ -1,7 +1,23 @@
 package twin.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name="id")
+        private long id;
+
+    public User() {
+    }
 
     public User(String name, String password, int type)
     {
@@ -22,8 +38,10 @@ public class User {
     //private Personality personality;
     private int personality;
 
+    @Column(name = "name")
     private String userName;
 
+    @Column(name = "password")
     private String password;
 
 

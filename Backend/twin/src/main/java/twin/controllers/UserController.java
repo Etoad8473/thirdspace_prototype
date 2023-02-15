@@ -2,36 +2,36 @@ package twin.controllers;
 
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import twin.models.User;
+import twin.repositories.UserRepository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 @RestController
 class UserController {
 
-    HashMap<String, User> userList = new HashMap<>();
-
+    @Autowired
+    UserRepository userRepo;
 
     @GetMapping("/user")
-    public HashMap<String, User> returnUsers(){return userList;}
+    public List<User> returnUsers(){return userRepo.findAll();}
 
     @PostMapping("/user")
-    public String createUser(@RequestBody User user)
+    public User createUser(@RequestBody User user)
     {
-        User bob = user;
-        userList.put(user.getUserName(), user);
-        return "new user:\n" + bob;
+        return userRepo.save(user);
     }
 
-    @GetMapping("/user/{name}")
+    /*@GetMapping("/user/{name}")
     public @ResponseBody String getUser(@PathVariable String name)
     {
         User user = userList.get(name);
         return user.toString();
-    }
+    }*/
 
-    @GetMapping("/user/{name}/friends")
+    /*@GetMapping("/user/{name}/friends")
     public @ResponseBody String getUsersFriends(@PathVariable String name)
     {
         User user = userList.get(name);
@@ -47,14 +47,14 @@ class UserController {
         }
 
         return user.toString() +"\n\n"+ userFriends;
-    }
+    }*/
 
 
-    @DeleteMapping("/user/{name}")
+    /*@DeleteMapping("/user/{name}")
     public @ResponseBody String removePerson(@PathVariable String name)
     {
         String out = "Before:\n" + userList.toString();
         userList.remove(name);
         return out + "\n\n\nAfter:\n" + userList.toString();
-    }
+    }*/
 }

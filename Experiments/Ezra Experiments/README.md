@@ -11,8 +11,7 @@ that one person can have only one laptop(made by poor people). It shows how a on
 
 0. Go through the springboot_unit1_2_hellopeople
 1. Maven has to be installed on command line OR your IDE must be configured with maven
-2. Java version 11
-3. Install MySQL database (service & workbench) on localhost, create new schema 'mydb'
+2. Java version 1.8 - 1.10 (Some versions of springboot are really unhappy with java 11)
 
 ### To Run the project 
 1. Command Line (Make sure that you are in the folder containing pom.xml)</br>

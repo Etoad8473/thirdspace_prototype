@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import twin.models.User;
 import twin.repositories.UserRepository;
+import twin.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +14,16 @@ import java.util.List;
 class UserController {
 
     @Autowired
-    UserRepository userRepo;
+    private UserService userServ;
 
     @GetMapping("/user")
-    public List<User> returnUsers(){return userRepo.findAll();}
+    public List<User> returnUsers(){
+        return userServ.getUserList();
+    }
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user)
-    {
-        return userRepo.save(user);
+    public User createUser(@RequestBody User user){
+        return userServ.saveUser(user);
     }
 
     /*@GetMapping("/user/{name}")
@@ -50,11 +52,8 @@ class UserController {
     }*/
 
 
-    /*@DeleteMapping("/user/{name}")
-    public @ResponseBody String removePerson(@PathVariable String name)
-    {
-        String out = "Before:\n" + userList.toString();
-        userList.remove(name);
-        return out + "\n\n\nAfter:\n" + userList.toString();
-    }*/
+    @DeleteMapping("/user/{id}")
+    public @ResponseBody void removePerson(@PathVariable Long id){
+        userServ.deleteUser(id);
+    }
 }

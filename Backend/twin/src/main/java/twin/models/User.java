@@ -57,6 +57,14 @@ public class User {
         return userName;
     }
 
+    /*
+    Can be used to check if an entered username matches the username.
+    Could be used during log in or when finding a friend from the repository
+    -Charlie
+     */
+    public boolean usernameCheck(String user){
+        return this.userName.equals(user);
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -68,6 +76,15 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /*
+    Used to compare two passwords and returns true if they match (false if they don't)
+    Could be used during sign in or sign up
+    -Charlie
+     */
+    public boolean passwordCheck(String pass){
+        return this.password.equals(pass);
     }
 
 

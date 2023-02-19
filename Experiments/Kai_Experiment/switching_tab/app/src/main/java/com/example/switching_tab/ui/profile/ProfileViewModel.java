@@ -1,4 +1,4 @@
-package com.example.switching_tab.ui.notifications;
+package com.example.switching_tab.ui.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/navigation_event"
         android:name="com.example.switching_tab.ui.dashboard.EventFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_Events"
         tools:layout="@layout/fragment_event" />
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.switching_tab.ui.notifications.ProfileFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

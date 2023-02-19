@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/editprofilewindows_profilePic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/baseline_account_circle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/editprofilewindows_profilePic"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/editprofilewindows_name"
+            android:text="@string/name_label"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/editprofilewindows_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textAlignment="textStart"
+            tools:layout_editor_absoluteX="-28dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_aboutMe"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_name"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/editprofilewindows_aboutMe"
+            android:text="@string/aboutMe_label"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/editprofilewindows_aboutMe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textAlignment="textStart"
+            tools:layout_editor_absoluteX="-28dp" />
+    </LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

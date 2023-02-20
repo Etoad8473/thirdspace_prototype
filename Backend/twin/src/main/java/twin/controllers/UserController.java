@@ -4,7 +4,7 @@ package twin.controllers;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import twin.entities.User;
-import twin.services.UserService;
+import twin.services.UserServiceOutline;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
 class UserController {
 
     @Autowired
-    private UserService userServ;
+    private UserServiceOutline userServ;
 
     @GetMapping("/user")
     public List<User> returnUsers(){

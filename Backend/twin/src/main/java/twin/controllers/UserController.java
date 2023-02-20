@@ -3,18 +3,16 @@ package twin.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.models.User;
-import twin.repositories.UserRepository;
-import twin.services.UserService;
+import twin.entities.User;
+import twin.services.UserServiceOutline;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 class UserController {
 
     @Autowired
-    private UserService userServ;
+    private UserServiceOutline userServ;
 
     @GetMapping("/user")
     public List<User> returnUsers(){

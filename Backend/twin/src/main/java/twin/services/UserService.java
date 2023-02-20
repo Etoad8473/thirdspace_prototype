@@ -1,25 +1,37 @@
 package twin.services;
 
-import java.util.List;
-
-import java.util.List;
-import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import twin.models.User;
+import twin.entities.User;
+import twin.repositories.UserRepository;
+
+import java.util.List;
 
 @Service
-public interface UserService  {
-    //Save
-    User saveUser(User user);
+public class UserService implements UserServiceOutline
+{
 
-    //Get all
-    List<User> getUserList();
+    @Autowired
+    private UserRepository userRepo;
 
-    //Update
-    //User updateUser(User user, Long id);
+    @Override
+    public User saveUser(User user) {
+        return userRepo.save(user);
+    }
 
-    //Delete
-    void deleteUser(Long id);
+    @Override
+    public List<User> getUserList() {
+        return userRepo.findAll();
+    }
 
+    /*@Override
+    public User updateUser(User user, Long id) {
+        User DBuser = userRepo.findById(id).get();
+    }*/
+
+    @Override
+    public void deleteUser(Long id)
+    {
+        userRepo.deleteById(id);
+    }
 }

@@ -1,4 +1,4 @@
-package twin.models;
+package twin.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

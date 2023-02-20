@@ -2,12 +2,9 @@ package twin.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.models.Event;
-import twin.repositories.EventRepository;
+import twin.entities.Event;
 import twin.services.EventService;
-import twin.services.EventServiceAbstract;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

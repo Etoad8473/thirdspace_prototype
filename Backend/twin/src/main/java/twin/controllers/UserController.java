@@ -3,11 +3,9 @@ package twin.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.models.User;
-import twin.repositories.UserRepository;
+import twin.entities.User;
 import twin.services.UserService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

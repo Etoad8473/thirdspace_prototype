@@ -1,8 +1,9 @@
 package com.example.switching_tab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -11,13 +12,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.switching_tab.databinding.ActivityMainBinding;
-import com.example.switching_tab.ui.profile.EditProfilePopsUp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-private ActivityMainBinding binding;
-    private ImageView editButton;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +35,12 @@ private ActivityMainBinding binding;
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        editButton = (ImageView) findViewById(R.id.editProfileButton);
+        ImageButton editButton = (ImageButton) findViewById(R.id.editProfileButton);
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = Intent(MainActivity.this, EditProfilePopsUp.class);
-                startActivity(i);
+                startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
             }
         });
     }

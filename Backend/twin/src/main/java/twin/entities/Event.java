@@ -28,6 +28,7 @@ public class Event {
 
     public Event() {}
 
+    //Creates an Event Object
     public Event(String eventName, String location, String eventTime){
         this.eventName = eventName;
         this.location = location;
@@ -43,26 +44,32 @@ public class Event {
                 '}';
     }
 
+    //returns the event's name
     public String getEventName(){
         return eventName;
     }
 
+    //sets the event's name to a given string name
     public void setEventName(String name){
         eventName = name;
     }
 
+    //returns the event location
     public String getLocation(){
         return location;
     }
 
+    //sets the event location to a given string location.
     public void setLocation(String location){
         this.location = location;
     }
 
+    //returns the time of the event
     public String getTime(){
         return eventTime;
     }
 
+    //sets the time of the event to a given string time
     public void setTime(String time){
         eventTime = time;
     }

@@ -23,20 +23,39 @@ public class User {
     //private Personality personality;
     private int personality;
 
+    //stores user's email
+    @Column(name = "email")
+    private String email;
+
+    //stores user's name
     @Column(name = "name")
+    private String name;
+
+    @Column(name = "userName")
     private String userName;
 
     @Column(name = "password")
     private String password;
 
+    //stores user's gender
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "phone")
+    private String phoneNumber;
+
 
     public User() {}
 
-    public User(String name, String password, int type)
+    public User(String userName, String password, int type, String name, String email, String gender, String phone)
     {
-        userName = name;
+        this.userName = userName;
         this.password = password;
         personality = type;
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+        phoneNumber = phone;
     }
 
     @Override
@@ -45,6 +64,10 @@ public class User {
                 "personality=" + personality +
                 ", userName='" + userName + '\'' +
                 ", password (FOR TESTING PURPOSES) ='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 
@@ -89,6 +112,38 @@ public class User {
      */
     public boolean passwordCheck(String pass){
         return this.password.equals(pass);
+    }
+
+    //returns user's name
+    public String getName(){ return name; }
+
+    //sets the user's name to given newName
+    public void setName(String newName){
+        name = newName;
+    }
+
+    //returns user's email
+    public String getEmail(){ return email; }
+
+    //sets the user's email to given newEmail
+    public void setEmail(String newEmail){
+        email = newEmail;
+    }
+
+    //returns user's gender
+    public String getGender(){ return gender; }
+
+    //sets the user's gender to given newGender
+    public void setGender(String newGender){
+        gender = newGender;
+    }
+
+    //returns user's phone number
+    public String getPhoneNumber(){ return phoneNumber; }
+
+    //sets the user's phone number to given newNumber
+    public void setPhoneNumber(String newNumber){
+        phoneNumber = newNumber;
     }
 
 

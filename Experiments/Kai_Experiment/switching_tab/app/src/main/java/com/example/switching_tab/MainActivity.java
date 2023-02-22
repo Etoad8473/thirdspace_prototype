@@ -1,7 +1,7 @@
 package com.example.switching_tab;
 
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -33,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        ImageButton editButton = findViewById(R.id.editProfileButton);
+        Button editButton = findViewById(R.id.editProfileButton);
 
+        editButton.setOnClickListener(view -> {
+            EditProfileWindows editProfilePopUp = new EditProfileWindows();
+            editProfilePopUp.showPopupWindow(view);
+        });
         //editButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, EditProfileWindows.class)));
 
     }

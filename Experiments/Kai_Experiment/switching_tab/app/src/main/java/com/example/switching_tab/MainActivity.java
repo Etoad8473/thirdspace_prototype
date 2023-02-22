@@ -1,6 +1,5 @@
 package com.example.switching_tab;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageButton editButton = findViewById(R.id.editProfileButton);
 
-        editButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, EditProfileWindows.class)));
+        //editButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, EditProfileWindows.class)));
 
     }
 

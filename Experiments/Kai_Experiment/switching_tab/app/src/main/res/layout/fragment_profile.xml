@@ -46,7 +46,7 @@
             app:layout_constraintTop_toTopOf="@id/profilePicContainer" />
 
         <Button
-            android:id="@+id/editProfileButton"
+            android:id="@+id/Button"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:background="@drawable/baseline_mode_edit_24"

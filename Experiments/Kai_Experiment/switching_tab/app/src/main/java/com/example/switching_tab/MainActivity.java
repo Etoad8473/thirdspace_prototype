@@ -1,6 +1,7 @@
 package com.example.switching_tab;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private Button editButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        Button editButton = findViewById(R.id.editProfileButton);
+        editButton = (Button) findViewById(R.id.Button);
 
-        editButton.setOnClickListener(view -> {
-            EditProfileWindows editProfilePopUp = new EditProfileWindows();
-            editProfilePopUp.showPopupWindow(view);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditProfileWindows editProfilePopUp = new EditProfileWindows();
+                editProfilePopUp.showPopupWindow(view);
+            }
         });
-        //editButton.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, EditProfileWindows.class)));
-
     }
-
 }

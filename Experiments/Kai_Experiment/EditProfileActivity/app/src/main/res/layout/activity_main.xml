@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/editprofilewindows_profilePic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/baseline_account_circle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166" />
+    <ScrollView
+        android:id="@+id/editprofilewindows_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/editprofilewindows_profilePic">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/accountDetailsLayout"
+                android:text="@string/accountDetailsLayout"
+                app:layout_constraintTop_toTopOf="@+id/accountDetailsLayout"
+                android:textSize="27sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/accountDetailsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/editprofilewindows_scrollView"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/accountDetailsLayout"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_email"
+                        android:text="@string/email_label"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editprofilewindows_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        tools:layout_editor_absoluteX="-28dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_phoneNumber"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_email"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_phoneNumber"
+                        android:text="@string/phoneNumber_label"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editprofilewindows_phoneNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        tools:layout_editor_absoluteX="-28dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/userDetailsLayout"
+                android:text="@string/userDetailsLayout"
+                app:layout_constraintTop_toTopOf="@+id/userDetailsLayout"
+                android:textSize="27sp"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:id="@+id/userDetailsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/accountDetailsLayout"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/userDetailsLayout"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_name"
+                        android:text="@string/name_label"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editprofilewindows_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        tools:layout_editor_absoluteX="-28dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_aboutMe"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_name"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_aboutMe"
+                        android:text="@string/aboutMe_label"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editprofilewindows_aboutMe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        tools:layout_editor_absoluteX="-28dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_interest"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_aboutMe"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_interest"
+                        android:text="@string/interest_label"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editprofilewindows_interest"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        tools:layout_editor_absoluteX="-28dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_gender"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_interest"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_gender"
+                        android:text="@string/gender_label"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/editprofilewindows_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart"
+                        tools:layout_editor_absoluteX="-28dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/getDataButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/getData_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="150dp"/>
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_label"
+        tools:layout_editor_absoluteX="303dp"
+        tools:layout_editor_absoluteY="617dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="10dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import twin.entities.Event;
 
 
 @Service
-public interface EventServiceAbstract {
+public interface EventServiceOutline {
 
     Event saveEvent(Event event);
 

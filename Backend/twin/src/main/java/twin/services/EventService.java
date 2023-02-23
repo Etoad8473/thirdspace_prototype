@@ -7,7 +7,7 @@ import twin.repositories.EventRepository;
 import java.util.List;
 
 @Service
-public class EventService implements EventServiceAbstract {
+public class EventService implements EventServiceOutline {
 
     @Autowired
     private EventRepository eventRepo;

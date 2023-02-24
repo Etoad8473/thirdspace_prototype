@@ -3,7 +3,7 @@ package twin.entities;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import twin.entities.Event;
+
 
 @Entity
 @Table(name="users")
@@ -18,8 +18,9 @@ public class User {
     @Column(name="id")
     private long id;
 
-    //private Personality personality;
-    private int personality;
+    @OneToOne
+    private Personality personality;
+    //private int personality;
 
     //stores user's email
     @Column(name = "email")
@@ -49,11 +50,11 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String password, int type, String name, String email, String gender, String phone)
+    public User(String userName, String password, Personality type, String name, String email, String gender, String phone)
     {
         this.userName = userName;
         this.password = password;
-        personality = type;
+        this.personality = type;
         this.name = name;
         this.email = email;
         this.gender = gender;
@@ -74,11 +75,11 @@ public class User {
     }
 
 
-    public int getPersonality() {
+    public Personality getPersonality() {
         return personality;
     }
 
-    public void setPersonality(int personality) {
+    public void setPersonality(Personality personality) {
         this.personality = personality;
     }
 

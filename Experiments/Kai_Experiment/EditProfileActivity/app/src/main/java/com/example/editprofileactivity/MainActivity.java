@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
                 getDataFromJson json = new Gson().fromJson(jsonString,getDataFromJson.class);
                 email.setText(json.email);
-                System.out.println(json.phoneNumber);
-                phoneNumber.setText(json.phoneNumber);
+                System.out.println(json.phone);
+                phoneNumber.setText(json.phone);
                 name.setText(json.name);
                 aboutMe.setText(json.aboutMe);
                 personality.setText(json.personality);
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
 class getDataFromJson{
     String name;
-    String phoneNumber;
+    String phone;
     String email;
     String aboutMe;
     String personality;
@@ -126,7 +126,7 @@ class getDataFromJson{
 
     public getDataFromJson(String n, String phone, String e, String aboutMe, String personality, String gender){
         this.name = n;
-        this.phoneNumber = phone;
+        this.phone = phone;
         this.email = e;
         this.aboutMe = aboutMe;
         this.personality = personality;

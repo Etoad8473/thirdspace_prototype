@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
                 getDataFromJson json = new Gson().fromJson(jsonString,getDataFromJson.class);
                 email.setText(json.email);
-                System.out.println(json.phone);
                 phoneNumber.setText(json.phone);
                 name.setText(json.name);
                 aboutMe.setText(json.aboutMe);

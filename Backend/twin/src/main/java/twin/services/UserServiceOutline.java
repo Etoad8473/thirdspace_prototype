@@ -3,6 +3,7 @@ package twin.services;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import twin.entities.Personality;
 import twin.entities.User;
 
 @Service
@@ -18,5 +19,7 @@ public interface UserServiceOutline {
 
     //Delete
     void deleteUser(Long id);
+
+    User updatePersonality(long id, Personality personality);
 
 }

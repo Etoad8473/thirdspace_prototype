@@ -13,6 +13,7 @@ public class User {
     Kai wants us to add email, phone number, gender, and actual name(along with username)
      */
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
@@ -75,6 +76,10 @@ public class User {
     }
 
 
+
+    public long getId() {
+        return id;
+    }
     public Personality getPersonality() {
         return personality;
     }

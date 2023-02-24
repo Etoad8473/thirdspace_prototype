@@ -24,6 +24,9 @@ class UserController {
         return userServ.saveUser(user);
     }
 
+    @PostMapping("/user/{id}/personality")
+    public User updatePersonality(@PathVariable long id, RequestBody Personality personality){ return userServ.updatePersonality(id,personality); }
+
     /*@GetMapping("/user/{name}")
     public @ResponseBody String getUser(@PathVariable String name)
     {

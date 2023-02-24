@@ -2,6 +2,7 @@ package twin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import twin.entities.Personality;
 import twin.entities.User;
 import twin.repositories.UserRepository;
 
@@ -33,5 +34,12 @@ public class UserService implements UserServiceOutline
     public void deleteUser(Long id)
     {
         userRepo.deleteById(id);
+    }
+
+    @Override
+    public User updatePersonality(long id, Personality personality) {
+        User u = userRepo.getOne(id);
+        u.setPersonality(personality);
+        return u;
     }
 }

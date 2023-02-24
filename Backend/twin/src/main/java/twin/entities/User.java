@@ -1,11 +1,9 @@
 package twin.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import twin.entities.Event;
 
 @Entity
 @Table(name="users")
@@ -44,6 +42,10 @@ public class User {
     @Column(name = "phone")
     private String phoneNumber;
 
+    @ManyToOne
+    @JoinColumn(name = "event_id")
+    @JsonIgnore
+    private Event event;
 
     public User() {}
 
@@ -146,6 +148,15 @@ public class User {
         phoneNumber = newNumber;
     }
 
+    //for many to one
+    public Event getEvent(){
+        return event;
+    }
+
+    //for many to one
+    public void setEvent(Event event){
+        this.event = event;
+    }
 
 
 }

@@ -1,11 +1,9 @@
 package twin.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import twin.entities.User;
 
 
 @Entity
@@ -26,13 +24,19 @@ public class Event {
     @Column(name = "time")
     private String eventTime;
 
-    public Event() {}
+    @OneToMany
+    private List<User> users;
+
+    public Event() {
+        users = new ArrayList<>();
+    }
 
     //Creates an Event Object
     public Event(String eventName, String location, String eventTime){
         this.eventName = eventName;
         this.location = location;
         this.eventTime = eventTime;
+        users = new ArrayList<>();
     }
 
     @Override
@@ -72,5 +76,20 @@ public class Event {
     //sets the time of the event to a given string time
     public void setTime(String time){
         eventTime = time;
+    }
+
+    //for one to many
+    public List<User> getUsers(){
+        return users;
+    }
+
+    //for one to many
+    public void setUsers(List<User> users){
+        this.users = users;
+    }
+
+    //for one to many
+    public void addUsers(User user){
+        this.users.add(user);
     }
 }

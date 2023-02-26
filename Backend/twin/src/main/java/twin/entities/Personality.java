@@ -18,5 +18,7 @@ public class Personality
     @OneToMany
     private List<Hobby> hobbies;
 
+    public void addHobby(Hobby h){hobbies.add(h);}
+
 
 }

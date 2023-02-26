@@ -3,6 +3,7 @@ package twin.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import twin.entities.Personality;
 import twin.entities.User;
 import twin.services.UserServiceOutline;
 
@@ -25,7 +26,7 @@ class UserController {
     }
 
     @PostMapping("/user/{id}/personality")
-    public User updatePersonality(@PathVariable long id, RequestBody Personality personality){ return userServ.updatePersonality(id,personality); }
+    public User updatePersonality(@PathVariable long id, @RequestBody Personality personality){ return userServ.updatePersonality(id,personality); }
 
     /*@GetMapping("/user/{name}")
     public @ResponseBody String getUser(@PathVariable String name)

@@ -5,4 +5,9 @@ import org.springframework.stereotype.Repository;
 import twin.User.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {}
+public interface UserRepository extends JpaRepository<User, Long>
+{
+    User findById(long id);
+
+    void deleteById(int id);
+}

@@ -11,20 +11,25 @@ import java.util.List;
 class UserController {
 
     @Autowired
-    private UserServiceOutline userServ;
+    private UserRepository userRepo;
 
     @GetMapping("/user")
     public List<User> returnUsers(){
-        return userServ.getUserList();
+        return userRepo.findAll();
     }
 
     @PostMapping("/user")
     public User createUser(@RequestBody User user){
-        return userServ.saveUser(user);
+        return userRepo.save(user);
     }
 
     @PostMapping("/user/{id}/personality")
-    public User updatePersonality(@PathVariable long id, @RequestBody Personality personality){ return userServ.updatePersonality(id,personality); }
+    public User updatePersonality(@PathVariable long id, @RequestBody Personality personality)
+    {
+        User u = userRepo.getOne(id);
+        u.setPersonality(personality);
+        return u;
+    }
 
     /*@GetMapping("/user/{name}")
     public @ResponseBody String getUser(@PathVariable String name)
@@ -54,6 +59,6 @@ class UserController {
 
     @DeleteMapping("/user/{id}")
     public @ResponseBody void removePerson(@PathVariable Long id){
-        userServ.deleteUser(id);
+        userRepo.deleteById(id);
     }
 }

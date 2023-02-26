@@ -18,10 +18,12 @@ public class Personality
     @OneToOne
     private User user;
 
-    @OneToMany
+    @ManyToMany
     private List<Hobby> hobbies;
 
     public void addHobby(Hobby h){hobbies.add(h);}
+
+    public void setUser(User u){this.user = u;}
 
 
 }

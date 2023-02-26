@@ -9,14 +9,14 @@ import java.util.List;
 public class EventController {
 
     @Autowired
-    private EventService eventServ;
+    private EventRepository eventRepo;
 
     @GetMapping("/event")
-    public List<Event> returnEvents() { return eventServ.getEventList(); }
+    public List<Event> returnEvents() { return eventRepo.findAll(); }
 
     @PostMapping("/event")
-    public Event createEvent(@RequestBody Event event) { return eventServ.saveEvent(event); }
+    public Event createEvent(@RequestBody Event event) { return eventRepo.save(event); }
 
     @DeleteMapping("/event/{id}")
-    public @ResponseBody void removeEvent(@PathVariable Long id) { eventServ.deleteEvent(id); }
+    public @ResponseBody void removeEvent(@PathVariable Long id) { eventRepo.deleteById(id); }
 }

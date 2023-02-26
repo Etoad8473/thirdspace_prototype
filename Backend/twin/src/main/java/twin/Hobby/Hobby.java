@@ -3,6 +3,7 @@ package twin.Hobby;
 import twin.Personality.Personality;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "Hobbies")
@@ -14,9 +15,10 @@ public class Hobby {
     private long id;
     private String name;
 
+
     //----------Relations---------------//
-    @ManyToOne
-    private Personality personality;
+    @ManyToMany
+    private List<Personality> personalities;
 
     //----------Constructor-------------//
 
@@ -33,6 +35,16 @@ public class Hobby {
     private List<Hobby> subHobbies;
     */
 
+    //----------Getter/Setter--------------//
+
+
+    public List<Personality> getPersonalities() {
+        return personalities;
+    }
+
+    public void addPersonality(Personality personality) {
+        personalities.add(personality);
+    }
 
 
 }

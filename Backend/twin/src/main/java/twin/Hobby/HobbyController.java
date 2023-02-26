@@ -2,11 +2,10 @@ package twin.Hobby;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import twin.Event.Event;
-import twin.Event.EventService;
 
 import java.util.List;
 
+@RestController
 public class HobbyController
 {
 
@@ -15,6 +14,9 @@ public class HobbyController
 
     @GetMapping("/hobby")
     public List<Hobby> returnHobbies() { return hobbyRepo.findAll(); }
+
+    @GetMapping("/hobby/{id}")
+    public Hobby getHobbyById(@PathVariable int id){ return hobbyRepo.findById(id);};
 
     @PostMapping("/hobby")
     public Hobby createHobby (@RequestBody Hobby hobby) { return hobbyRepo.save(hobby); }

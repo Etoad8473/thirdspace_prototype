@@ -1,9 +1,8 @@
-package twin.services;
+package twin.Event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import twin.entities.Event;
-import twin.repositories.EventRepository;
+
 import java.util.List;
 
 @Service

@@ -1,8 +1,8 @@
-package twin.services;
+package twin.Event;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import twin.entities.Event;
+import twin.Event.Event;
 
 
 @Service

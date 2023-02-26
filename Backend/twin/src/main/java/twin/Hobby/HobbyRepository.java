@@ -1,9 +1,9 @@
-package twin.repositories;
+package twin.Hobby;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import twin.entities.Event;
+import twin.Hobby.Hobby;
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, Long> {}
+public interface HobbyRepository extends JpaRepository<Hobby, Long> {}
 

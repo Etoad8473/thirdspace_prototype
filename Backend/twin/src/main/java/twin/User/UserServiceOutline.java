@@ -1,10 +1,9 @@
-package twin.services;
+package twin.User;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import twin.entities.Personality;
-import twin.entities.User;
+import twin.Personality.Personality;
 
 @Service
 public interface UserServiceOutline {

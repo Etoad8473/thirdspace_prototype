@@ -1,10 +1,8 @@
-package twin.services;
+package twin.Personality;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.entities.Personality;
-import twin.repositories.PersonalityRepository;
 
-public class PersonalityService implements PersonalityServiceOutline{
+public class PersonalityService implements PersonalityServiceOutline {
     @Autowired
     PersonalityRepository personalityRepo;
 

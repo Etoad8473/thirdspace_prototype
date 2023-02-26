@@ -1,8 +1,9 @@
-package twin.repositories;
+package twin.Event;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import twin.entities.User;
+import twin.Event.Event;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {}
+public interface EventRepository extends JpaRepository<Event, Long> {}
+

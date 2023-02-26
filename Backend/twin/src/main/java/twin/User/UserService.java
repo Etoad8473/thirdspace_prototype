@@ -1,10 +1,8 @@
-package twin.services;
+package twin.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import twin.entities.Personality;
-import twin.entities.User;
-import twin.repositories.UserRepository;
+import twin.Personality.Personality;
 
 import java.util.List;
 

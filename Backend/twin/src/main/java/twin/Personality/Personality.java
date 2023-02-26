@@ -1,4 +1,7 @@
-package twin.entities;
+package twin.Personality;
+
+import twin.User.User;
+import twin.Hobby.Hobby;
 
 import javax.persistence.*;
 import java.util.List;

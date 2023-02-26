@@ -1,11 +1,9 @@
-package twin.controllers;
+package twin.User;
 
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.entities.Personality;
-import twin.entities.User;
-import twin.services.UserServiceOutline;
+import twin.Personality.Personality;
 
 import java.util.List;
 

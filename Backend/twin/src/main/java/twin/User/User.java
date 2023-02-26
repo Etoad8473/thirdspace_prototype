@@ -1,8 +1,10 @@
-package twin.entities;
+package twin.User;
 
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import twin.Event.Event;
+import twin.Personality.Personality;
 
 
 @Entity

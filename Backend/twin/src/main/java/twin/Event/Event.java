@@ -1,9 +1,9 @@
-package twin.entities;
+package twin.Event;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import twin.entities.User;
+import twin.User.User;
 
 
 @Entity

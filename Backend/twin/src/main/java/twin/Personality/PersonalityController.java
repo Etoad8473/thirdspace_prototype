@@ -1,4 +1,4 @@
-package twin.controllers;
+package twin.Personality;
 
 public class PersonalityController {
 }

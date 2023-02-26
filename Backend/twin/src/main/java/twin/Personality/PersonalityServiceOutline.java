@@ -1,10 +1,6 @@
-package twin.services;
+package twin.Personality;
 
-import twin.entities.Event;
-import twin.entities.Personality;
-import twin.entities.User;
-
-import java.util.List;
+import twin.Personality.Personality;
 
 public interface PersonalityServiceOutline {
 

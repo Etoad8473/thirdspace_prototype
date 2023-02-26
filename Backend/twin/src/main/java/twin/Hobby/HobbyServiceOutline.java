@@ -1,7 +1,6 @@
-package twin.services;
+package twin.Hobby;
 
-import twin.entities.Event;
-import twin.entities.Hobby;
+import twin.Hobby.Hobby;
 
 import java.util.List;
 

@@ -1,9 +1,7 @@
-package twin.controllers;
+package twin.Event;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.entities.Event;
-import twin.services.EventService;
 
 import java.util.List;
 

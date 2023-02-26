@@ -1,7 +1,8 @@
-package twin.entities;
+package twin.Hobby;
+
+import twin.Personality.Personality;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Hobbies")

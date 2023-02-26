@@ -1,14 +1,10 @@
-package twin.services;
+package twin.Hobby;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.entities.Event;
-import twin.entities.Hobby;
-import twin.repositories.HobbyRepository;
-import twin.repositories.UserRepository;
 
 import java.util.List;
 
-public class HobbyService implements HobbyServiceOutline{
+public class HobbyService implements HobbyServiceOutline {
 
     @Autowired
     private HobbyRepository hobbyRepo;

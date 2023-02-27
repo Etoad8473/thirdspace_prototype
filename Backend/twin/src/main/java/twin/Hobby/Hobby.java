@@ -13,7 +13,9 @@ public class Hobby {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private long id;
-    private String name;
+
+    @Column(name="hobby_name")
+    private String hobby;
 
 
     //----------Relations---------------//
@@ -26,7 +28,7 @@ public class Hobby {
 
     public Hobby(String name)
     {
-        this.name = name;
+        this.hobby = name;
     }
 
     /*@ManyToOne

@@ -21,13 +21,19 @@ public class PersonalityController
     @Autowired
     private HobbyRepository hobbyRepo;
 
+
+
+    //-------------------------------GET---------------------------//
+
     @GetMapping("/personality")
     public List<Personality> returnPersonality() { return personalityRepo.findAll();}
+
+    //-------------------------------POST--------------------------//
 
     @PostMapping("/personality")
     public Personality createPersonality (@RequestBody Personality personality) { return personalityRepo.save(personality); }
 
-    @PostMapping("/personality/{pId]/hobby/{hId}")
+    @PostMapping("/personality/{pId}/hobby/{hId}")
     public String assignHobbyToPersonality(@PathVariable long pId, @PathVariable long hId)
     {
         Personality p = personalityRepo.findById(pId);
@@ -41,6 +47,8 @@ public class PersonalityController
         personalityRepo.save(p);
         return success;
     }
+
+    //-------------------------------Delete----------------------------//
 
     @DeleteMapping("/personality/{id}/")
     public @ResponseBody void removePersonality(@PathVariable Long id) { personalityRepo.deleteById(id); }

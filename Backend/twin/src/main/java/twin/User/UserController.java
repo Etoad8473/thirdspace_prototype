@@ -56,7 +56,7 @@ class UserController {
         u.setPersonality(p);
         userRepo.save(u);
 
-        return "successfully updatedPersonality";
+        return "successfully set User's Personality";
     }
 
     //---------------------------Delete-----------------------//

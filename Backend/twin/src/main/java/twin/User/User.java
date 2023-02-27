@@ -51,13 +51,13 @@ public class User {
     @JsonIgnore
     private Event event;
 
-    public User() {}
+    public User() {personality = new Personality();}
 
-    public User(String userName, String password, Personality type, String name, String email, String gender, String phone)
+    public User(String userName, String password, String name, String email, String gender, String phone)
     {
         this.userName = userName;
         this.password = password;
-        this.personality = type;
+        this.personality = new Personality();
         this.name = name;
         this.email = email;
         this.gender = gender;

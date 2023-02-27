@@ -3,6 +3,8 @@ package twin.User;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import twin.Hobby.Hobby;
+import twin.Hobby.HobbyRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
@@ -17,15 +19,21 @@ class UserController {
     @Autowired
     private PersonalityRepository personalityRepo;
 
+    @Autowired
+    private HobbyRepository hobbyRepo;
+
 
     //-----------------------------GET---------------------//
 
-    @GetMapping("/user")
+    @GetMapping("/user/getAll")
     public List<User> returnUsers(){
         return userRepo.findAll();
     }
 
-    @GetMapping("/user/{id}/hobby")
+    @GetMapping("/user/{id}")
+    public User getUser(@PathVariable long id){ return userRepo.findById(id);}
+
+    @GetMapping("/user/{id}/hobby/getAll")
     public String returnHobbyListString(@PathVariable long uId)
     {
         User u = userRepo.findById(uId);
@@ -38,12 +46,12 @@ class UserController {
 
     //----------------------------POST----------------------//
 
-    @PostMapping("/user")
+    @PostMapping("/user/new")
     public User createUser(@RequestBody User user){
         return userRepo.save(user);
     }
 
-    @PostMapping("/user/{id}")
+    @PostMapping("/user/{id}/update")
     public User updateUserById(@PathVariable long id, @RequestBody User updatedU)
     {
         User current = userRepo.findById(id);
@@ -53,8 +61,19 @@ class UserController {
         return current;
     }
 
-    @PostMapping("/user/{uId}/personality/{pId}")
-    public String setPersonality(@PathVariable long uId, @PathVariable long pId)
+    @PostMapping("/user/{uId}/hobby/add/{hId}")
+    public boolean addHobby(@PathVariable long uId, @PathVariable long hId)
+    {
+        User u = userRepo.findById(uId);
+        Personality p = u.getPersonality();
+        Hobby h = hobbyRepo.findById(hId);
+
+        return p.addHobby(h);
+    }
+
+    /*
+    @PostMapping("/user/{uId}/personality")
+    public String addPersonality(@PathVariable long uId, @PathVariable long pId)
     {
         User u = userRepo.findById(uId);
         Personality p = personalityRepo.findById(pId);
@@ -70,12 +89,16 @@ class UserController {
 
         return "successfully set User's Personality";
     }
+    */
 
     //---------------------------Delete-----------------------//
 
-    @DeleteMapping("/user/{id}")
-    public @ResponseBody void removePerson(@PathVariable Long id){
+    @DeleteMapping("/user/{id}/delete")
+    public @ResponseBody void removePerson(@PathVariable long id){
+        ;
+        personalityRepo.deleteById(userRepo.findById(id).getPersonality().getId());
         userRepo.deleteById(id);
+
     }
 
         /*@GetMapping("/user/{name}")

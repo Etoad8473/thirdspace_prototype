@@ -11,6 +11,8 @@ import java.util.List;
 @Table(name="personalities")
 public class Personality
 {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
@@ -22,13 +24,39 @@ public class Personality
     @ManyToMany
     private List<Hobby> hobbies;
 
+
+    //------------------------------Constructor--------------------------//
     public Personality(){hobbies = new ArrayList<>();}
 
-    public void addHobby(Hobby h){hobbies.add(h);}
 
-    public void setUser(User u){this.user = u;}
+    //-----------------------------Methods-------------------------------//
+    public boolean addHobby(Hobby h)
+    {
+        if(h != null)
+        {
+            hobbies.add(h);
+            return true;
+        }
+        else
+            return false;
+    }
 
     @Override
     public String toString(){ return hobbies.toString();}
 
+
+    //----------------------------Getters/Setters--------------------------//
+    public long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User u){this.user = u;}
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
 }

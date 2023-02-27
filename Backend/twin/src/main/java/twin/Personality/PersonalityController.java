@@ -12,6 +12,7 @@ import java.util.List;
 public class PersonalityController
 {
 
+    /*
     String failure = "failed";
     String success = "success";
 
@@ -52,4 +53,6 @@ public class PersonalityController
 
     @DeleteMapping("/personality/{id}/")
     public @ResponseBody void removePersonality(@PathVariable Long id) { personalityRepo.deleteById(id); }
+
+     */
 }

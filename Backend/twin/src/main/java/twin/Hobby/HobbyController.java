@@ -12,17 +12,23 @@ public class HobbyController
     @Autowired
     private HobbyRepository hobbyRepo;
 
-    @GetMapping("/hobby")
+
+    //-------------------------------GET--------------------------//
+
+    @GetMapping("/hobby/getAll")
     public List<Hobby> returnHobbies() { return hobbyRepo.findAll(); }
 
     @GetMapping("/hobby/{id}")
     public Hobby getHobbyById(@PathVariable int id){ return hobbyRepo.findById(id);};
 
-    @PostMapping("/hobby")
-    public String createHobby (@RequestBody Hobby hobby) {
-        hobbyRepo.save(hobby);
-        return "saved hobby: " + hobby;
+    //------------------------------POST----------------------------//
+
+    @PostMapping("/hobby/{name}")
+    public Hobby createHobby (@PathVariable String name) {
+        return hobbyRepo.save(new Hobby(name));
     }
+
+    //------------------------------Delete-------------------------//
 
     @DeleteMapping("/hobby/{id}")
     public @ResponseBody void removeHobby(@PathVariable Long id) { hobbyRepo.deleteById(id); }

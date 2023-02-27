@@ -7,6 +7,7 @@ import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 class UserController {
@@ -22,6 +23,17 @@ class UserController {
     @GetMapping("/user")
     public List<User> returnUsers(){
         return userRepo.findAll();
+    }
+
+    @GetMapping("/user/{id}/hobby")
+    public String returnHobbyListString(@PathVariable long uId)
+    {
+        User u = userRepo.findById(uId);
+
+        if(u != null)
+            return u.getPersonality().toString();
+        else
+            return "user not found";
     }
 
     //----------------------------POST----------------------//

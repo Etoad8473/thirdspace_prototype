@@ -45,7 +45,7 @@ public class PersonalityController
         p.addHobby(h);
 
         personalityRepo.save(p);
-        return success;
+        return success + ", added " + h.toString() + " to personality: " + p.toString();
     }
 
     //-------------------------------Delete----------------------------//

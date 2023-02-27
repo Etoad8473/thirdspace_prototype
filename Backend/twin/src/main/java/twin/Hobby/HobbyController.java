@@ -19,7 +19,10 @@ public class HobbyController
     public Hobby getHobbyById(@PathVariable int id){ return hobbyRepo.findById(id);};
 
     @PostMapping("/hobby")
-    public Hobby createHobby (@RequestBody Hobby hobby) { return hobbyRepo.save(hobby); }
+    public String createHobby (@RequestBody Hobby hobby) {
+        hobbyRepo.save(hobby);
+        return "saved hobby: " + hobby;
+    }
 
     @DeleteMapping("/hobby/{id}")
     public @ResponseBody void removeHobby(@PathVariable Long id) { hobbyRepo.deleteById(id); }

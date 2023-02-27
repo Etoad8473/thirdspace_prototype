@@ -3,6 +3,7 @@ package twin.Hobby;
 import twin.Personality.Personality;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Hobby {
 
     //----------Constructor-------------//
 
-    protected Hobby(){}
+    protected Hobby(){personalities = new ArrayList<>();}
 
     public Hobby(String name)
     {
@@ -48,5 +49,13 @@ public class Hobby {
         personalities.add(personality);
     }
 
+
+    //-------------Helpers--------------//
+
+    @Override
+    public String toString()
+    {
+        return hobby;
+    }
 
 }

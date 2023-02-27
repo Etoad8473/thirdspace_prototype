@@ -26,7 +26,10 @@ public class Personality
 
 
     //------------------------------Constructor--------------------------//
-    public Personality(){hobbies = new ArrayList<>();}
+    public Personality()
+    {
+        hobbies = new ArrayList<Hobby>();
+    }
 
 
     //-----------------------------Methods-------------------------------//

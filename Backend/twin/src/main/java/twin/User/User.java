@@ -21,7 +21,7 @@ public class User {
     @Column(name="id")
     private long id;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Personality personality;
     //private int personality;
 

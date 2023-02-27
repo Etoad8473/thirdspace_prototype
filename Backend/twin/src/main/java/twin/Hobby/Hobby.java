@@ -25,10 +25,11 @@ public class Hobby {
 
     //----------Constructor-------------//
 
-    protected Hobby(){personalities = new ArrayList<>();}
+    public Hobby(){ this(null);}
 
     public Hobby(String name)
     {
+        personalities = new ArrayList<Personality>();
         this.hobby = name;
     }
 

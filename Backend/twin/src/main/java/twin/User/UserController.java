@@ -33,7 +33,7 @@ class UserController {
     @GetMapping("/user/{id}")
     public User getUser(@PathVariable long id){ return userRepo.findById(id);}
 
-    @GetMapping("/user/{id}/hobby/getAll")
+    @GetMapping("/user/{uId}/hobby/getAll")
     public String returnHobbyListString(@PathVariable long uId)
     {
         User u = userRepo.findById(uId);
@@ -67,6 +67,9 @@ class UserController {
         User u = userRepo.findById(uId);
         Personality p = u.getPersonality();
         Hobby h = hobbyRepo.findById(hId);
+
+        //personalityRepo.save(p);
+        //hobbyRepo.save(h);
 
         return p.addHobby(h);
     }

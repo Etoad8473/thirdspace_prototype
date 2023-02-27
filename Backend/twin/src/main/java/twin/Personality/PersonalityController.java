@@ -12,6 +12,8 @@ import java.util.List;
 public class PersonalityController
 {
 
+    //--THIS IS ALL REDUNTANT, ALL CALLS MOVED TO USER CONTROLLER--//
+
     /*
     String failure = "failed";
     String success = "success";

@@ -62,16 +62,19 @@ class UserController {
     }
 
     @PostMapping("/user/{uId}/hobby/add/{hId}")
-    public boolean addHobby(@PathVariable long uId, @PathVariable long hId)
+    public String addHobby(@PathVariable long uId, @PathVariable long hId)
     {
         User u = userRepo.findById(uId);
         Personality p = u.getPersonality();
         Hobby h = hobbyRepo.findById(hId);
 
-        //personalityRepo.save(p);
-        //hobbyRepo.save(h);
 
-        return p.addHobby(h);
+        p.addHobby(h);
+
+        personalityRepo.save(p);
+        hobbyRepo.save(h);
+
+        return "success";
     }
 
     /*

@@ -25,7 +25,7 @@ public class Hobby {
 
     //----------Constructor-------------//
 
-    public Hobby(){ this(null);}
+    public Hobby(){ personalities = new ArrayList<Personality>();}
 
     public Hobby(String name)
     {

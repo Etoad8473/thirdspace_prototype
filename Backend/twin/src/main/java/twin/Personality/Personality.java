@@ -1,5 +1,6 @@
 package twin.Personality;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.User.User;
 import twin.Hobby.Hobby;
 
@@ -19,6 +20,7 @@ public class Personality
     private long id;
 
     @OneToOne
+    @JsonIgnore
     private User user;
 
     @ManyToMany
@@ -38,6 +40,8 @@ public class Personality
         if(h != null)
         {
             hobbies.add(h);
+            //h.setPersonality(this);
+            h.addPersonality(this);
             return true;
         }
         else

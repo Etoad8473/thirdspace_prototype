@@ -15,7 +15,7 @@ public class HobbyController
 
     //-------------------------------GET--------------------------//
 
-    @GetMapping("/hobby/getAll")
+    @GetMapping("/hobby")
     public List<Hobby> returnHobbies() { return hobbyRepo.findAll(); }
 
     @GetMapping("/hobby/{id}")
@@ -25,7 +25,10 @@ public class HobbyController
 
     @PostMapping("/hobby/{name}")
     public Hobby createHobby (@PathVariable String name) {
-        return hobbyRepo.save(new Hobby(name));
+        if(name == null || name.equals(""))
+            return null;
+        Hobby h = new Hobby(name);
+        return hobbyRepo.save(h);
     }
 
     //------------------------------Delete-------------------------//

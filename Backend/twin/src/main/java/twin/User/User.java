@@ -51,7 +51,10 @@ public class User {
     @JsonIgnore
     private Event event;
 
-    public User() {personality = new Personality();}
+    public User() {
+        personality = new Personality();
+        personality.setUser(this);
+    }
 
     public User(String userName, String password, String name, String email, String gender, String phone)
     {
@@ -62,6 +65,8 @@ public class User {
         this.email = email;
         this.gender = gender;
         phoneNumber = phone;
+
+        personality.setUser(this);
     }
 
     @Override

@@ -25,15 +25,15 @@ class UserController {
 
     //-----------------------------GET---------------------//
 
-    @GetMapping("/user/getAll")
+    @GetMapping("/users")
     public List<User> returnUsers(){
         return userRepo.findAll();
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/users/{id}")
     public User getUser(@PathVariable long id){ return userRepo.findById(id);}
 
-    @GetMapping("/user/{uId}/hobby/getAll")
+    @GetMapping("/users/{uId}/hobby")
     public String returnHobbyListString(@PathVariable long uId)
     {
         User u = userRepo.findById(uId);
@@ -46,28 +46,29 @@ class UserController {
 
     //----------------------------POST----------------------//
 
-    @PostMapping("/user/new")
+    @PostMapping("/users")
     public User createUser(@RequestBody User user){
-        return userRepo.save(user);
+        userRepo.save(user);
+        personalityRepo.save(user.getPersonality());
+        return user;
     }
 
-    @PostMapping("/user/{id}/update")
+    @PostMapping("/users/{id}")
     public User updateUserById(@PathVariable long id, @RequestBody User updatedU)
     {
-        User current = userRepo.findById(id);
-        current = updatedU;
-        userRepo.save(current);
+        User user = userRepo.findById(id);
 
-        return current;
+        userRepo.save(updatedU);
+
+        return userRepo.findById(id);
     }
 
-    @PostMapping("/user/{uId}/hobby/add/{hId}")
+    @PostMapping("/users/{uId}/hobby/{hId}")
     public String addHobby(@PathVariable long uId, @PathVariable long hId)
     {
         User u = userRepo.findById(uId);
         Personality p = u.getPersonality();
         Hobby h = hobbyRepo.findById(hId);
-
 
         p.addHobby(h);
 
@@ -99,7 +100,7 @@ class UserController {
 
     //---------------------------Delete-----------------------//
 
-    @DeleteMapping("/user/{id}/delete")
+    @DeleteMapping("/users/{id}")
     public @ResponseBody void removePerson(@PathVariable long id){
         ;
         personalityRepo.deleteById(userRepo.findById(id).getPersonality().getId());

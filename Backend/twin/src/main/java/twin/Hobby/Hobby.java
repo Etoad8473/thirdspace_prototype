@@ -1,5 +1,6 @@
 package twin.Hobby;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.Personality.Personality;
 
 import javax.persistence.*;
@@ -15,22 +16,29 @@ public class Hobby {
     @Column(name="id")
     private long id;
 
+
     @Column(name="hobby_name")
-    private String hobby;
+    private String hobbyN;
+
 
 
     //----------Relations---------------//
+    //@ManyToOne
     @ManyToMany
+    @JsonIgnore
+    //private Personality personality;
     private List<Personality> personalities;
 
     //----------Constructor-------------//
 
-    public Hobby(){ personalities = new ArrayList<Personality>();}
+    public Hobby(){
+        personalities = new ArrayList<Personality>();
+    }
 
     public Hobby(String name)
     {
         personalities = new ArrayList<Personality>();
-        this.hobby = name;
+        this.hobbyN = name;
     }
 
     /*@ManyToOne
@@ -42,6 +50,21 @@ public class Hobby {
     //----------Getter/Setter--------------//
 
 
+    /*public Personality getPersonality() {
+        return personality;
+    }
+
+    public void setPersonality(Personality personality) {
+        this.personality = personality;
+    }*/
+
+    public String getHobbyN() {
+        return hobbyN;
+    }
+
+    public void setHobbyN(String hobbyN) {
+        this.hobbyN = hobbyN;
+    }
     public List<Personality> getPersonalities() {
         return personalities;
     }
@@ -56,7 +79,7 @@ public class Hobby {
     @Override
     public String toString()
     {
-        return hobby;
+        return hobbyN;
     }
 
 }

@@ -33,15 +33,12 @@ class UserController {
     @GetMapping("/users/{id}")
     public User getUser(@PathVariable long id){ return userRepo.findById(id);}
 
-    @GetMapping("/users/{uId}/hobby")
-    public String returnHobbyListString(@PathVariable long uId)
+    @GetMapping("/users/{id}/hobby")
+    public List<Hobby> returnHobbyListString(@PathVariable long id)
     {
-        User u = userRepo.findById(uId);
+        User u = userRepo.findById(id);
 
-        if(u != null)
-            return u.getPersonality().toString();
-        else
-            return "user not found";
+        return u.getPersonality().getHobbies();
     }
 
     //----------------------------POST----------------------//

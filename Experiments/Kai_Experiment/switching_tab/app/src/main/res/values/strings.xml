@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">switching_tab</string>
+    <string name="title_home">Home</string>
+    <string name="title_Events">Events</string>
+    <string name="title_profile">Profile</string>
+    <string name="name_label">Name</string>
+    <string name="aboutMe_label">About Me</string>
+    <string name="interest_label">Interest</string>
+    <string name="gender_label">Gender</string>
+    <string name="accountDetailsLayout">Account Settings</string>
+    <string name="userDetailsLayout">User Information</string>
+    <string name="email_label">Email</string>
+    <string name="phoneNumber_label">Phone Number</string>
+    <string name="save_label">Save</string>
+</resources>

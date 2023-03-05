@@ -4,6 +4,7 @@ import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton;
+    private Button getButton, saveButton, eventTabButton;
     private ProgressDialog pDialog;
     private String TAG = MainActivity.class.getSimpleName();
     private TextView msgResponse;
@@ -53,6 +54,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         getButton = (Button) findViewById(R.id.getDataButton);
         saveButton = (Button) findViewById(R.id.saveButton);
+        eventTabButton = (Button) findViewById(R.id.eventTabButton);
         //msgResponse = (TextView) findViewById(R.id.ResponseText);
         email = (EditText) findViewById(R.id.editprofilewindows_email);
         phoneNumber = (EditText) findViewById(R.id.editprofilewindows_phoneNumber);
@@ -69,8 +71,7 @@ public class MainActivity extends Activity implements OnClickListener {
         // button click listeners
         getButton.setOnClickListener(this);
         saveButton.setOnClickListener(this);
-
-        RegenerateAllTriviasOnScreen(username);
+        eventTabButton.setOnClickListener(this);
     }
 
     @Override
@@ -83,6 +84,9 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.getDataButton:
                 makeJsonArryReq();
                 break;
+
+            case R.id.eventTabButton:
+                startActivity(new Intent(MainActivity.this, EventActivity.class));
             default:
                 break;
         }

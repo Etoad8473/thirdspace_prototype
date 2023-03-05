@@ -3,13 +3,13 @@ package com.example.sumon.androidvolley.model;
 public class Trivia {
     private int id;
     private String email;
-    private String phone;
+    private String phoneNumber;
     private String name;
     private String aboutMe;
     private String personality;
     private int personality_id;
     private String gender;
-    private String user_name;
+    private String userName;
     private String password;
     private int event_id;
 
@@ -33,11 +33,11 @@ public class Trivia {
     }
 
     public String getPhoneNumber() {
-        return phone;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phone = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
@@ -61,11 +61,11 @@ public class Trivia {
     }
 
     public void setUsername(String uName){
-        this.user_name = uName;
+        this.userName = uName;
     }
 
     public String getUsername(){
-        return user_name;
+        return userName;
     }
 
     public void setName(String name) {

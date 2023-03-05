@@ -5,6 +5,7 @@ import static com.example.sumon.androidvolley.api.ApiClientFactory.GetEventAPi;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
 
         getEventBtn.setOnClickListener(this);
         saveEventBtn.setOnClickListener(this);
+        viewEvent.setMovementMethod(new ScrollingMovementMethod());
 
     }
 
@@ -51,6 +53,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
                 postEvent();
                 break;
             case R.id.getEventBtn:
+                RegenerateAllEventsOnScreen(viewEvent);
                 break;
 
             default:

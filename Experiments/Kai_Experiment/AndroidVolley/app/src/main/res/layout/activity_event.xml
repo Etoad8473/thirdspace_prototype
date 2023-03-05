@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:labelFor="@id/eventNameTextField"
             android:text="@string/eventName_label"
+            android:scrollbars="vertical"
             android:textSize="25sp" />
 
         <EditText

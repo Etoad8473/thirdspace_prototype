@@ -1,7 +1,7 @@
 package com.example.sumon.androidvolley.model;
 
 public class Event {
-    private String name;
+    private String eventName;
     private String time;
     private String location;
 
@@ -9,10 +9,10 @@ public class Event {
     }
 
     public void setEventName(String name){
-        this.name = name;
+        this.eventName = name;
     }
     public String getEventName(){
-        return name;
+        return eventName;
     }
 
     public void setTime(String time){

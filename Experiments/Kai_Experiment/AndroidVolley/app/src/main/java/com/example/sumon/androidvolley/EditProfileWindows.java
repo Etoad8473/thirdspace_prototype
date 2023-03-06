@@ -4,11 +4,9 @@ import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,10 +31,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton, eventTabButton, profileTabBtn;
+public class EditProfileWindows extends Activity implements View.OnClickListener {
+    private Button getButton, saveButton, eventTabButton;
     private ProgressDialog pDialog;
-    private String TAG = MainActivity.class.getSimpleName();
+    private String TAG = EditProfileWindows.class.getSimpleName();
     private TextView msgResponse;
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
     private EditText email;
@@ -50,10 +48,8 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit_profile_windows);
 
-        profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
-        /*
         getButton = (Button) findViewById(R.id.getDataButton);
         saveButton = (Button) findViewById(R.id.saveButton);
         eventTabButton = (Button) findViewById(R.id.eventTabButton);
@@ -74,8 +70,6 @@ public class MainActivity extends Activity implements OnClickListener {
         getButton.setOnClickListener(this);
         saveButton.setOnClickListener(this);
         eventTabButton.setOnClickListener(this);
-        */
-        profileTabBtn.setOnClickListener(this);
     }
 
     @Override
@@ -90,9 +84,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
 
             case R.id.eventTabButton:
-                startActivity(new Intent(MainActivity.this, EventActivity.class));
-            case R.id.EditProfileButton:
-                startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
+                //startActivity(new Intent(MainActivity.this, EventActivity.class));
             default:
                 break;
         }
@@ -281,5 +273,4 @@ public class MainActivity extends Activity implements OnClickListener {
         personality.setText(hobby_i);
         gender.setText(gender_i);
     }
-
 }

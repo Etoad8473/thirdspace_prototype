@@ -33,6 +33,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         editProfileButton = (ImageButton) root.findViewById(R.id.editProfileBtn);
         usernameView = (TextView) root.findViewById(R.id.usernameTextView);
+
+        editProfileButton.setOnClickListener(this);
         //profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }

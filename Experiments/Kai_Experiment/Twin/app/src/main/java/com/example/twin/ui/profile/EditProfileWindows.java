@@ -2,6 +2,7 @@ package com.example.twin.ui.profile;
 
 import static com.example.twin.api.ApiClientFactory.GetProfileApi;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EditProfileWindows extends AppCompatActivity implements View.OnClickListener {
+public class EditProfileWindows extends Activity implements View.OnClickListener {
 
     private Button getButton, saveButton, eventTabButton;
     private ProgressDialog pDialog;
@@ -70,7 +71,6 @@ public class EditProfileWindows extends AppCompatActivity implements View.OnClic
         // button click listeners
         getButton.setOnClickListener(this);
         saveButton.setOnClickListener(this);
-        eventTabButton.setOnClickListener(this);
     }
 
     @Override

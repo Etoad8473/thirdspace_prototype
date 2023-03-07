@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Twin"
         tools:targetApi="31">
         <activity
-            android:name=".EditProfileWindows"
+            android:name=".ui.profile.EditProfileWindows"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

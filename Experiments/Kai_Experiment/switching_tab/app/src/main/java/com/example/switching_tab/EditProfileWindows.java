@@ -1,15 +1,16 @@
 package com.example.switching_tab;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+import android.os.Bundle;
 
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class EditProfileWindows {
+public class EditProfileWindows extends AppCompatActivity {
+
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.editprofilewindows);
+    }
+    /*
     public void showPopupWindow(final View view){
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = (View) inflater.inflate(R.layout.editprofilewindows, null);
@@ -30,6 +31,8 @@ public class EditProfileWindows {
             }
         });
     }
+
+     */
 
 
 }

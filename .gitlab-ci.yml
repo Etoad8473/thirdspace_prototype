@@ -9,7 +9,7 @@ maven-build:
 maven-test:
   stage: test
   tags:
-    - backen-ezra
+    - backend-ezra
   script:
     - cd Backend/twin
     - mvn test

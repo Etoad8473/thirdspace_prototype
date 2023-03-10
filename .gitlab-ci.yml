@@ -39,7 +39,7 @@ autoDeploy:
     - sudo systemctl start system-web-demo
 
 android-build:
-  image: gjandres/android-ci:latest
+  image: javiersantos/android-ci:latest
   stage: androidbuild
   tags:
    - kaiheng9_runner
@@ -54,7 +54,7 @@ android-build:
     - Frontend/app/build/outputs/
 
 android-test:
-   image: gjandres/android-ci:latest
+   image: javiersantos/android-ci:latest
    stage: androidtest
    tags:
     - kaiheng9_runner

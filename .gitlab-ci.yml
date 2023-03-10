@@ -11,7 +11,7 @@ android-build:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Frontend/Android-MainProject/gradlew
   script:
-    - cd Frontend # to where you have ‘gradlew’
+    - cd Frontend/Android-MainProject # to where you have ‘gradlew’
     - ./gradlew build
   artifacts:
     paths:
@@ -27,4 +27,4 @@ android-test:
      - chmod +x ./Frontend/Android-MainProject/gradlew
    script:
      - cd Frontend
-     - ./gradlew test
+     - ./Android-MainProject/gradlew test

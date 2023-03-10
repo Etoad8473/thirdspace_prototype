@@ -4,6 +4,7 @@ import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -84,7 +85,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
                 break;
 
             case R.id.eventTabButton:
-                //startActivity(new Intent(MainActivity.this, EventActivity.class));
+                startActivity(new Intent(EditProfileWindows.this, EventActivity.class));
             default:
                 break;
         }

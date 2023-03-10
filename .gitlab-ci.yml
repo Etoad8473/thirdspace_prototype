@@ -9,7 +9,7 @@ stages:
 maven-build: #this is a JOB
   stage: mavenbuild
   tags:
-    - spring_tag
+    - kaiheng9_runner
   script:
     - cd Backend # to where you have the pom.xml
     - mvn package
@@ -17,7 +17,7 @@ maven-build: #this is a JOB
 maven-test:
    stage: maventest
    tags:
-     - spring_tag
+     - kaiheng9_runner
    script:
      - cd Backend
      - mvn test
@@ -30,7 +30,7 @@ maven-test:
 autoDeploy:
   stage: mavenDeploy  #do make a stage with same name!
   tags:
-  - spring_tag
+  - kaiheng9_runner
   script:
     - cd Backend
     - mvn package
@@ -42,7 +42,7 @@ android-build:
   image: gjandres/android-ci:latest
   stage: androidbuild
   tags:
-   - android_tag
+   - kaiheng9_runner
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Frontend/gradlew
@@ -57,7 +57,7 @@ android-test:
    image: gjandres/android-ci:latest
    stage: androidtest
    tags:
-    - android_tag
+    - kaiheng9_runner
    before_script:
      - export GRADLE_USER_HOME=`pwd`/.gradle
      - chmod +x ./Frontend/gradlew

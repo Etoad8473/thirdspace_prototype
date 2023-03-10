@@ -41,6 +41,35 @@ class UserController {
         return u.getPersonality().getHobbies();
     }
 
+    @GetMapping("/users/login")
+    public String loginUserWithPassword(@RequestBody User check)
+    {
+
+        String userName = check.getUserName();
+        String password = check.getPassword();
+
+        List<User> userList = userRepo.findAll();
+
+        User dBUser = null;
+
+        for(User u: userList)
+        {
+            if(userName.equals(u.getUserName()))
+            {
+                dBUser = u;
+                break;
+            }
+        }
+
+        if(dBUser == null)
+            return "user not found";
+
+        if(password.equals(dBUser.getPassword()))
+            return "success";
+        else
+            return "incorrect password";
+    }
+
     //----------------------------POST----------------------//
 
     @PostMapping("/users")

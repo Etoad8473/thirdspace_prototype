@@ -9,17 +9,17 @@ stages:
 maven-build: #this is a JOB
   stage: mavenbuild
   tags:
-    - spring_tag
+    - charles_runner
   script:
-    - cd Backend # to where you have the pom.xml
+    - cd Backend/Twin # to where you have the pom.xml
     - mvn package
 
 maven-test:
    stage: maventest
    tags:
-     - spring_tag
+     - charles_runner
    script:
-     - cd Backend
+     - cd Backend/Twin
      - mvn test
    artifacts:
      paths:
@@ -30,9 +30,9 @@ maven-test:
 autoDeploy:
   stage: mavenDeploy  #do make a stage with same name!
   tags:
-  - spring_tag
+  - charles_runner
   script:
-    - cd Backend
+    - cd Backend/Twin
     - mvn package
     - sudo mv target/*.jar /target/web-demo.jar 
     - sudo systemctl stop system-web-demo
@@ -42,12 +42,12 @@ android-build:
   image: gjandres/android-ci:latest
   stage: androidbuild
   tags:
-   - android_tag
+   - kaiheng9_runner
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
-    - chmod +x ./Frontend/gradlew
+    - chmod +x ./Frontend/Twin/gradlew
   script:
-    - cd Frontend # to where you have ‘gradlew’
+    - cd Frontend/Twin # to where you have ‘gradlew’
     - ./gradlew build
   artifacts:
     paths:
@@ -57,10 +57,10 @@ android-test:
    image: gjandres/android-ci:latest
    stage: androidtest
    tags:
-    - android_tag
+    - kaiheng9_runner
    before_script:
      - export GRADLE_USER_HOME=`pwd`/.gradle
-     - chmod +x ./Frontend/gradlew
+     - chmod +x ./Frontend/Twin/gradlew
    script:
-     - cd Frontend
+     - cd Frontend/Twin
      - ./gradlew test

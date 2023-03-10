@@ -11,11 +11,11 @@ android-build:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Frontend/Android-MainProject/gradlew
   script:
-    - cd Frontend/Android-MainProject # to where you have ‘gradlew’
-    - ./gradlew build
+    - cd Frontend # to where you have ‘gradlew’
+    - ./Android-MainProject/gradlew build
   artifacts:
     paths:
-    - Frontend/app/build/outputs/
+    - Frontend/Android-MainProject/app/build/outputs/
 
 android-test:
    image: gjandres/android-ci:latest

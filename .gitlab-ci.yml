@@ -10,6 +10,9 @@ maven-build: #this is a JOB
   stage: mavenbuild
   tags:
     - charles_runner
+  before_script:
+    - export JAVA_HOME="/"
+
   script:
     - cd Backend/twin # to where you have the pom.xml
     - mvn package
@@ -18,6 +21,8 @@ maven-test:
    stage: maventest
    tags:
      - charles_runner
+   before_script:
+     - export JAVA_HOME="/"
    script:
      - cd Backend/twin
      - mvn test
@@ -51,7 +56,7 @@ android-build:
     - ./gradlew build
   artifacts:
     paths:
-    - Frontend/app/build/outputs/
+    - Frontend/Twin/app/build/outputs/
 
 android-test:
    image: gjandres/android-ci:latest

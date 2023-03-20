@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.profile.EditProfileWindows">
+    tools:context="com.example.sumon.Twin.EditProfileWindows">
 
     <ImageView
         android:id="@+id/editprofilewindows_profilePic"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/baseline_manage_accounts_24"
+        android:background="@drawable/baseline_account_circle_24"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="150dp"/>
     <ScrollView
@@ -256,6 +256,14 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/eventTabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Event Tab" />
 
 
 </RelativeLayout>

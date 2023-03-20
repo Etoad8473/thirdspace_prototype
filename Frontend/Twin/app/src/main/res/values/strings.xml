@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Twin</string>
     <string name="title_home">Home</string>
-    <string name="title_Events">Events</string>
+    <string name="title_events">Events</string>
+    <string name="title_groups">Groups</string>
     <string name="title_profile">Profile</string>
     <string name="name_label">Name</string>
     <string name="aboutMe_label">About Me</string>
@@ -16,4 +17,5 @@
     <string name="eventName_label">Event Name</string>
     <string name="eventTime_label">Event Time</string>
     <string name="eventLocation_label">Event Location</string>
+
 </resources>

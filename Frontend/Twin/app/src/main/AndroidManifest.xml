@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sumon.Twin">
+    package="com.example.sumon.androidvolley">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.sumon.Twin.app.AppController"
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,21 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.sumon.Twin.EditProfileWindows"
+            android:name=".EditProfileWindows"
             android:exported="false" />
         <activity
-            android:name="com.example.sumon.Twin.EventActivity"
+            android:name=".EventActivity"
             android:exported="false" />
-        <activity android:name="com.example.sumon.Twin.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.sumon.Twin.StringRequestActivity" />
-        <activity android:name="com.example.sumon.Twin.JsonRequestActivity" />
-        <activity android:name="com.example.sumon.Twin.ImageRequestActivity" />
+        <activity android:name=".StringRequestActivity" />
+        <activity android:name=".JsonRequestActivity" />
+        <activity android:name=".ImageRequestActivity" />
     </application>
 
 </manifest>

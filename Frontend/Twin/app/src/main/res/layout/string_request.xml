@@ -7,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="1dp"
     android:paddingTop="16dp"
-    tools:context="com.example.sumon.Twin.MainActivity" >
+    tools:context=".MainActivity" >
 
     <Button
         android:id="@+id/btnStringReq"

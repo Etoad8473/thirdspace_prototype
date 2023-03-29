@@ -1,0 +1,26 @@
+maven-build:
+  stage: build
+  tags:
+    - backend-ezra
+  script:
+    - cd Backend/twin
+    - mvn package
+
+maven-test:
+  stage: test
+  tags:
+    - backend-ezra
+  script:
+    - cd Backend/twin
+    - mvn test
+  artifacts:
+    paths:
+      - Backend/target/*.jar
+
+autoDeploy:
+  stage: deploy #do make a stage with same name!
+  tags:
+    - backend-ezra
+  script:
+    - cd Backend/twin
+    - mvn package

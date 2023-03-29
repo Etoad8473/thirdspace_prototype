@@ -89,7 +89,9 @@ public class Event {
     }
 
     //for one to many
-    public void addUsers(User user){
+    public void addUser(User user){
         this.users.add(user);
     }
+
+    public void removeUser(User user) { this.users.remove(user); }
 }

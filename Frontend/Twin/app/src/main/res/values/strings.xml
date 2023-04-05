@@ -16,4 +16,5 @@
     <string name="eventName_label">Event Name</string>
     <string name="eventTime_label">Event Time</string>
     <string name="eventLocation_label">Event Location</string>
+    <string name="chatBoxString">Type message here....</string>
 </resources>

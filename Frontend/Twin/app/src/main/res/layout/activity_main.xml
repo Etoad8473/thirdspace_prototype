@@ -273,6 +273,14 @@
         android:layout_height="wrap_content"
         android:text="Open" />
 
+    <Button
+        android:id="@+id/groupChatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Group Chat"
+        android:layout_marginLeft="200dp"/>
+
+
 
     <!--    <android.support.design.widget.BottomNavigationView-->
 <!--        android:layout_width="match_parent"-->

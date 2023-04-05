@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton, eventTabButton, profileTabBtn;
+    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupChatButton;
     private ProgressDialog pDialog;
     private String TAG = MainActivity.class.getSimpleName();
     private TextView msgResponse;
@@ -53,6 +53,7 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
 
         profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
+        groupChatButton = (Button) findViewById(R.id.groupChatButton);
         /*
         getButton = (Button) findViewById(R.id.getDataButton);
         saveButton = (Button) findViewById(R.id.saveButton);
@@ -76,6 +77,7 @@ public class MainActivity extends Activity implements OnClickListener {
         eventTabButton.setOnClickListener(this);
         */
         profileTabBtn.setOnClickListener(this);
+        groupChatButton.setOnClickListener(this);
     }
 
     @Override
@@ -93,6 +95,9 @@ public class MainActivity extends Activity implements OnClickListener {
                 startActivity(new Intent(MainActivity.this, EventActivity.class));
             case R.id.EditProfileButton:
                 startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
+
+            case R.id.groupChatButton:
+                startActivity(new Intent(MainActivity.this, GroupChat.class));
             default:
                 break;
         }

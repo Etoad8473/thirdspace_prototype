@@ -91,13 +91,13 @@ public class MainActivity extends Activity implements OnClickListener {
                 makeJsonArryReq();
                 break;
 
-            case R.id.eventTabButton:
-                startActivity(new Intent(MainActivity.this, EventActivity.class));
             case R.id.EditProfileButton:
                 startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
+                break;
 
             case R.id.groupChatButton:
                 startActivity(new Intent(MainActivity.this, GroupChat.class));
+                break;
             default:
                 break;
         }

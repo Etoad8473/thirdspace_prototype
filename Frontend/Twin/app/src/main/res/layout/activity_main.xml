@@ -271,15 +271,86 @@
         android:id="@+id/EditProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Open" />
+        android:text="Edit Profile"
+        android:layout_marginTop="600dp"/>
 
     <Button
         android:id="@+id/groupChatButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Group Chat"
-        android:layout_marginLeft="200dp"/>
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="600dp"/>
 
+    <LinearLayout
+        android:id="@+id/announcement_layout"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/newMatchViewLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/newMatchView"
+            android:text="@string/newMatch_label"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:background="@color/maroon_pink"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/newMatchView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:textSize="20sp"
+            android:background="@color/grey"
+            android:hint="Latest Match" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eventListLayout"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="120dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/eventViewLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/eventView"
+            android:text="@string/eventList_label"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:background="@color/peach_pink"
+            android:textSize="23sp"/>
+
+        <ScrollView
+            android:id="@+id/eventScrollView"
+            android:layout_width="350dp"
+            android:layout_height="371dp">
+
+            <LinearLayout
+                android:id="@+id/eventScrollView_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/eventListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="371dp"
+                    android:textSize="20sp"
+                    android:background="@color/grey"
+                    android:hint="Event List"/>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
 
     <!--    <android.support.design.widget.BottomNavigationView-->

@@ -10,4 +10,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#B9BAB6</color>
+    <color name="maroon_pink">#91093B</color>
+    <color name="peach_pink">#D19DB7</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.sumon.androidvolley;
 
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetEventApi;
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.app.AppController;
+import com.example.sumon.androidvolley.model.Event;
 import com.example.sumon.androidvolley.model.Trivia;
 import com.example.sumon.androidvolley.utils.Const;
 
@@ -35,6 +37,7 @@ import java.util.Map;
 
 public class MainActivity extends Activity implements OnClickListener {
     private Button getButton, saveButton, eventTabButton, profileTabBtn, groupChatButton;
+    private TextView matchView, eventView;
     private ProgressDialog pDialog;
     private String TAG = MainActivity.class.getSimpleName();
     private TextView msgResponse;
@@ -54,6 +57,8 @@ public class MainActivity extends Activity implements OnClickListener {
 
         profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
         groupChatButton = (Button) findViewById(R.id.groupChatButton);
+        matchView = (TextView) findViewById(R.id.newMatchView);
+        eventView = (TextView) findViewById(R.id.eventListView);
         /*
         getButton = (Button) findViewById(R.id.getDataButton);
         saveButton = (Button) findViewById(R.id.saveButton);
@@ -78,6 +83,16 @@ public class MainActivity extends Activity implements OnClickListener {
         */
         profileTabBtn.setOnClickListener(this);
         groupChatButton.setOnClickListener(this);
+        //RegenerateAllEventsOnScreen(eventView);
+
+//        while(true){
+//            try {
+//                Thread.sleep(1000);
+//                RegenerateAllEventsOnScreen(eventView);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
     }
 
     @Override
@@ -140,6 +155,18 @@ public class MainActivity extends Activity implements OnClickListener {
                 apiText1.append(trivias.get(i).printable());
             }
         }, "GetAllTrivia"));
+
+    }
+
+    void RegenerateAllEventsOnScreen( TextView apiText1){
+
+        GetEventApi().GetAllEvent().enqueue(new SlimCallback<List<Event>>(events ->{
+            apiText1.setText("");
+
+            for (int i = events.size()-1; i>= 0; i--){
+                apiText1.append(events.get(i).printable());
+            }
+        }, "GetAllEvents"));
 
     }
 

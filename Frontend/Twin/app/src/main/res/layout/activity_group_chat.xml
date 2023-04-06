@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <RelativeLayout
             android:id="@+id/groupChat_layout"
             android:layout_width="match_parent"
@@ -25,10 +26,21 @@
                 android:layout_height="wrap_content"
                 android:text="Back" />
 
+            <TextView
+                android:id="@+id/groupNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/ethnicityEditText"
+                android:text="Group Name"
+                android:background="@color/peach_pink"
+                android:layout_marginTop="64dp"
+                android:textStyle="bold"
+                android:textSize="27sp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="100dp"
                 android:orientation="vertical">
 
                 <ScrollView
@@ -52,7 +64,7 @@
                 android:id="@+id/chatBoxLayout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="550dp"
+                android:layout_marginTop="600dp"
                 android:orientation="vertical">
 
                 <EditText

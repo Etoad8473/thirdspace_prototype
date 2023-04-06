@@ -327,7 +327,7 @@
                         android:layout_height="wrap_content"
                         android:labelFor="@id/editprofilewindows_aboutMe"
                         android:text="Age"
-                        android:textStyle="bold"
+                        android:textStyle="italic"
                         android:textSize="25sp" />
 
                     <EditText
@@ -342,7 +342,6 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout_ethnicity"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -352,7 +351,7 @@
                         android:layout_height="wrap_content"
                         android:labelFor="@id/ethnicityEditText"
                         android:text="Ethnicity"
-                        android:textStyle="bold"
+                        android:textStyle="italic"
                         android:textSize="25sp" />
 
                     <EditText
@@ -366,8 +365,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout_age"
-                    android:layout_marginTop="5dp"
+                    android:id="@+id/linearLayout_sexuality"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -376,12 +374,58 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:labelFor="@id/editprofilewindows_aboutMe"
-                        android:text="Age"
-                        android:textStyle="bold"
+                        android:text="Sexuality"
+                        android:textStyle="italic"
                         android:textSize="25sp" />
 
                     <EditText
-                        android:id="@+id/ageEditText"
+                        android:id="@+id/sexualityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Location"
+                        android:textStyle="italic"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/locationEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile"
+                        android:textStyle="italic"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/mobileEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"

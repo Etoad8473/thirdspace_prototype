@@ -1,4 +1,4 @@
-package twin.Personality.Traits.Interests;
+package twin.Personality.Interests;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

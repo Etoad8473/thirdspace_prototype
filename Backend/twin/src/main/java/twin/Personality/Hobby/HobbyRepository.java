@@ -1,4 +1,4 @@
-package twin.Personality.Traits.Interests.Hobby;
+package twin.Personality.Hobby;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

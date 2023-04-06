@@ -3,8 +3,8 @@ package twin.User;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.Personality.Traits.Interests.Hobby.Hobby;
-import twin.Personality.Traits.Interests.Hobby.HobbyRepository;
+import twin.Personality.Hobby.Hobby;
+import twin.Personality.Hobby.HobbyRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 

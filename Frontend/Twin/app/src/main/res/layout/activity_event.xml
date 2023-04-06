@@ -103,4 +103,12 @@
         android:text="@string/getData_label"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="650dp"/>
+
+    <Button
+        android:id="@+id/eventBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="650dp"/>
 </RelativeLayout>

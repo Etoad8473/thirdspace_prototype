@@ -4,7 +4,6 @@ import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EditProfileWindows extends Activity implements View.OnClickListener {
-    private Button getButton, saveButton, eventTabButton;
+    private Button getButton, saveButton, backButton;
     private ProgressDialog pDialog;
     private String TAG = EditProfileWindows.class.getSimpleName();
     private TextView msgResponse;
@@ -53,7 +52,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
 
         getButton = (Button) findViewById(R.id.getDataButton);
         saveButton = (Button) findViewById(R.id.saveButton);
-        eventTabButton = (Button) findViewById(R.id.eventTabButton);
+        backButton = (Button) findViewById(R.id.editProfileBackButton);
         //msgResponse = (TextView) findViewById(R.id.ResponseText);
         email = (EditText) findViewById(R.id.editprofilewindows_email);
         phoneNumber = (EditText) findViewById(R.id.editprofilewindows_phoneNumber);
@@ -70,7 +69,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         // button click listeners
         getButton.setOnClickListener(this);
         saveButton.setOnClickListener(this);
-        eventTabButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
     }
 
     @Override
@@ -84,8 +83,10 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
                 makeJsonArryReq();
                 break;
 
-            case R.id.eventTabButton:
-                startActivity(new Intent(EditProfileWindows.this, EventActivity.class));
+            case R.id.editProfileBackButton:
+                finish();
+                break;
+
             default:
                 break;
         }

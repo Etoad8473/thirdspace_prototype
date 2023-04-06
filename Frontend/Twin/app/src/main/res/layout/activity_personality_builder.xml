@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".EditProfileWindows">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/peach_pink"
+    tools:context=".PersonalityBuilder">
 
-    <ImageView
-        android:id="@+id/editprofilewindows_profilePic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/baseline_account_circle_24"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="150dp"/>
-    <ScrollView
-        android:id="@+id/editprofilewindows_scrollView"
+    <TextView
+        android:id="@+id/personalityBuilderTitle"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="200dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/editprofilewindows_profilePic">
+        android:layout_height="wrap_content"
+        android:text="Build Your Personality"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:background="@color/maroon_pink"/>
+
+    <ScrollView
+        android:id="@+id/personalityBuilder_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,79 +30,80 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/hobbiesTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/accountDetailsLayout"
-                android:text="@string/accountDetailsLayout"
-                app:layout_constraintTop_toTopOf="@+id/accountDetailsLayout"
+                android:text="Hobbies"
+                app:layout_constraintTop_toTopOf="@+id/hobbiesLayout"
                 android:textSize="27sp"
                 android:textStyle="bold"/>
 
             <LinearLayout
-                android:id="@+id/accountDetailsLayout"
+                android:id="@+id/hobbiesLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/editprofilewindows_scrollView"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/hobbiesTitle">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout_email"
+                <RelativeLayout
+                    android:id="@+id/hobbiesSelectionLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/accountDetailsLayout"
+                    android:layout_height="100dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:labelFor="@id/editprofilewindows_email"
-                        android:text="@string/email_label"
-                        android:textSize="25sp" />
+                    <Button
+                        android:id="@+id/soccerHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="95dp"
+                        android:background="@color/red_grey"
+                        android:text="Soccer"
+                        android:textSize="12sp" />
 
-                    <EditText
-                        android:id="@+id/editprofilewindows_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:textSize="23sp"
-                        android:textColor="@color/black"
-                        android:textAlignment="textStart"
-                        tools:layout_editor_absoluteX="-28dp" />
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/basketballHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:textSize="12sp"
+                        android:text="Basketball"
+                        android:background="@color/red_grey"/>
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/linearLayout_phoneNumber"
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_email"
-                    android:orientation="vertical">
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_email">
 
                     <TextView
+                        android:id="@+id/viewSelected"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:labelFor="@id/editprofilewindows_phoneNumber"
-                        android:text="@string/phoneNumber_label"
-                        android:textSize="25sp" />
+                        android:hint="Selected"
+                        android:textSize="23sp" />
 
                     <EditText
                         android:id="@+id/editprofilewindows_phoneNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
-                        android:textSize="23sp"
-                        android:textColor="@color/black"
                         android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
                         tools:layout_editor_absoluteX="-28dp" />
                 </LinearLayout>
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/userDetailsLayout"
-                android:text="@string/userDetailsLayout"
+                android:text="Interests"
                 app:layout_constraintTop_toTopOf="@+id/userDetailsLayout"
                 android:textSize="27sp"
                 android:textStyle="bold"/>
@@ -221,49 +225,15 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/getDataButton"
+        android:id="@+id/personalityDoneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/getData_label"
-        android:layout_marginTop="620dp"
-        android:layout_marginLeft="20dp" />
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save_label"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="617dp"
-        android:layout_marginTop="620dp"
-        android:layout_marginLeft="300dp"/>
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/ResponseText"-->
-    <!--        android:layout_width="fill_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Response"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--        tools:layout_editor_absoluteX="14dp"-->
-    <!--        tools:layout_editor_absoluteY="19dp" />-->
-
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="username"
-        android:textSize="20dp"
+        android:text="Done"
+        android:textSize="23sp"
         android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="650dp"/>
 
-    <Button
-        android:id="@+id/editProfileBackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Back" />
 
 
 </RelativeLayout>

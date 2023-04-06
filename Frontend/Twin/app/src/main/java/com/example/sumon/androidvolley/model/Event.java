@@ -30,8 +30,8 @@ public class Event {
     }
 
     public String printable(){
-        return "\nEvent:  "+ getEventName()
+        return  "Event:  "+ getEventName()
                 +"\nTime:  "+getTime()
-                +"\nLocation:  "+getLocation()+"\n";
+                +"\nLocation:  "+getLocation()+"\n\n";
     }
 }

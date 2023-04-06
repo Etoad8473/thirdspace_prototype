@@ -6,10 +6,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class GroupChat extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener {
     private Button backButton;
+    private TextView chatHistory;
+
+    private ScrollView chatHistoryScrollView;
     private EditText chatBox;
 
     @Override
@@ -17,8 +21,10 @@ public class GroupChat extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_chat);
 
-        backButton = (Button) findViewById(R.id.backButton);
+        backButton = (Button) findViewById(R.id.GroupChatBackButton);
         chatBox = (EditText) findViewById(R.id.chatBox);
+        chatHistory = (TextView) findViewById(R.id.chatHistory);
+        chatHistoryScrollView = (ScrollView) findViewById(R.id.chatHistory_scrollView);
 
         backButton.setOnClickListener(this);
         chatBox.setOnKeyListener(this);
@@ -27,7 +33,7 @@ public class GroupChat extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.backButton:
+            case R.id.GroupChatBackButton:
                 finish();
                 break;
 
@@ -38,10 +44,12 @@ public class GroupChat extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER))
+        if ((event.getAction() == KeyEvent.ACTION_DOWN) &&(keyCode == KeyEvent.KEYCODE_ENTER))
         {
-            Toast.makeText(GroupChat.this,chatBox.getText(), Toast.LENGTH_LONG).show();
+            chatHistory.append(chatBox.getText() + "\n");
+            chatHistoryScrollView.fullScroll(View.FOCUS_DOWN);
             chatBox.getText().clear();
+            chatBox.requestFocus();
             return true;
         }
         return false;

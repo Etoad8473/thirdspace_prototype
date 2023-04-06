@@ -1,14 +1,12 @@
-package twin.Event;
+package twin.Group;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, Long>
-{
+public interface GroupRepository extends JpaRepository<Group, Long> {
 
-    Event findById(long id);
+    Group findById(long id);
 
     void deleteById(int id);
 }
-

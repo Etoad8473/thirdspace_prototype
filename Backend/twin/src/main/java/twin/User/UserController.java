@@ -3,13 +3,12 @@ package twin.User;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.Hobby.Hobby;
-import twin.Hobby.HobbyRepository;
+import twin.Personality.Hobby.Hobby;
+import twin.Personality.Hobby.HobbyRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 class UserController {

@@ -2,7 +2,7 @@ package twin.Personality;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.User.User;
-import twin.Personality.Hobby.Hobby;
+import twin.Personality.BubbleTraits.Hobby.Hobby;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,19 +1,10 @@
-package twin.Personality.Interests;
+package twin.Personality.Scaleable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 
-@Entity
-@Table(name="interest")
-public class Interest {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
-
-    @Column(name = "interest")
-    private String interest;
-
+public class ScaleAble {
+    //temp where well put your scale code
+/*
     @Column(name = "scale")
     private int scale;  //scale from 0-10 of how interesting this topic is
 
@@ -60,6 +51,7 @@ public class Interest {
         else{
             scale = 0;
         }
-    }
-}
+    }*/
 
+
+}

@@ -1,4 +1,4 @@
-package twin.Personality.Hobby;
+package twin.Personality.BubbleTraits;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.Personality.Personality;
@@ -7,9 +7,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "Hobbies")
-public class Hobby {
+public abstract class AbsBubbleTrait {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,32 +29,16 @@ public class Hobby {
 
     //----------Constructor-------------//
 
-    public Hobby(){
+    public AbsBubbleTrait(){
         personalities = new ArrayList<Personality>();
     }
 
-    public Hobby(String name)
+    public AbsBubbleTrait(String name)
     {
         personalities = new ArrayList<Personality>();
         this.hobbyN = name;
     }
 
-    /*@ManyToOne
-    private Hobby parentHobby;
-    @OneToMany
-    private List<Hobby> subHobbies;
-    */
-
-    //----------Getter/Setter--------------//
-
-
-    /*public Personality getPersonality() {
-        return personality;
-    }
-
-    public void setPersonality(Personality personality) {
-        this.personality = personality;
-    }*/
 
     public String getHobbyN() {
         return hobbyN;

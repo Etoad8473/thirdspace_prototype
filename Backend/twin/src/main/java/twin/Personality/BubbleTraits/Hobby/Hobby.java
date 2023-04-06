@@ -12,7 +12,58 @@ import java.util.List;
 @Table(name = "Hobbies")
 public class Hobby extends AbsBubbleTrait {
 
-    public Hobby(){super();}
-    public Hobby(String name){super(name);}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
+    private long id;
+
+
+    @Column(name="hobby_name")
+    private String hobbyN;
+
+
+
+    //----------Relations---------------//
+    //@ManyToOne
+    @ManyToMany
+    @JsonIgnore
+    private List<Personality> personalities;
+
+    //----------Constructor-------------//
+
+    public Hobby(){
+        personalities = new ArrayList<Personality>();
+    }
+
+    public Hobby(String name)
+    {
+        personalities = new ArrayList<Personality>();
+        this.hobbyN = name;
+    }
+
+
+    public String getHobbyN() {
+        return hobbyN;
+    }
+
+    public void setHobbyN(String hobbyN) {
+        this.hobbyN = hobbyN;
+    }
+    public List<Personality> getPersonalities() {
+        return personalities;
+    }
+
+    public void addPersonality(Personality personality) {
+        personalities.add(personality);
+    }
+
+
+    //-------------Helpers--------------//
+
+    @Override
+    public String toString()
+    {
+        return hobbyN;
+    }
 
 }

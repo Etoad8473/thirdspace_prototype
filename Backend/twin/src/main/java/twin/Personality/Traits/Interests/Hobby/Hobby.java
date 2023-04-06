@@ -1,4 +1,4 @@
-package twin.Hobby;
+package twin.Personality.Traits.Interests.Hobby;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.Personality.Personality;

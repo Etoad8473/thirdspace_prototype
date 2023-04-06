@@ -1,8 +1,7 @@
-package twin.Interests;
+package twin.Personality.Traits.Interests;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import twin.Event.Event;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package twin.Interests;
+package twin.Personality.Traits.Interests;
 
 import javax.persistence.*;
 

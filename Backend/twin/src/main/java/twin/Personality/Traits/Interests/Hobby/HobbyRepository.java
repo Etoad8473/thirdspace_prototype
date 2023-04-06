@@ -1,9 +1,7 @@
-package twin.Hobby;
+package twin.Personality.Traits.Interests.Hobby;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import twin.Hobby.Hobby;
-import twin.User.User;
 
 @Repository
 public interface HobbyRepository extends JpaRepository<Hobby, Long>

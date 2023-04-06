@@ -1,12 +1,6 @@
 package twin.Personality;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import twin.Hobby.Hobby;
-import twin.Hobby.HobbyRepository;
-import twin.Personality.PersonalityRepository;
-
-import java.util.List;
 
 @RestController
 public class PersonalityController

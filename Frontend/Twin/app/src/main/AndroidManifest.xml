@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".PersonalityBuilder"
+            android:exported="false" />
+        <activity
+            android:name=".GroupChat"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
             android:name=".EditProfileWindows"
             android:exported="false" />
         <activity

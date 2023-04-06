@@ -1,6 +1,6 @@
 package com.example.sumon.androidvolley;
 
-import static com.example.sumon.androidvolley.api.ApiClientFactory.GetEventAPi;
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetEventApi;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -17,7 +17,7 @@ import com.example.sumon.androidvolley.model.Event;
 import java.util.List;
 
 public class EventActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button getEventBtn, saveEventBtn;
+    private Button getEventBtn, saveEventBtn, backButton;
     private EditText eventName, eventTime, eventLocation;
     private TextView viewEvent;
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
@@ -31,6 +31,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
 
         getEventBtn = (Button) findViewById(R.id.getEventBtn);
         saveEventBtn = (Button) findViewById(R.id.createEventBtn);
+        backButton = (Button) findViewById(R.id.eventBackButton);
         eventName = (EditText) findViewById(R.id.eventNameTextField);
         eventTime = (EditText) findViewById(R.id.eventTimeTextField);
         eventLocation = (EditText) findViewById(R.id.eventLocationTextField);
@@ -42,6 +43,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
 
         getEventBtn.setOnClickListener(this);
         saveEventBtn.setOnClickListener(this);
+        backButton.setOnClickListener(this);
         viewEvent.setMovementMethod(new ScrollingMovementMethod());
 
     }
@@ -56,6 +58,10 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
                 RegenerateAllEventsOnScreen(viewEvent);
                 break;
 
+            case R.id.eventBackButton:
+                finish();
+                break;
+
             default:
                 break;
         }
@@ -67,7 +73,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         newEvent.setEventName(eventName.getText().toString());
         newEvent.setTime(eventTime.getText().toString());
         newEvent.setLocation(eventLocation.getText().toString());
-        GetEventAPi().PostEventByBody(newEvent).enqueue(new SlimCallback<Event>(event->{
+        GetEventApi().PostEventByBody(newEvent).enqueue(new SlimCallback<Event>(event->{
             RegenerateAllEventsOnScreen(viewEvent);
         }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {
@@ -85,7 +91,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
     }
     void RegenerateAllEventsOnScreen( TextView apiText1){
 
-        GetEventAPi().GetAllEvent().enqueue(new SlimCallback<List<Event>>(events ->{
+        GetEventApi().GetAllEvent().enqueue(new SlimCallback<List<Event>>(events ->{
             apiText1.setText("");
 
             for (int i = events.size()-1; i>= 0; i--){

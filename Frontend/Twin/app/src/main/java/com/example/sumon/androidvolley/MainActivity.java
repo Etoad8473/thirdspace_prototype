@@ -1,16 +1,20 @@
 package com.example.sumon.androidvolley;
 
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetEventApi;
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetMatchApi;
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -22,6 +26,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.app.AppController;
+import com.example.sumon.androidvolley.model.Event;
+import com.example.sumon.androidvolley.model.Match;
 import com.example.sumon.androidvolley.model.Trivia;
 import com.example.sumon.androidvolley.utils.Const;
 
@@ -32,9 +38,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton, eventTabButton, profileTabBtn;
+    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupChatButton;
+    private TextView matchView, eventView;
+
+    private ScrollView eventScrollView;
     private ProgressDialog pDialog;
     private String TAG = MainActivity.class.getSimpleName();
     private TextView msgResponse;
@@ -52,11 +63,17 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startActivity(new Intent(MainActivity.this, PersonalityBuilder.class));
+
         profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
+        groupChatButton = (Button) findViewById(R.id.groupChatButton);
+        eventTabButton = (Button) findViewById(R.id.eventTabButton);
+        matchView = (TextView) findViewById(R.id.newMatchView);
+        eventView = (TextView) findViewById(R.id.eventListView);
+        eventScrollView = (ScrollView) findViewById(R.id.eventScrollView);
         /*
         getButton = (Button) findViewById(R.id.getDataButton);
         saveButton = (Button) findViewById(R.id.saveButton);
-        eventTabButton = (Button) findViewById(R.id.eventTabButton);
         //msgResponse = (TextView) findViewById(R.id.ResponseText);
         email = (EditText) findViewById(R.id.editprofilewindows_email);
         phoneNumber = (EditText) findViewById(R.id.editprofilewindows_phoneNumber);
@@ -65,17 +82,47 @@ public class MainActivity extends Activity implements OnClickListener {
         aboutMe = (EditText) findViewById(R.id.editprofilewindows_aboutMe);
         personality = (EditText) findViewById(R.id.editprofilewindows_interest);
         username = (TextView) findViewById(R.id.usernameTextView);
+        */
 
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.setCancelable(false);
 
-        // button click listeners
-        getButton.setOnClickListener(this);
-        saveButton.setOnClickListener(this);
-        eventTabButton.setOnClickListener(this);
-        */
+
         profileTabBtn.setOnClickListener(this);
+        groupChatButton.setOnClickListener(this);
+        eventTabButton.setOnClickListener(this);
+        RegenerateAllEventsOnScreen(eventView);
+
+        final Handler handler = new Handler();
+        Timer timer = new Timer();
+        TimerTask updateEventList = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable(){
+                    public void run(){
+                        try{
+                            RegenerateAllEventsOnScreen(eventView);
+//                            eventScrollView.fullScroll(View.FOCUS_DOWN);
+                        }
+                        catch(Exception e){
+
+                        }
+                    }
+                });
+            }
+        };
+
+        timer.schedule(updateEventList, 0, 5000);
+
+//        while(true){
+//            try {
+//                Thread.sleep(1000);
+//                RegenerateAllEventsOnScreen(eventView);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
     }
 
     @Override
@@ -89,10 +136,16 @@ public class MainActivity extends Activity implements OnClickListener {
                 makeJsonArryReq();
                 break;
 
-            case R.id.eventTabButton:
-                startActivity(new Intent(MainActivity.this, EventActivity.class));
             case R.id.EditProfileButton:
                 startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
+                break;
+
+            case R.id.groupChatButton:
+                startActivity(new Intent(MainActivity.this, GroupChat.class));
+                break;
+
+            case R.id.eventTabButton:
+                startActivity(new Intent(MainActivity.this, EventActivity.class));
             default:
                 break;
         }
@@ -136,6 +189,25 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         }, "GetAllTrivia"));
 
+    }
+
+    void RegenerateAllEventsOnScreen( TextView apiText1){
+
+        GetEventApi().GetAllEvent().enqueue(new SlimCallback<List<Event>>(events ->{
+            apiText1.setText("");
+
+            for (int i = events.size()-1; i>= 0; i--){
+                apiText1.append(events.get(i).printable());
+            }
+        }, "GetAllEvents"));
+    }
+
+    void RegenerateNewMatchOnScreen(TextView newMatch){
+
+        GetMatchApi().GetAllMatches().enqueue(new SlimCallback<List<Match>>(matches ->{
+            newMatch.setText("");
+                newMatch.append(matches.get(matches.size()-1).printable());
+        }, "GetNewMatches"));
     }
 
     private void showProgressDialog() {

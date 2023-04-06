@@ -28,7 +28,9 @@ public class ApiClientFactory {
     public static TriviaApi GetTrivaApi(){
         return GetApiClientSeed().create(TriviaApi.class);
     }
-    public static EventApi GetEventAPi(){
+    public static EventApi GetEventApi(){
         return GetApiClientSeed().create(EventApi.class);
     }
+    public static GroupChatApi GetGroupChatApi(){return GetApiClientSeed().create(GroupChatApi.class);}
+    public static MatchApi GetMatchApi(){return  GetApiClientSeed().create(MatchApi.class);}
 }

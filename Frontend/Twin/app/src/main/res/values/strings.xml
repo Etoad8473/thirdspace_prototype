@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Volley</string>
+    <string name="app_name">Twin</string>
     <string name="title_home">Home</string>
     <string name="title_Events">Events</string>
     <string name="title_profile">Profile</string>
@@ -16,4 +16,7 @@
     <string name="eventName_label">Event Name</string>
     <string name="eventTime_label">Event Time</string>
     <string name="eventLocation_label">Event Location</string>
+    <string name="chatBoxString">Type message here....</string>
+    <string name="newMatch_label">New Match</string>
+    <string name="eventList_label">Events</string>
 </resources>

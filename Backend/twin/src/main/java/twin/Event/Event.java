@@ -25,6 +25,7 @@ public class Event {
     private String eventTime;
 
     @OneToMany
+    @Column(name = "users")
     private List<User> users;
 
     public Event() {

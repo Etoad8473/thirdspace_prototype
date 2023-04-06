@@ -1,8 +1,13 @@
-package twin.GroupChat;
+package twin.Message;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import twin.Group.Group;
+import twin.GroupChat.GroupChat;
 import twin.User.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "message")
@@ -26,8 +31,8 @@ public class Message {
     @Column(name = "sender")
     private User sender; //sender of the message
 
-    public Message(){
 
+    public Message(){
     }
 
     public Message(String data, String date, String time, User sender){
@@ -40,10 +45,10 @@ public class Message {
     @Override
     public String toString() {
         return "Message{" +
-                "data=" + data +
-                ", date='" + date + '\'' +
-                ", time ='" + time + '\'' +
-                ", sender='" + sender + '\'' +
+                "data=" + getData() +
+                ", date='" + getDate() + '\'' +
+                ", time ='" + getTime() + '\'' +
+                ", sender='" + getSender() + '\'' +
                 '}';
     }
 

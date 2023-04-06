@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import twin.Personality.BubbleTraits.Hobby.Hobby;
 import twin.Personality.BubbleTraits.Hobby.HobbyRepository;
+import twin.Personality.BubbleTraits.Interests.Interest;
+import twin.Personality.BubbleTraits.Interests.InterestRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
@@ -20,6 +22,9 @@ class UserController {
 
     @Autowired
     private HobbyRepository hobbyRepo;
+
+    @Autowired
+    private InterestRepository interestRepo;
 
 
     //-----------------------------GET---------------------//
@@ -38,6 +43,14 @@ class UserController {
         User u = userRepo.findById(id);
 
         return u.getPersonality().getHobbies();
+    }
+
+    @GetMapping("/users/{id}/interest")
+    public List<Interest> returnInterestListString(@PathVariable long id)
+    {
+        User u = userRepo.findById(id);
+
+        return u.getPersonality().getInterests();
     }
 
     @GetMapping("/users/login")
@@ -100,28 +113,26 @@ class UserController {
         personalityRepo.save(p);
         hobbyRepo.save(h);
 
-        return "success";
+        //return "success";
+        return "finished";
     }
 
-    /*
-    @PostMapping("/user/{uId}/personality")
-    public String addPersonality(@PathVariable long uId, @PathVariable long pId)
+    @PostMapping("/users/{uId}/interest/{iId}")
+    public String addInterest(@PathVariable long uId, @PathVariable long iId)
     {
         User u = userRepo.findById(uId);
-        Personality p = personalityRepo.findById(pId);
+        Personality p = u.getPersonality();
+        Interest i = interestRepo.findById(iId);
 
-        if(u==null||p==null)
-        {
-            return "failed updating personality: couldn't find personality or couldn't find user";
-        }
+        p.addInterest(i);
 
-        p.setUser(u);
-        u.setPersonality(p);
-        userRepo.save(u);
+        personalityRepo.save(p);
+        interestRepo.save(i);
 
-        return "successfully set User's Personality";
+        //return "success";
+        return "finished";
     }
-    */
+
 
     //---------------------------Delete-----------------------//
 

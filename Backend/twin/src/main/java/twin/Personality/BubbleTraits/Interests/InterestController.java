@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class InterestController {
+public class InterestController
+{
 
     @Autowired
     private InterestRepository interestRepo;
+
 
     //-------------------------GET---------------------------------//
 
@@ -30,5 +32,7 @@ public class InterestController {
     }
 
     //-------------------------Delete-------------------------------//
+
+    @DeleteMapping("/interest/{id}")
     public @ResponseBody void removeInterest(@PathVariable Long id) { interestRepo.deleteById(id); }
 }

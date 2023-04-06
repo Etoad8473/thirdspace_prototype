@@ -33,7 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EditProfileWindows extends Activity implements View.OnClickListener {
+public class EditProfileWindows extends AppCompatActivity implements View.OnClickListener {
 
     private Button getButton, saveButton, eventTabButton;
     private ProgressDialog pDialog;
@@ -192,8 +192,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         };
 
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(jsonObjReq,
-                tag_json_obj);
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 
         // Cancelling request
         // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_obj);

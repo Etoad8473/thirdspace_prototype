@@ -1,40 +1,53 @@
 package com.example.editprofileactivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.editprofileactivity.app.AppController;
 import com.example.editprofileactivity.net_utils.Const;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JsonRequestActivity extends AppCompatActivity {
+public class JsonRequestActivity extends Activity implements View.OnClickListener {
     private String TAG = JsonRequest.class.getSimpleName();
 
+    private Button btnJsonObj, btnJsonArray;
+
     private ProgressDialog pDialog;
-    String msgResponse;
-    private String tag_json_obj = "jobj_req";
+    private TextView msgResponse;
+    private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_json_request);
 
+        btnJsonObj = (Button) findViewById(R.id.btnJsonObj);
+        btnJsonArray = (Button) findViewById(R.id.btnJsonArray);
+        msgResponse = (TextView) findViewById(R.id.msgResponse);
+
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.setCancelable(false);
+
+        btnJsonObj.setOnClickListener(this);
+        btnJsonArray.setOnClickListener(this);
     }
 
     private void showProgressDialog() {
@@ -60,7 +73,7 @@ public class JsonRequestActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, response.toString());
-                        msgResponse = response.toString();
+                        msgResponse.setText(response.toString());
                         System.out.println(msgResponse);
                         hideProgressDialog();
                     }
@@ -101,5 +114,46 @@ public class JsonRequestActivity extends AppCompatActivity {
 
         // Cancelling request
         // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_obj);
+    }
+
+    /**
+     * Making json array request
+     * */
+    private void makeJsonArryReq() {
+        showProgressDialog();
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+                        msgResponse.setText(response.toString());
+                        hideProgressDialog();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                hideProgressDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req,
+                tag_json_arry);
+
+        // Cancelling request
+        // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_arry);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnJsonObj:
+                makeJsonObjReq();
+                break;
+            case R.id.btnJsonArray:
+                makeJsonArryReq();
+                break;
+        }
     }
 }

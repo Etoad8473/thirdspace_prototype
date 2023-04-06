@@ -2,11 +2,13 @@ package com.example.editprofileactivity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,10 +17,21 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.editprofileactivity.app.AppController;
 import com.example.editprofileactivity.net_utils.Const;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.NameValuePair;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.ClientProtocolException;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.HttpClient;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.entity.UrlEncodedFormEntity;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.methods.HttpPost;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.client.DefaultHttpClient;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.message.BasicNameValuePair;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,9 +45,10 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,10 +65,9 @@ public class MainActivity extends AppCompatActivity {
     private String TAG = MainActivity.class.getSimpleName();
 
     private ProgressDialog pDialog;
-    String msgResponse;
-    private String tag_json_obj = "jobj_req";
-    Random rand = new Random();
-    long id = rand.nextLong();
+    private TextView msgResponse;
+    private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,10 +122,11 @@ public class MainActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
                 */
-                makeJsonObjReq();
-                //startActivity(new Intent(MainActivity.this,JsonRequestActivity.class));
+
+                startActivity(new Intent(MainActivity.this,JsonRequestActivity.class));
+
+                JSONObject aJson = NULL;
                 /*
-                JSONObject aJson;
                 try {
                     URL url = new URL("https://e789ed85-a983-481b-88e9-739ad1ac0880.mock.pstmn.io/user/");
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -122,6 +136,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 System.out.println(aJson);
+
+                 */
                 String jsonString = aJson.toString();
                 getDataFromJson json = new Gson().fromJson(jsonString,getDataFromJson.class);
                 email.setText(json.email);
@@ -130,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 aboutMe.setText(json.aboutMe);
                 personality.setText(json.personality);
                 gender.setText(json.gender);
-                */
+
 
             }
         });
@@ -140,9 +156,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public JSONObject writeElements(JSONObject obj) throws JSONException {
-        obj.put("id", id);
         obj.put("email", email.getText());
-        obj.put("phone", phoneNumber.getText());
+        obj.put("phoneNumber", phoneNumber.getText());
         obj.put("name", name.getText());
         obj.put("gender", gender.getText());
         obj.put("aboutMe", aboutMe.getText());
@@ -197,8 +212,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d(TAG, response.toString());
-                        msgResponse = response.toString();
-                        System.out.println(msgResponse);
+                        msgResponse.setText(response.toString());
                         hideProgressDialog();
                     }
                 }, new Response.ErrorListener() {
@@ -233,12 +247,67 @@ public class MainActivity extends AppCompatActivity {
         };
 
         // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(jsonObjReq,
-                tag_json_obj);
+        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 
         // Cancelling request
         // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_obj);
     }
+
+    /**
+     * Making json array request
+     * */
+    private void makeJsonArryReq() {
+        showProgressDialog();
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+                        msgResponse.setText(response.toString());
+                        hideProgressDialog();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                hideProgressDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req,
+                tag_json_arry);
+
+        // Cancelling request
+        // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_arry);
+    }
+
+    public void postData() {
+        // Create a new HttpClient and Post Header
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpPost httppost = new HttpPost("http://coms-309-015.class.las.iastate.edu:8080/users");
+
+        try {
+            // Add your data
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+            nameValuePairs.add(new BasicNameValuePair("email", "random@random.com"));
+            nameValuePairs.add(new BasicNameValuePair("name", "random"));
+            nameValuePairs.add(new BasicNameValuePair("userName", "thisisrandomusername"));
+            nameValuePairs.add(new BasicNameValuePair("password", "helloworld"));
+            nameValuePairs.add(new BasicNameValuePair("gender", "male"));
+            nameValuePairs.add(new BasicNameValuePair("phoneNumber", "5156666777"));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+            // Execute HTTP Post Request
+            HttpResponse response = httpclient.execute(httppost);
+
+        } catch (ClientProtocolException e) {
+            // TODO Auto-generated catch block
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+        }
+    }
+
 
 }
 

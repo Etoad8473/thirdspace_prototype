@@ -11,8 +11,7 @@ import com.example.editprofileactivity.net_utils.LruBitmapCache;
 
 public class AppController extends Application {
 
-    public static final String TAG = AppController.class
-            .getSimpleName();
+    public static final String TAG = AppController.class.getSimpleName();
 
     private RequestQueue mRequestQueue;
     private ImageLoader mImageLoader;

@@ -49,55 +49,258 @@
                 <RelativeLayout
                     android:id="@+id/hobbiesSelectionLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="240dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/soccerHobbiesButton"
+                        android:id="@+id/sportsHobbiesButton"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="95dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:text="Sports"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/bikingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="105dp"
                         android:background="@color/red_grey"
-                        android:text="Soccer"
+                        android:text="Biking"
                         android:textSize="12sp" />
 
                     <Button
-                        android:id="@+id/basketballHobbiesButton"
+                        android:id="@+id/gardeningHobbiesButton"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
+                        android:layout_marginLeft="199dp"
                         android:textSize="12sp"
-                        android:text="Basketball"
+                        android:text="Gardening"
                         android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/bakingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="293dp"
+                        android:textSize="12sp"
+                        android:text="Baking"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/archeryHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:text="Archery"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/singingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="105dp"
+                        android:background="@color/red_grey"
+                        android:text="Singing"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/bloggingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="199dp"
+                        android:textSize="12sp"
+                        android:text="Blogging"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/bowlingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="293dp"
+                        android:textSize="12sp"
+                        android:text="Bowling"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/photographyHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:text="Photography"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/cookingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginLeft="105dp"
+                        android:background="@color/red_grey"
+                        android:text="Cooking"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/readingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginLeft="199dp"
+                        android:textSize="12sp"
+                        android:text="Reading"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/travelHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginLeft="293dp"
+                        android:textSize="12sp"
+                        android:text="Travel"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/artHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:text="Art"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/potteryHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginLeft="105dp"
+                        android:background="@color/red_grey"
+                        android:text="Pottery"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/hikingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginLeft="199dp"
+                        android:textSize="12sp"
+                        android:text="Hiking"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/fishingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="120dp"
+                        android:layout_marginLeft="293dp"
+                        android:textSize="12sp"
+                        android:text="Fishing"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/paintingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="160dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:text="Painting"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/danceHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="160dp"
+                        android:layout_marginLeft="105dp"
+                        android:background="@color/red_grey"
+                        android:text="Dance"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/musicHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="160dp"
+                        android:layout_marginLeft="199dp"
+                        android:textSize="12sp"
+                        android:text="Music"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/woodworkingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="160dp"
+                        android:layout_marginLeft="293dp"
+                        android:textSize="12sp"
+                        android:text="Woodworking"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/yogaHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="12sp"
+                        android:text="Yoga"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/calligraphyHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginLeft="105dp"
+                        android:background="@color/red_grey"
+                        android:text="Calligraphy"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/chessHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginLeft="199dp"
+                        android:textSize="12sp"
+                        android:text="Chess"
+                        android:background="@color/red_grey"/>
+
+                    <Button
+                        android:id="@+id/knittingHobbiesButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginLeft="293dp"
+                        android:textSize="12sp"
+                        android:text="Knitting"
+                        android:background="@color/red_grey"/>
+
+
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/linearLayout_phoneNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout_email">
-
-                    <TextView
-                        android:id="@+id/viewSelected"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Selected"
-                        android:textSize="23sp" />
-
-                    <EditText
-                        android:id="@+id/editprofilewindows_phoneNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="0dp"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/black"
-                        android:textSize="23sp"
-                        tools:layout_editor_absoluteX="-28dp" />
-                </LinearLayout>
-
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/viewSelected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Selected"
+                android:textSize="23sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="match_parent"

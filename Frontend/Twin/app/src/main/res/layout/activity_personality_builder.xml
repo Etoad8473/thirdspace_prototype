@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:labelFor="@+id/accountDetailsLayout"
-                android:text="Hobbies"
+                android:text="Hobbies / Interests"
                 app:layout_constraintTop_toTopOf="@+id/hobbiesLayout"
                 android:textSize="27sp"
                 android:textStyle="bold"/>
@@ -301,48 +301,120 @@
                 android:hint="Selected"
                 android:textSize="23sp"
                 android:textStyle="bold"/>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:labelFor="@+id/userDetailsLayout"
-                android:text="Interests"
-                app:layout_constraintTop_toTopOf="@+id/userDetailsLayout"
+                android:text="Demographics"
                 android:textSize="27sp"
                 android:textStyle="bold"/>
+
             <LinearLayout
-                android:id="@+id/userDetailsLayout"
+                android:id="@+id/demographicsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/accountDetailsLayout"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/linearLayout_name"
+                    android:id="@+id/linearLayout_age"
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/userDetailsLayout"
-                    android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:labelFor="@id/editprofilewindows_name"
-                        android:text="@string/name_label"
+                        android:labelFor="@id/editprofilewindows_aboutMe"
+                        android:text="Age"
+                        android:textStyle="bold"
                         android:textSize="25sp" />
 
                     <EditText
-                        android:id="@+id/editprofilewindows_name"
+                        android:id="@+id/ageEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"
                         android:textSize="23sp"
                         android:textColor="@color/black"
-                        android:textAlignment="textStart"
-                        tools:layout_editor_absoluteX="-28dp" />
+                        android:textAlignment="textStart" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_ethnicity"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/ethnicityEditText"
+                        android:text="Ethnicity"
+                        android:textStyle="bold"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/ethnicityEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_age"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/editprofilewindows_aboutMe"
+                        android:text="Age"
+                        android:textStyle="bold"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/ageEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/black"
+                        android:textAlignment="textStart" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@+id/userDetailsLayout"
+                android:text="Goals"
+                app:layout_constraintTop_toTopOf="@+id/userDetailsLayout"
+                android:textSize="27sp"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:id="@+id/interestLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/linearLayout_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+
+                </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/linearLayout_aboutMe"

@@ -30,9 +30,9 @@ public class GroupChat {
         messages = new ArrayList<Message>();
     }
 
-    public GroupChat(Group g, List<Message> m){
+    public GroupChat(Group g){
         this.group = g;
-        messages = m;
+        messages = new ArrayList<Message>();;
     }
 
     public void setGroup(Group g){

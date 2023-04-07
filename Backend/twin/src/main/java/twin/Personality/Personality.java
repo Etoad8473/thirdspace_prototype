@@ -88,7 +88,7 @@ public class Personality
     }
 
 
-    public User getMatchA(User u)
+    public User generateMatchA(User u)
     {
         //get users hobbies
         //for each hobby the user has
@@ -118,7 +118,7 @@ public class Personality
     }
 
 
-    public User getMatchB()
+    public User generateMatchB()
     {
         Random rand = new Random();
 

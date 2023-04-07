@@ -127,7 +127,7 @@ class UserController {
     {
         User user = userRepo.findById(id);
 
-        User friend = user.getPersonality().getMatchB();
+        User friend = user.getPersonality().generateMatchB();
         user.addFriend(friend);
 
         userRepo.save(user);

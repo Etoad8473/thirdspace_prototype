@@ -22,25 +22,7 @@ public class MessageController {
     }
 
     @PostMapping("/message")
-    public Message createMessage(@PathVariable String data, String date, String time, User sender){
-        if(data == null || data.equals("")){
-            return null;
-        }
-
-        if(date == null || date.equals("")){
-            return null;
-        }
-
-        if(time == null || time.equals("")){
-            return null;
-        }
-
-        //if(sender == null){
-        //    return null;
-        //}
-        Message message = new Message(data, date, time, sender);
-        return messageRepo.save(message);
-    }
+    public Message createMessage(@RequestBody Message message) { return messageRepo.save(message); }
 
     @DeleteMapping("/message/{id}")
     public @ResponseBody void removeMessage(@PathVariable Long id) { messageRepo.deleteById(id); }

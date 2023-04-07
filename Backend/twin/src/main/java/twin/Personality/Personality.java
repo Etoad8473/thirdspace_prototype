@@ -84,6 +84,29 @@ public class Personality
             return false;
     }
 
+
+    public static User getMatch(User u)
+    {
+        //get users hobbies
+        //for each hobby the user has
+            //for each hobby, return all users with that hobby
+            //potential list, return the highest connection
+        List<Hobby> hobbies = u.getPersonality().getHobbies();
+        for(Hobby h:hobbies)
+        {
+            List<Personality> personalities = h.getPersonalities();
+            for(Personality p : personalities)
+            {
+
+            }
+        }
+
+
+        return null;
+    }
+
+
+
     @Override
     public String toString(){
         return "" + hobbies.toString() +"\n\n"+ interests.toString();

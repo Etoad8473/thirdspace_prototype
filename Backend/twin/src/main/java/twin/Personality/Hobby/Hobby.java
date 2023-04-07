@@ -1,7 +1,6 @@
-package twin.Personality.BubbleTraits.Hobby;
+package twin.Personality.Hobby;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import twin.Personality.BubbleTraits.AbsBubbleTrait;
 import twin.Personality.Personality;
 
 import javax.persistence.*;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Hobbies")
-public class Hobby extends AbsBubbleTrait {
+public class Hobby {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

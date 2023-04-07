@@ -1,4 +1,4 @@
-package twin.Personality.BubbleTraits.Values;
+package twin.Personality.Values;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

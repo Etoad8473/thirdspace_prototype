@@ -1,5 +1,4 @@
-package twin.Personality.BubbleTraits.Values;
-
+package twin.Personality.Interests;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.Personality.Personality;
@@ -9,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="value")
-public class Value {
+@Table(name="interest")
+public class Interest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private long id;
 
-    @Column(name = "value_name")
-    private String valueN;
+    @Column(name = "interest_name")
+    private String interestN;
 
 
 
@@ -31,23 +30,23 @@ public class Value {
 
     //----------Constructor-------------//
 
-    public Value(){
+    public Interest(){
         personalities = new ArrayList<Personality>();
     }
 
-    public Value(String name)
+    public Interest(String name)
     {
         personalities = new ArrayList<Personality>();
-        this.valueN = name;
+        this.interestN = name;
     }
 
 
-    public String getValueN() {
-        return valueN;
+    public String getInterestN() {
+        return interestN;
     }
 
-    public void setValueN(String valueN) {
-        this.valueN = valueN;
+    public void setInterestN(String interestN) {
+        this.interestN = interestN;
     }
     public List<Personality> getPersonalities() {
         return personalities;
@@ -63,8 +62,7 @@ public class Value {
     @Override
     public String toString()
     {
-        return valueN;
+        return interestN;
     }
 }
-
 

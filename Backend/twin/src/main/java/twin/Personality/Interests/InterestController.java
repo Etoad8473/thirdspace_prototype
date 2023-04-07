@@ -1,4 +1,4 @@
-package twin.Personality.BubbleTraits.Interests;
+package twin.Personality.Interests;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ public class InterestController
 {
 
     @Autowired
-    private InterestRepository interestRepo;
+    private twin.Personality.Interests.InterestRepository interestRepo;
 
 
     //-------------------------GET---------------------------------//

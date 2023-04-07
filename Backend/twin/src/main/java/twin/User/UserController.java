@@ -3,12 +3,12 @@ package twin.User;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import twin.Personality.BubbleTraits.Hobby.Hobby;
-import twin.Personality.BubbleTraits.Hobby.HobbyRepository;
-import twin.Personality.BubbleTraits.Interests.Interest;
-import twin.Personality.BubbleTraits.Interests.InterestRepository;
-import twin.Personality.BubbleTraits.Values.Value;
-import twin.Personality.BubbleTraits.Values.ValueRepository;
+import twin.Personality.Hobby.Hobby;
+import twin.Personality.Hobby.HobbyRepository;
+import twin.Personality.Interests.Interest;
+import twin.Personality.Interests.InterestRepository;
+import twin.Personality.Values.Value;
+import twin.Personality.Values.ValueRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
@@ -66,6 +66,14 @@ class UserController {
         return u.getPersonality().getValues();
     }
 
+    @GetMapping("/users/{id}/friends")
+    public List<User> returnFriends(@PathVariable long id)
+    {
+        User u = userRepo.findById(id);
+
+        return u.getFriends();
+    }
+
     @GetMapping("/users/login")
     public String loginUserWithPassword(@RequestBody User check)
     {
@@ -112,6 +120,20 @@ class UserController {
         userRepo.save(updatedU);
 
         return userRepo.findById(id);
+    }
+
+    @PostMapping("/users/{id}/getMatch")
+    public String getMatchB(@PathVariable long id)
+    {
+        User user = userRepo.findById(id);
+
+        User friend = user.getPersonality().getMatchB();
+        user.addFriend(friend);
+
+        userRepo.save(user);
+        userRepo.save(friend);
+
+        return "success";
     }
 
     @PostMapping("/users/{uId}/hobby/{hId}")

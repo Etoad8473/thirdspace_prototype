@@ -191,7 +191,9 @@ public class User {
 
     //user can add a friend one at a time
     public void addFriend(User friend){
+
         this.friends.add(friend);
+        friend.friends.add(this);
     }
 
     public void removeFriend(User friend) { this.friends.remove(friend); }

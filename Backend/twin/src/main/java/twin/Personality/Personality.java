@@ -1,15 +1,13 @@
 package twin.Personality;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import twin.Personality.BubbleTraits.Interests.Interest;
-import twin.Personality.BubbleTraits.Values.Value;
+import twin.Personality.Interests.Interest;
+import twin.Personality.Values.Value;
 import twin.User.User;
-import twin.Personality.BubbleTraits.Hobby.Hobby;
+import twin.Personality.Hobby.Hobby;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name="personalities")
@@ -86,14 +84,13 @@ public class Personality
     }
 
 
-    public static User getMatch(User u)
+    public User getMatchA(User u)
     {
         //get users hobbies
         //for each hobby the user has
             //for each hobby, return all users with that hobby
                 //check if in map
-                    //++connection
-                //connection = 1
+
             //potential list, return the highest connection
         HashMap<Long, Integer> potential = new HashMap<Long, Integer>();
 
@@ -111,10 +108,23 @@ public class Personality
             }
         }
 
+        Long id = Collections.max(potential.entrySet(), Map.Entry.comparingByValue()).getKey();
+
 
         return null;
     }
 
+
+    public User getMatchB()
+    {
+        Random rand = new Random();
+
+        Hobby h = hobbies.get(rand.nextInt(hobbies.size()));
+        List<Personality> persons = h.getPersonalities();
+        User randFriend = persons.get(rand.nextInt(persons.size())).getUser();
+
+        return randFriend;
+    }
 
 
     @Override

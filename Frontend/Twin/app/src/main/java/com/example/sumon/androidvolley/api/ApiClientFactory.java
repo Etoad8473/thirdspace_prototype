@@ -33,4 +33,5 @@ public class ApiClientFactory {
     }
     public static GroupChatApi GetGroupChatApi(){return GetApiClientSeed().create(GroupChatApi.class);}
     public static MatchApi GetMatchApi(){return  GetApiClientSeed().create(MatchApi.class);}
+    public static PersonalityApi GetPersonalityApi(){return GetApiClientSeed().create(PersonalityApi.class);}
 }

@@ -1,19 +1,20 @@
 package com.example.sumon.androidvolley.model;
 
 public class GroupChat {
-    private String username;
+    private String sender;
     private String time;
     private String date;
-    private String messages;
+    private String data;
+    private String groupName;
 
     public GroupChat(){
     }
 
-    public void setUsername(String name){
-        this.username = name;
+    public void setSender(String sender){
+        this.sender = sender;
     }
-    public String getUsername(){
-        return username;
+    public String getSender(){
+        return sender;
     }
 
     public void setTime(String time){
@@ -30,15 +31,22 @@ public class GroupChat {
         return date;
     }
 
-    public void setMessages(String messages){
-        this.messages = messages;
+    public void setData(String data){
+        this.data = data;
     }
-    public String getMessages(){
-        return messages;
+    public String getData(){
+        return data;
+    }
+
+    public void setGroupName(String groupName){
+        this.groupName = groupName;
+    }
+    public String getGroupName(){
+        return groupName;
     }
 
     public String printable(){
         return getDate() + " | " +getTime() +
-                "\n" + getUsername() + ": " + getMessages() + "\n";
+                "\n" + getSender() + ": " + getData() + "\n";
     }
 }

@@ -1,6 +1,5 @@
 package com.example.sumon.androidvolley.api;
 
-import com.example.sumon.androidvolley.model.Event;
 import com.example.sumon.androidvolley.model.GroupChat;
 
 import java.util.List;
@@ -15,5 +14,5 @@ public interface GroupChatApi {
     Call<List<GroupChat>> GetAllGroupChat();
 
     @POST("groupChat")
-    Call<GroupChat> PostGroupChatByBody(@Body Event newEvent);
+    Call<GroupChat> PostGroupChatByBody(@Body GroupChat newChat);
 }

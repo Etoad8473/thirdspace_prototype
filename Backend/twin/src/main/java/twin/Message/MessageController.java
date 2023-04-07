@@ -35,9 +35,9 @@ public class MessageController {
             return null;
         }
 
-        if(sender == null){
-            return null;
-        }
+        //if(sender == null){
+        //    return null;
+        //}
         Message message = new Message(data, date, time, sender);
         return messageRepo.save(message);
     }

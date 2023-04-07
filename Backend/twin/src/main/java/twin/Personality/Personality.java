@@ -16,8 +16,6 @@ import java.util.*;
 public class Personality
 {
 
-    @Autowired
-    private UserRepository userRepo;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -88,34 +86,7 @@ public class Personality
     }
 
 
-    public User generateMatchA(User u)
-    {
-        //get users hobbies
-        //for each hobby the user has
-            //for each hobby, return all users with that hobby
-                //check if in map
 
-            //potential list, return the highest connection
-        HashMap<Long, Integer> potential = new HashMap<Long, Integer>();
-
-        List<Hobby> hobbies = u.getPersonality().getHobbies();
-        for(Hobby h:hobbies)
-        {
-            List<Personality> personalities = h.getPersonalities();
-            for(Personality p : personalities)
-            {
-                Long id = p.getId();
-                if(potential.containsKey(id))
-                    potential.put(id, potential.get(id) + 1);
-                else
-                    potential.put(id, 1);
-            }
-        }
-
-        Long id = Collections.max(potential.entrySet(), Map.Entry.comparingByValue()).getKey();
-
-        return userRepo.findById(id).get();
-    }
 
 
     public User generateMatchB()
@@ -129,6 +100,13 @@ public class Personality
         return randFriend;
     }
 
+
+//    public ArrayList<User> createGroup(User u)
+//    {
+//        ArrayList<User> group = new ArrayList<User>();
+//
+//        u.getPersonality().getHobbies();
+//    }
 
     @Override
     public String toString(){

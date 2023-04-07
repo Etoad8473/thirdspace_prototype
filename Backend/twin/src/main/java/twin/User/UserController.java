@@ -12,7 +12,10 @@ import twin.Personality.Values.ValueRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 class UserController {
@@ -125,12 +128,38 @@ class UserController {
     @PostMapping("/users/{id}/getMatch")
     public String getMatchB(@PathVariable long id)
     {
-        User user = userRepo.findById(id);
+        User u = userRepo.findById(id);
 
-        User friend = user.getPersonality().generateMatchB();
-        user.addFriend(friend);
 
-        userRepo.save(user);
+            //get users hobbies
+            //for each hobby the user has
+            //for each hobby, return all users with that hobby
+            //check if in map
+
+            //potential list, return the highest connection
+            HashMap<Long, Integer> potential = new HashMap<Long, Integer>();
+
+            List<Hobby> hobbies = u.getPersonality().getHobbies();
+            for(Hobby h:hobbies)
+            {
+                List<Personality> personalities = h.getPersonalities();
+                for(Personality p : personalities)
+                {
+                    Long potentialID = p.getId();
+                    if(potential.containsKey(potentialID))
+                        potential.put(potentialID, potential.get(potentialID) + 1);
+                    else
+                        potential.put(potentialID, 1);
+                }
+            }
+
+            Long friendId = Collections.max(potential.entrySet(), Map.Entry.comparingByValue()).getKey();
+
+            User friend = userRepo.findById(friendId).get();
+
+            u.addFriend(friend);
+
+        userRepo.save(u);
         userRepo.save(friend);
 
         return "success";

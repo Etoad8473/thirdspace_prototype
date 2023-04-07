@@ -5,22 +5,32 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class PersonalityBuilder extends AppCompatActivity implements View.OnClickListener {
+    //Hobby Buttons
     private Button sportsBtn, bikingBtn, gardeningBtn, bakingBtn, archeryBtn, singingBtn, bloggingBtn, bowlingBtn,
             photographyBtn, cookingBtn, readingBtn, travelBtn, artBtn, potteryBtn, hikingBtn, fishingBtn,
             paintingBtn, danceBtn, musicBtn, woodworkingBtn, yogaBtn, calligraphyBtn, chessBtn, knittingBtn, doneBtn;
+
+    private Button activeBtn, healthyBtn, soloBtn, ruralBtn, urbanBtn, nomadicBtn, bohemianBtn, digitalBtn;
+    private Button accountabilityBtn, achievementBtn, adaptabilityBtn, adventureBtn, ambitionBtn, careerBtn, caringBtn,
+            communityBtn, friendshipBtn, confidienceBtn, harmonyBtn, graceBtn, honestyBtn, freedomBtn, faithBtn, ethicsBtn,
+            patriotismBtn, knowledgeBtn, leadershipBtn, natureBtn, sportsmanshipBtn, respectBtn, teamworkBtn, wealth;
     private TextView selectedView;
+
+    private EditText goal1, goal2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personality_builder);
 
+        // Hobby Buttons
         sportsBtn = (Button) findViewById(R.id.sportsHobbiesButton);
         bikingBtn = (Button) findViewById(R.id.bikingHobbiesButton);
         gardeningBtn = (Button) findViewById(R.id.gardeningHobbiesButton);
@@ -46,9 +56,51 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         chessBtn = (Button) findViewById(R.id.chessHobbiesButton);
         knittingBtn = (Button) findViewById(R.id.knittingHobbiesButton);
 
+        //Lifestyle Buttons
+        activeBtn = (Button) findViewById(R.id.activeLifestyleButton);
+        healthyBtn = (Button) findViewById(R.id.healthyLifestyleButton);
+        soloBtn = (Button) findViewById(R.id.soloLifestyleButton);
+        ruralBtn = (Button) findViewById(R.id.ruralLifestyleButton);
+        urbanBtn = (Button) findViewById(R.id.urbanLifestyleButton);
+        nomadicBtn = (Button) findViewById(R.id.nomadicLifestyleButton);
+        bohemianBtn = (Button) findViewById(R.id.bohemianLifestyleButton);
+        digitalBtn = (Button) findViewById(R.id.digitalLifestyleButton);
+
+        //Values Buttons
+        accountabilityBtn = (Button) findViewById(R.id.accountabilityBtn);
+        achievementBtn = (Button) findViewById(R.id.achievementBtn);
+        adaptabilityBtn = (Button) findViewById(R.id.adaptabilityBtn);
+        adventureBtn = (Button) findViewById(R.id.adventureBtn);
+        ambitionBtn = (Button) findViewById(R.id.ambitionBtn);
+        careerBtn = (Button) findViewById(R.id.careerBtn);
+        caringBtn = (Button) findViewById(R.id.caringBtn);
+        communityBtn = (Button) findViewById(R.id.communityBtn);
+        friendshipBtn = (Button) findViewById(R.id.friendshipBtn);
+        confidienceBtn = (Button) findViewById(R.id.confidenceBtn);
+        harmonyBtn = (Button) findViewById(R.id.harmonyBtn);
+        graceBtn = (Button) findViewById(R.id.graceBtn);
+        honestyBtn = (Button) findViewById(R.id.honestyBtn);
+        freedomBtn = (Button) findViewById(R.id.freedomBtn);
+        faithBtn = (Button) findViewById(R.id.faithBtn);
+        ethicsBtn = (Button) findViewById(R.id.ethicsBtn);
+        patriotismBtn = (Button) findViewById(R.id.patriotismBtn);
+        knowledgeBtn = (Button) findViewById(R.id.knowledgeBtn);
+        leadershipBtn = (Button) findViewById(R.id.leadershipBtn);
+        natureBtn = (Button) findViewById(R.id.natureBtn);
+        sportsmanshipBtn = (Button) findViewById(R.id.sportsmanshipBtn);
+        respectBtn = (Button) findViewById(R.id.respectBtn);
+        teamworkBtn = (Button) findViewById(R.id.teamworkBtn);
+        wealth = (Button) findViewById(R.id.wealthBtn);
+
+
         doneBtn = (Button) findViewById(R.id.personalityDoneButton);
         selectedView = (TextView) findViewById(R.id.viewSelected);
 
+        goal1 = (EditText) findViewById(R.id.goalEditText1);
+        goal2 = (EditText) findViewById(R.id.goalEditText2);
+
+
+        //Hobbies
         sportsBtn.setOnClickListener(this);
         bikingBtn.setOnClickListener(this);
         gardeningBtn.setOnClickListener(this);
@@ -73,6 +125,43 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         calligraphyBtn.setOnClickListener(this);
         chessBtn.setOnClickListener(this);
         knittingBtn.setOnClickListener(this);
+
+        //Lifestyle
+        activeBtn.setOnClickListener(this);
+        healthyBtn.setOnClickListener(this);
+        soloBtn.setOnClickListener(this);
+        ruralBtn.setOnClickListener(this);
+        urbanBtn.setOnClickListener(this);
+        nomadicBtn.setOnClickListener(this);
+        bohemianBtn.setOnClickListener(this);
+        digitalBtn.setOnClickListener(this);
+
+        //Values
+        accountabilityBtn.setOnClickListener(this);
+        achievementBtn.setOnClickListener(this);
+        adaptabilityBtn.setOnClickListener(this);
+        adventureBtn.setOnClickListener(this);
+        ambitionBtn.setOnClickListener(this);
+        careerBtn.setOnClickListener(this);
+        caringBtn.setOnClickListener(this);
+        communityBtn.setOnClickListener(this);
+        friendshipBtn.setOnClickListener(this);
+        confidienceBtn.setOnClickListener(this);
+        harmonyBtn.setOnClickListener(this);
+        graceBtn.setOnClickListener(this);
+        honestyBtn.setOnClickListener(this);
+        freedomBtn.setOnClickListener(this);
+        faithBtn.setOnClickListener(this);
+        ethicsBtn.setOnClickListener(this);
+        patriotismBtn.setOnClickListener(this);
+        knowledgeBtn.setOnClickListener(this);
+        leadershipBtn.setOnClickListener(this);
+        natureBtn.setOnClickListener(this);
+        sportsmanshipBtn.setOnClickListener(this);
+        respectBtn.setOnClickListener(this);
+        teamworkBtn.setOnClickListener(this);
+        wealth.setOnClickListener(this);
+
 
         doneBtn.setOnClickListener(this);
 
@@ -370,6 +459,96 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                     knittingBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
                 }
                 break;
+
+            case R.id.activeLifestyleButton:
+                if(activeBtn.isSelected() == false){
+                    activeBtn.setSelected(true);
+                    activeBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(activeBtn.isSelected() == true) {
+                    activeBtn.setSelected(false);
+                    activeBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.healthyLifestyleButton:
+                if(healthyBtn.isSelected() == false){
+                    healthyBtn.setSelected(true);
+                    healthyBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(healthyBtn.isSelected() == true) {
+                    healthyBtn.setSelected(false);
+                    healthyBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.soloLifestyleButton:
+                if(soloBtn.isSelected() == false){
+                    soloBtn.setSelected(true);
+                    soloBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(soloBtn.isSelected() == true) {
+                    soloBtn.setSelected(false);
+                    soloBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.ruralLifestyleButton:
+                if(ruralBtn.isSelected() == false){
+                    ruralBtn.setSelected(true);
+                    ruralBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(ruralBtn.isSelected() == true) {
+                    ruralBtn.setSelected(false);
+                    ruralBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.urbanLifestyleButton:
+                if(urbanBtn.isSelected() == false){
+                    urbanBtn.setSelected(true);
+                    urbanBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(urbanBtn.isSelected() == true) {
+                    urbanBtn.setSelected(false);
+                    urbanBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.nomadicLifestyleButton:
+                if(nomadicBtn.isSelected() == false){
+                    nomadicBtn.setSelected(true);
+                    nomadicBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(nomadicBtn.isSelected() == true) {
+                    nomadicBtn.setSelected(false);
+                    nomadicBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.bohemianLifestyleButton:
+                if(bohemianBtn.isSelected() == false){
+                    bohemianBtn.setSelected(true);
+                    bohemianBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(bohemianBtn.isSelected() == true) {
+                    bohemianBtn.setSelected(false);
+                    bohemianBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.digitalLifestyleButton:
+                if(digitalBtn.isSelected() == false){
+                    digitalBtn.setSelected(true);
+                    digitalBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(digitalBtn.isSelected() == true) {
+                    digitalBtn.setSelected(false);
+                    digitalBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+
 
             default:
                 break;

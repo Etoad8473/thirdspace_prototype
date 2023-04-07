@@ -19,7 +19,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
 
     private Button activeBtn, healthyBtn, soloBtn, ruralBtn, urbanBtn, nomadicBtn, bohemianBtn, digitalBtn;
     private Button accountabilityBtn, achievementBtn, adaptabilityBtn, adventureBtn, ambitionBtn, careerBtn, caringBtn,
-            communityBtn, friendshipBtn, confidienceBtn, harmonyBtn, graceBtn, honestyBtn, freedomBtn, faithBtn, ethicsBtn,
+            communityBtn, friendshipBtn, confidenceBtn, harmonyBtn, graceBtn, honestyBtn, freedomBtn, faithBtn, ethicsBtn,
             patriotismBtn, knowledgeBtn, leadershipBtn, natureBtn, sportsmanshipBtn, respectBtn, teamworkBtn, wealthBtn;
     private TextView selectedView;
 
@@ -76,7 +76,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         caringBtn = (Button) findViewById(R.id.caringBtn);
         communityBtn = (Button) findViewById(R.id.communityBtn);
         friendshipBtn = (Button) findViewById(R.id.friendshipBtn);
-        confidienceBtn = (Button) findViewById(R.id.confidenceBtn);
+        confidenceBtn = (Button) findViewById(R.id.confidenceBtn);
         harmonyBtn = (Button) findViewById(R.id.harmonyBtn);
         graceBtn = (Button) findViewById(R.id.graceBtn);
         honestyBtn = (Button) findViewById(R.id.honestyBtn);
@@ -151,7 +151,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         caringBtn.setOnClickListener(this);
         communityBtn.setOnClickListener(this);
         friendshipBtn.setOnClickListener(this);
-        confidienceBtn.setOnClickListener(this);
+        confidenceBtn.setOnClickListener(this);
         harmonyBtn.setOnClickListener(this);
         graceBtn.setOnClickListener(this);
         honestyBtn.setOnClickListener(this);
@@ -643,13 +643,13 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                 break;
 
             case R.id.confidenceBtn:
-                if(confidienceBtn.isSelected() == false){
-                    confidienceBtn.setSelected(true);
-                    confidienceBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                if(confidenceBtn.isSelected() == false){
+                    confidenceBtn.setSelected(true);
+                    confidenceBtn.setBackgroundColor(getResources().getColor(R.color.grey));
                 }
-                else if(confidienceBtn.isSelected() == true) {
-                    confidienceBtn.setSelected(false);
-                    confidienceBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                else if(confidenceBtn.isSelected() == true) {
+                    confidenceBtn.setSelected(false);
+                    confidenceBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
                 }
                 break;
 
@@ -976,8 +976,8 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             hobbiesView.append(friendshipBtn.getText() + " | ");
         }
 
-        if(confidienceBtn.isSelected() == true){
-            hobbiesView.append(confidienceBtn.getText() + " | ");
+        if(confidenceBtn.isSelected() == true){
+            hobbiesView.append(confidenceBtn.getText() + " | ");
         }
 
         if(harmonyBtn.isSelected() == true){

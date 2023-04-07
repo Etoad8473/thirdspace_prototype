@@ -5,6 +5,7 @@ public class GroupChat {
     private String time;
     private String date;
     private String data;
+    private String groupName;
 
     public GroupChat(){
     }
@@ -35,6 +36,13 @@ public class GroupChat {
     }
     public String getData(){
         return data;
+    }
+
+    public void setGroupName(String groupName){
+        this.groupName = groupName;
+    }
+    public String getGroupName(){
+        return groupName;
     }
 
     public String printable(){

@@ -4,8 +4,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
-public interface Personality {
+public interface PersonalityApi {
 
     @POST("personality")
-    Call<Personality> PostEventByBody(@Body Personality newPersonality);
+    Call<PersonalityApi> PostPersonalityByBody(@Body PersonalityApi newPersonality);
 }

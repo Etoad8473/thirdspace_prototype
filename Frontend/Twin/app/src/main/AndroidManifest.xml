@@ -16,7 +16,7 @@
             android:name=".PersonalityBuilder"
             android:exported="false" />
         <activity
-            android:name=".GroupChat"
+            android:name=".GroupChatActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"/>
         <activity

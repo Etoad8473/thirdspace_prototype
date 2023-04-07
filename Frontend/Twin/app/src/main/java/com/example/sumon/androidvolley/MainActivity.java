@@ -141,7 +141,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
 
             case R.id.groupChatButton:
-                startActivity(new Intent(MainActivity.this, GroupChat.class));
+                startActivity(new Intent(MainActivity.this, GroupChatActivity.class));
                 break;
 
             case R.id.eventTabButton:

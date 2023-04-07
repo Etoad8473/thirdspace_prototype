@@ -2,6 +2,7 @@ package twin.Personality;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.Personality.BubbleTraits.Interests.Interest;
+import twin.Personality.BubbleTraits.Values.Value;
 import twin.User.User;
 import twin.Personality.BubbleTraits.Hobby.Hobby;
 
@@ -30,12 +31,16 @@ public class Personality
     @ManyToMany
     private List<Interest> interests;
 
+    @ManyToMany
+    private List<Value> values;
+
 
     //------------------------------Constructor--------------------------//
     public Personality()
     {
         interests = new ArrayList<Interest>();
         hobbies = new ArrayList<Hobby>();
+        values = new ArrayList<Value>();
     }
 
 
@@ -66,6 +71,19 @@ public class Personality
             return false;
     }
 
+    public boolean addValue(Value v)
+    {
+        if(v != null)
+        {
+            values.add(v);
+            //h.setPersonality(this);
+            v.addPersonality(this);
+            return true;
+        }
+        else
+            return false;
+    }
+
     @Override
     public String toString(){
         return "" + hobbies.toString() +"\n\n"+ interests.toString();
@@ -88,4 +106,6 @@ public class Personality
     }
 
     public List<Interest> getInterests(){return interests;}
+
+    public List<Value> getValues(){return values;}
 }

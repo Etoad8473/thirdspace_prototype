@@ -8,6 +8,7 @@ import twin.Personality.BubbleTraits.Hobby.Hobby;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -90,14 +91,23 @@ public class Personality
         //get users hobbies
         //for each hobby the user has
             //for each hobby, return all users with that hobby
+                //check if in map
+                    //++connection
+                //connection = 1
             //potential list, return the highest connection
+        HashMap<Long, Integer> potential = new HashMap<Long, Integer>();
+
         List<Hobby> hobbies = u.getPersonality().getHobbies();
         for(Hobby h:hobbies)
         {
             List<Personality> personalities = h.getPersonalities();
             for(Personality p : personalities)
             {
-
+                Long id = p.getId();
+                if(potential.containsKey(id))
+                    potential.put(id, potential.get(id) + 1);
+                else
+                    potential.put(id, 1);
             }
         }
 

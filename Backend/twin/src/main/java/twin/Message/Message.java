@@ -28,7 +28,7 @@ public class Message {
     private String time; //time the message is sent
 
     @OneToOne(cascade = {CascadeType.ALL})
-    @Column(name = "sender")
+    //@Column(name = "sender")
     private User sender; //sender of the message
 
 

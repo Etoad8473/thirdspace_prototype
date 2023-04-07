@@ -54,7 +54,7 @@ public class User {
     @JsonIgnore
     private Event event;
 
-    @Column(name = "friends")
+    @ManyToMany
     private List<User> friends;
 
     public User() {

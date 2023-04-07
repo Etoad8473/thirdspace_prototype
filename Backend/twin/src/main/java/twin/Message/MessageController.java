@@ -6,6 +6,7 @@ import twin.User.User;
 
 import java.util.List;
 
+@RestController
 public class MessageController {
     @Autowired
     private MessageRepository messageRepo;

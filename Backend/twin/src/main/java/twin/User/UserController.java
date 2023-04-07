@@ -7,6 +7,8 @@ import twin.Personality.BubbleTraits.Hobby.Hobby;
 import twin.Personality.BubbleTraits.Hobby.HobbyRepository;
 import twin.Personality.BubbleTraits.Interests.Interest;
 import twin.Personality.BubbleTraits.Interests.InterestRepository;
+import twin.Personality.BubbleTraits.Values.Value;
+import twin.Personality.BubbleTraits.Values.ValueRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
@@ -25,6 +27,9 @@ class UserController {
 
     @Autowired
     private InterestRepository interestRepo;
+
+    @Autowired
+    private ValueRepository valueRepo;
 
 
     //-----------------------------GET---------------------//
@@ -51,6 +56,14 @@ class UserController {
         User u = userRepo.findById(id);
 
         return u.getPersonality().getInterests();
+    }
+
+    @GetMapping("/users/{id}/value")
+    public List<Value> returnValueListString(@PathVariable long id)
+    {
+        User u = userRepo.findById(id);
+
+        return u.getPersonality().getValues();
     }
 
     @GetMapping("/users/login")
@@ -128,6 +141,22 @@ class UserController {
 
         personalityRepo.save(p);
         interestRepo.save(i);
+
+        //return "success";
+        return "finished";
+    }
+
+    @PostMapping("/users/{uId}/value/{vId}")
+    public String addValue(@PathVariable long uId, @PathVariable long vId)
+    {
+        User u = userRepo.findById(uId);
+        Personality p = u.getPersonality();
+        Value v = valueRepo.findById(vId);
+
+        p.addValue(v);
+
+        personalityRepo.save(p);
+        valueRepo.save(v);
 
         //return "success";
         return "finished";

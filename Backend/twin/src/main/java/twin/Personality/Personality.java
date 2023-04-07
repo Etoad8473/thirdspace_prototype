@@ -1,10 +1,12 @@
 package twin.Personality;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.beans.factory.annotation.Autowired;
 import twin.Personality.Interests.Interest;
 import twin.Personality.Values.Value;
 import twin.User.User;
 import twin.Personality.Hobby.Hobby;
+import twin.User.UserRepository;
 
 import javax.persistence.*;
 import java.util.*;
@@ -14,6 +16,8 @@ import java.util.*;
 public class Personality
 {
 
+    @Autowired
+    private UserRepository userRepo;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -110,8 +114,7 @@ public class Personality
 
         Long id = Collections.max(potential.entrySet(), Map.Entry.comparingByValue()).getKey();
 
-
-        return null;
+        return userRepo.findById(id).get();
     }
 
 

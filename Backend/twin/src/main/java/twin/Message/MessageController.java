@@ -1,9 +1,7 @@
 package twin.Message;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import twin.User.User;
 
 import java.util.List;
@@ -42,4 +40,7 @@ public class MessageController {
         Message message = new Message(data, date, time, sender);
         return messageRepo.save(message);
     }
+
+    @DeleteMapping("/message/{id}")
+    public @ResponseBody void removeMessage(@PathVariable Long id) { messageRepo.deleteById(id); }
 }

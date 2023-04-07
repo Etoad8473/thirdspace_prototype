@@ -21,7 +21,7 @@ public class MessageController {
         return messageRepo.findById(id);
     }
 
-    @PostMapping("message/{name}")
+    @PostMapping("/message")
     public Message createMessage(@PathVariable String data, String date, String time, User sender){
         if(data == null || data.equals("")){
             return null;

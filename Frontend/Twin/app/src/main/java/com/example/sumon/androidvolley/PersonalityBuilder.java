@@ -24,6 +24,8 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     private TextView selectedView;
 
     private EditText age, ethnicity, sexuality, location, mobile,goal1, goal2;
+    private String hobbies, lifestyle, values = ",";
+    private String[] hobbiesArr, lifestyleArr, valuesArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,7 +180,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                 handler.post(new Runnable(){
                     public void run(){
                         try{
-                            checkSelected(selectedView);
+
                         }
                         catch(Exception e){
 
@@ -197,7 +199,9 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.personalityDoneButton:
-                finish();
+                checkSelected();
+                convertStringtoArr(hobbies, lifestyle, values);
+                //finish();
                 break;
 
             case R.id.sportsHobbiesButton:
@@ -813,227 +817,233 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void checkSelected(TextView hobbiesView){
-        hobbiesView.setText("");
+    public void checkSelected(){
         if(bikingBtn.isSelected() == true){
-            hobbiesView.append(bikingBtn.getText() + " | ");
+            hobbies += bikingBtn.getText() + ",";
         }
 
         if(sportsBtn.isSelected() == true){
-            hobbiesView.append(sportsBtn.getText() + " | ");
+            hobbies += sportsBtn.getText() + ",";
         }
 
         if(gardeningBtn.isSelected() == true){
-            hobbiesView.append(gardeningBtn.getText() + " | ");
+            hobbies += gardeningBtn.getText() + ",";
         }
 
         if(bakingBtn.isSelected() == true){
-            hobbiesView.append(bakingBtn.getText() + " | ");
+            hobbies += bakingBtn.getText() + ",";
         }
 
         if(archeryBtn.isSelected() == true){
-            hobbiesView.append(archeryBtn.getText() + " | ");
+            hobbies += archeryBtn.getText() + ",";
         }
 
         if(singingBtn.isSelected() == true){
-            hobbiesView.append(singingBtn.getText() + " | ");
+            hobbies += singingBtn.getText() + ",";
         }
 
         if(bloggingBtn.isSelected() == true){
-            hobbiesView.append(bloggingBtn.getText() + " | ");
+            hobbies += bloggingBtn.getText() + ",";
         }
 
         if(bowlingBtn.isSelected() == true){
-            hobbiesView.append(bowlingBtn.getText() + " | ");
+            hobbies += bowlingBtn.getText() + ",";
         }
 
         if(photographyBtn.isSelected() == true){
-            hobbiesView.append(photographyBtn.getText() + " | ");
+            hobbies += photographyBtn.getText() + ",";
         }
 
         if(cookingBtn.isSelected() == true){
-            hobbiesView.append(cookingBtn.getText() + " | ");
+            hobbies += cookingBtn.getText() + ",";
         }
 
         if(readingBtn.isSelected() == true){
-            hobbiesView.append(readingBtn.getText() + " | ");
+            hobbies += readingBtn.getText() + ",";
         }
 
         if(travelBtn.isSelected() == true){
-            hobbiesView.append(travelBtn.getText() + " | ");
+            hobbies += travelBtn.getText() + ",";
         }
 
         if(artBtn.isSelected() == true){
-            hobbiesView.append(artBtn.getText() + " | ");
+            hobbies += artBtn.getText() + ",";
         }
 
         if(potteryBtn.isSelected() == true){
-            hobbiesView.append(potteryBtn.getText() + " | ");
+            hobbies += potteryBtn.getText() + ",";
         }
 
         if(hikingBtn.isSelected() == true){
-            hobbiesView.append(hikingBtn.getText() + " | ");
+            hobbies += hikingBtn.getText() + ",";
         }
 
         if(fishingBtn.isSelected() == true){
-            hobbiesView.append(fishingBtn.getText() + " | ");
+            hobbies += fishingBtn.getText() + ",";
         }
 
         if(paintingBtn.isSelected() == true){
-            hobbiesView.append(paintingBtn.getText() + " | ");
+            hobbies += paintingBtn.getText() + ",";
         }
 
         if(danceBtn.isSelected() == true){
-            hobbiesView.append(danceBtn.getText() + " | ");
+            hobbies += danceBtn.getText() + ",";
         }
 
         if(musicBtn.isSelected() == true){
-            hobbiesView.append(musicBtn.getText() + " | ");
+            hobbies += musicBtn.getText() + ",";
         }
 
         if(woodworkingBtn.isSelected() == true){
-            hobbiesView.append(woodworkingBtn.getText() + " | ");
+            hobbies += woodworkingBtn.getText() + ",";
         }
 
         if(yogaBtn.isSelected() == true){
-            hobbiesView.append(yogaBtn.getText() + " | ");
+            hobbies += yogaBtn.getText() + ",";
         }
         if(calligraphyBtn.isSelected() == true){
-            hobbiesView.append(calligraphyBtn.getText() + " | ");
+            hobbies += calligraphyBtn.getText() + ",";
         }
 
         if(chessBtn.isSelected() == true){
-            hobbiesView.append(chessBtn.getText() + " | ");
+            hobbies += chessBtn.getText() + ",";
         }
         if(knittingBtn.isSelected() == true){
-            hobbiesView.append(knittingBtn.getText() + " | ");
+            hobbies += knittingBtn.getText();
         }
 
         //Lifestyle
         if(activeBtn.isSelected() == true){
-            hobbiesView.append(activeBtn.getText() + " | ");
+            lifestyle += activeBtn.getText() +  ",";
         }
 
         if(healthyBtn.isSelected() == true){
-            hobbiesView.append(healthyBtn.getText() + " | ");
+            lifestyle += healthyBtn.getText() +  ",";
         }
 
         if(soloBtn.isSelected() == true){
-            hobbiesView.append(soloBtn.getText() + " | ");
+            lifestyle += soloBtn.getText() +  ",";
         }
 
         if(ruralBtn.isSelected() == true){
-            hobbiesView.append(ruralBtn.getText() + " | ");
+            lifestyle += ruralBtn.getText() +  ",";
         }
 
         if(urbanBtn.isSelected() == true){
-            hobbiesView.append(urbanBtn.getText() + " | ");
+            lifestyle += urbanBtn.getText() +  ",";
         }
 
         if(nomadicBtn.isSelected() == true){
-            hobbiesView.append(nomadicBtn.getText() + " | ");
+            lifestyle += nomadicBtn.getText() + ",";
         }
 
         if(bohemianBtn.isSelected() == true){
-            hobbiesView.append(bohemianBtn.getText() + " | ");
+            lifestyle += bohemianBtn.getText() + ",";
         }
 
         if(digitalBtn.isSelected() == true){
-            hobbiesView.append(digitalBtn.getText() + " | ");
+            lifestyle += digitalBtn.getText() + ",";
         }
 
 
         // Values
         if(accountabilityBtn.isSelected() == true){
-            hobbiesView.append(accountabilityBtn.getText() + " | ");
+            values += accountabilityBtn.getText() + ",";
         }
 
         if(achievementBtn.isSelected() == true){
-            hobbiesView.append(achievementBtn.getText() + " | ");
+            values += achievementBtn.getText() + ",";
         }
 
         if(adaptabilityBtn.isSelected() == true){
-            hobbiesView.append(adaptabilityBtn.getText() + " | ");
+            values += adaptabilityBtn.getText() + ",";
         }
 
         if(adventureBtn.isSelected() == true){
-            hobbiesView.append(adventureBtn.getText() + " | ");
+            values += adventureBtn.getText() + ",";
         }
 
         if(ambitionBtn.isSelected() == true){
-            hobbiesView.append(ambitionBtn.getText() + " | ");
+            values += ambitionBtn.getText() + ",";
         }
 
         if(careerBtn.isSelected() == true){
-            hobbiesView.append(careerBtn.getText() + " | ");
+            values += careerBtn.getText() + ",";
         }
 
         if(caringBtn.isSelected() == true){
-            hobbiesView.append(communityBtn.getText() + " | ");
+            values += communityBtn.getText() + ",";
         }
 
         if(friendshipBtn.isSelected() == true){
-            hobbiesView.append(friendshipBtn.getText() + " | ");
+            values += friendshipBtn.getText() + ",";
         }
 
         if(confidenceBtn.isSelected() == true){
-            hobbiesView.append(confidenceBtn.getText() + " | ");
+            values += confidenceBtn.getText() + ",";
         }
 
         if(harmonyBtn.isSelected() == true){
-            hobbiesView.append(harmonyBtn.getText() + " | ");
+            values += harmonyBtn.getText() + ",";
         }
 
         if(graceBtn.isSelected() == true){
-            hobbiesView.append(graceBtn.getText() + " | ");
+            values += graceBtn.getText() + ",";
         }
 
         if(honestyBtn.isSelected() == true){
-            hobbiesView.append(honestyBtn.getText() + " | ");
+            values += honestyBtn.getText() + ",";
         }
 
         if(freedomBtn.isSelected() == true){
-            hobbiesView.append(freedomBtn.getText() + " | ");
+            values += freedomBtn.getText() + ",";
         }
 
         if(faithBtn.isSelected() == true){
-            hobbiesView.append(faithBtn.getText() + " | ");
+            values += faithBtn.getText() + ",";
         }
 
         if(ethicsBtn.isSelected() == true){
-            hobbiesView.append(ethicsBtn.getText() + " | ");
+            values += ethicsBtn.getText() + ",";
         }
 
         if(patriotismBtn.isSelected() == true){
-            hobbiesView.append(patriotismBtn.getText() + " | ");
+            values += patriotismBtn.getText() + ",";
         }
 
         if(knowledgeBtn.isSelected() == true){
-            hobbiesView.append(knowledgeBtn.getText() + " | ");
+            values += knowledgeBtn.getText() + ",";
         }
 
         if(leadershipBtn.isSelected() == true){
-            hobbiesView.append(leadershipBtn.getText() + " | ");
+            values += leadershipBtn.getText() + ",";
         }
 
         if(natureBtn.isSelected() == true){
-            hobbiesView.append(natureBtn.getText() + " | ");
+            values += natureBtn.getText() + ",";
         }
 
         if(sportsmanshipBtn.isSelected() == true){
-            hobbiesView.append(sportsmanshipBtn.getText() + " | ");
+            values += sportsmanshipBtn.getText() + ",";
         }
 
         if(respectBtn.isSelected() == true){
-            hobbiesView.append(respectBtn.getText() + " | ");
+            values += respectBtn.getText() + ",";
         }
 
         if(teamworkBtn.isSelected() == true){
-            hobbiesView.append(teamworkBtn.getText() + " | ");
+            values += teamworkBtn.getText() + ",";
         }
 
         if(wealthBtn.isSelected() == true){
-            hobbiesView.append(wealthBtn.getText() + " | ");
+            values += wealthBtn.getText() + ",";
         }
     }
+
+    public void convertStringtoArr(String hobbies, String lifestyle, String values){
+        hobbiesArr = hobbies.split(",");
+        lifestyleArr = lifestyle.split(",");
+        valuesArr = values.split(",");
+    }
+
 }

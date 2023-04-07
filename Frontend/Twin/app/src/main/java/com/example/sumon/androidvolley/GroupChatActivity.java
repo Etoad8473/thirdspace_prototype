@@ -47,10 +47,11 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 
         backButton.setOnClickListener(this);
         chatBox.setOnKeyListener(this);
+        RegenerateAllGroupChatOnScreen(chatHistory);
 
         final Handler handler = new Handler();
         Timer timer = new Timer();
-        TimerTask updateEventList = new TimerTask() {
+        TimerTask chatList = new TimerTask() {
             @Override
             public void run() {
                 handler.post(new Runnable(){
@@ -67,7 +68,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
             }
         };
 
-        timer.schedule(updateEventList, 0, 5000);
+        timer.schedule(chatList, 0, 100);
     }
 
     @Override

@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import twin.Event.Event;
 import twin.Personality.Personality;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name="users")
@@ -51,9 +54,13 @@ public class User {
     @JsonIgnore
     private Event event;
 
+    @Column(name = "friends")
+    private List<User> friends;
+
     public User() {
         personality = new Personality();
         personality.setUser(this);
+        friends = new ArrayList<User>();
     }
 
     public User(String userName, String password, String name, String email, String gender, String phone)
@@ -65,6 +72,7 @@ public class User {
         this.email = email;
         this.gender = gender;
         phoneNumber = phone;
+        friends = new ArrayList<User>();
 
         personality.setUser(this);
     }
@@ -171,5 +179,21 @@ public class User {
         this.event = event;
     }
 
+    //returns a list of the user's friends
+    public List<User> getFriends(){
+        return friends;
+    }
+
+    //set all the users friends at once
+    public void setFriends(List<User> friends){
+        this.friends = friends;
+    }
+
+    //user can add a friend one at a time
+    public void addFriend(User friend){
+        this.friends.add(friend);
+    }
+
+    public void removeFriend(User friend) { this.friends.remove(friend); }
 
 }

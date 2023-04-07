@@ -12,10 +12,7 @@ import twin.Personality.Values.ValueRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 class UserController {
@@ -125,7 +122,7 @@ class UserController {
         return userRepo.findById(id);
     }
 
-    @PostMapping("/users/{id}/getMatch")
+    @PostMapping("/users/{id}/getBestMatch")
     public String getMatchB(@PathVariable long id)
     {
         User u = userRepo.findById(id);
@@ -163,6 +160,27 @@ class UserController {
         userRepo.save(friend);
 
         return "added: " + friend.getUserName();
+    }
+
+    @PostMapping("/users/{id}/getRandMatch")
+    public String getMatchR(@PathVariable Long id)
+    {
+        User u = userRepo.findById(id).get();
+
+        Random rand = new Random();
+
+        List<Hobby> hobbies = u.getPersonality().getHobbies();
+
+        Hobby h = hobbies.get(rand.nextInt(hobbies.size()));
+        List<Personality> persons = h.getPersonalities();
+        User randFriend = persons.get(rand.nextInt(persons.size())).getUser();
+
+        u.addFriend(randFriend);
+
+        userRepo.save(u);
+        userRepo.save(randFriend);
+
+        return "added" + randFriend.getUserName();
     }
 
     @PostMapping("/users/{uId}/hobby/{hId}")

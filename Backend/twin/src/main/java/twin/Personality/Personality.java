@@ -87,20 +87,6 @@ public class Personality
 
 
 
-
-
-    public User generateMatchB()
-    {
-        Random rand = new Random();
-
-        Hobby h = hobbies.get(rand.nextInt(hobbies.size()));
-        List<Personality> persons = h.getPersonalities();
-        User randFriend = persons.get(rand.nextInt(persons.size())).getUser();
-
-        return randFriend;
-    }
-
-
 //    public ArrayList<User> createGroup(User u)
 //    {
 //        ArrayList<User> group = new ArrayList<User>();

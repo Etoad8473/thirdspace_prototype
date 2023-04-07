@@ -373,7 +373,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:labelFor="@id/editprofilewindows_aboutMe"
+                        android:labelFor="@id/sexualityEditText"
                         android:text="Sexuality"
                         android:textStyle="italic"
                         android:textSize="25sp" />
@@ -421,6 +421,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mobile"
+                        android:labelFor="@+id/mobileEditText"
                         android:textStyle="italic"
                         android:textSize="25sp" />
 

@@ -20,10 +20,10 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     private Button activeBtn, healthyBtn, soloBtn, ruralBtn, urbanBtn, nomadicBtn, bohemianBtn, digitalBtn;
     private Button accountabilityBtn, achievementBtn, adaptabilityBtn, adventureBtn, ambitionBtn, careerBtn, caringBtn,
             communityBtn, friendshipBtn, confidienceBtn, harmonyBtn, graceBtn, honestyBtn, freedomBtn, faithBtn, ethicsBtn,
-            patriotismBtn, knowledgeBtn, leadershipBtn, natureBtn, sportsmanshipBtn, respectBtn, teamworkBtn, wealth;
+            patriotismBtn, knowledgeBtn, leadershipBtn, natureBtn, sportsmanshipBtn, respectBtn, teamworkBtn, wealthBtn;
     private TextView selectedView;
 
-    private EditText goal1, goal2;
+    private EditText age, ethnicity, sexuality, location, mobile,goal1, goal2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,12 +90,17 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         sportsmanshipBtn = (Button) findViewById(R.id.sportsmanshipBtn);
         respectBtn = (Button) findViewById(R.id.respectBtn);
         teamworkBtn = (Button) findViewById(R.id.teamworkBtn);
-        wealth = (Button) findViewById(R.id.wealthBtn);
+        wealthBtn = (Button) findViewById(R.id.wealthBtn);
 
 
         doneBtn = (Button) findViewById(R.id.personalityDoneButton);
         selectedView = (TextView) findViewById(R.id.viewSelected);
 
+        age = (EditText) findViewById(R.id.ageEditText);
+        ethnicity = (EditText) findViewById(R.id.ethnicityEditText);
+        sexuality = (EditText) findViewById(R.id.sexualityEditText);
+        location = (EditText) findViewById(R.id.locationEditText);
+        mobile = (EditText) findViewById(R.id.mobileEditText);
         goal1 = (EditText) findViewById(R.id.goalEditText1);
         goal2 = (EditText) findViewById(R.id.goalEditText2);
 
@@ -160,7 +165,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         sportsmanshipBtn.setOnClickListener(this);
         respectBtn.setOnClickListener(this);
         teamworkBtn.setOnClickListener(this);
-        wealth.setOnClickListener(this);
+        wealthBtn.setOnClickListener(this);
 
 
         doneBtn.setOnClickListener(this);
@@ -549,6 +554,258 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                 break;
 
 
+            case R.id.accountabilityBtn:
+                if(accountabilityBtn.isSelected() == false){
+                    accountabilityBtn.setSelected(true);
+                    accountabilityBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(accountabilityBtn.isSelected() == true) {
+                    accountabilityBtn.setSelected(false);
+                    accountabilityBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.achievementBtn:
+                if(achievementBtn.isSelected() == false){
+                    achievementBtn.setSelected(true);
+                    achievementBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(achievementBtn.isSelected() == true) {
+                    achievementBtn.setSelected(false);
+                    achievementBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.adaptabilityBtn:
+                if(adaptabilityBtn.isSelected() == false){
+                    adaptabilityBtn.setSelected(true);
+                    adaptabilityBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(adaptabilityBtn.isSelected() == true) {
+                    adaptabilityBtn.setSelected(false);
+                    adaptabilityBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.adventureBtn:
+                if(adventureBtn.isSelected() == false){
+                    adventureBtn.setSelected(true);
+                    adventureBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(adventureBtn.isSelected() == true) {
+                    adventureBtn.setSelected(false);
+                    adventureBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.ambitionBtn:
+                if(ambitionBtn.isSelected() == false){
+                    ambitionBtn.setSelected(true);
+                    ambitionBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(ambitionBtn.isSelected() == true) {
+                    ambitionBtn.setSelected(false);
+                    ambitionBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.careerBtn:
+                if(careerBtn.isSelected() == false){
+                    careerBtn.setSelected(true);
+                    careerBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(careerBtn.isSelected() == true) {
+                    careerBtn.setSelected(false);
+                    careerBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.communityBtn:
+                if(communityBtn.isSelected() == false){
+                    communityBtn.setSelected(true);
+                    communityBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(communityBtn.isSelected() == true) {
+                    communityBtn.setSelected(false);
+                    communityBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.friendshipBtn:
+                if(friendshipBtn.isSelected() == false){
+                    friendshipBtn.setSelected(true);
+                    friendshipBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(friendshipBtn.isSelected() == true) {
+                    friendshipBtn.setSelected(false);
+                    friendshipBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.confidenceBtn:
+                if(confidienceBtn.isSelected() == false){
+                    confidienceBtn.setSelected(true);
+                    confidienceBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(confidienceBtn.isSelected() == true) {
+                    confidienceBtn.setSelected(false);
+                    confidienceBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.harmonyBtn:
+                if(harmonyBtn.isSelected() == false){
+                    harmonyBtn.setSelected(true);
+                    harmonyBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(harmonyBtn.isSelected() == true) {
+                    harmonyBtn.setSelected(false);
+                    harmonyBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.graceBtn:
+                if(graceBtn.isSelected() == false){
+                    graceBtn.setSelected(true);
+                    graceBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(graceBtn.isSelected() == true) {
+                    graceBtn.setSelected(false);
+                    graceBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.honestyBtn:
+                if(honestyBtn.isSelected() == false){
+                    honestyBtn.setSelected(true);
+                    honestyBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(honestyBtn.isSelected() == true) {
+                    honestyBtn.setSelected(false);
+                    honestyBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.freedomBtn:
+                if(freedomBtn.isSelected() == false){
+                    freedomBtn.setSelected(true);
+                    freedomBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(freedomBtn.isSelected() == true) {
+                    freedomBtn.setSelected(false);
+                    freedomBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.faithBtn:
+                if(faithBtn.isSelected() == false){
+                    faithBtn.setSelected(true);
+                    faithBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(faithBtn.isSelected() == true) {
+                    faithBtn.setSelected(false);
+                    faithBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.ethicsBtn:
+                if(ethicsBtn.isSelected() == false){
+                    ethicsBtn.setSelected(true);
+                    ethicsBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(ethicsBtn.isSelected() == true) {
+                    ethicsBtn.setSelected(false);
+                    ethicsBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.patriotismBtn:
+                if(patriotismBtn.isSelected() == false){
+                    patriotismBtn.setSelected(true);
+                    patriotismBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(patriotismBtn.isSelected() == true) {
+                    patriotismBtn.setSelected(false);
+                    patriotismBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.knowledgeBtn:
+                if(knowledgeBtn.isSelected() == false){
+                    knowledgeBtn.setSelected(true);
+                    knowledgeBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(knowledgeBtn.isSelected() == true) {
+                    knowledgeBtn.setSelected(false);
+                    knowledgeBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.leadershipBtn:
+                if(leadershipBtn.isSelected() == false){
+                    leadershipBtn.setSelected(true);
+                    leadershipBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(leadershipBtn.isSelected() == true) {
+                    leadershipBtn.setSelected(false);
+                    leadershipBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.natureBtn:
+                if(natureBtn.isSelected() == false){
+                    natureBtn.setSelected(true);
+                    natureBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(natureBtn.isSelected() == true) {
+                    natureBtn.setSelected(false);
+                    natureBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.sportsmanshipBtn:
+                if(sportsmanshipBtn.isSelected() == false){
+                    sportsmanshipBtn.setSelected(true);
+                    sportsmanshipBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(sportsmanshipBtn.isSelected() == true) {
+                    sportsmanshipBtn.setSelected(false);
+                    sportsmanshipBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.respectBtn:
+                if(respectBtn.isSelected() == false){
+                    respectBtn.setSelected(true);
+                    respectBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(respectBtn.isSelected() == true) {
+                    respectBtn.setSelected(false);
+                    respectBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.teamworkBtn:
+                if(teamworkBtn.isSelected() == false){
+                    teamworkBtn.setSelected(true);
+                    teamworkBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(teamworkBtn.isSelected() == true) {
+                    teamworkBtn.setSelected(false);
+                    teamworkBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
+            case R.id.wealthBtn:
+                if(wealthBtn.isSelected() == false){
+                    wealthBtn.setSelected(true);
+                    wealthBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(wealthBtn.isSelected() == true) {
+                    wealthBtn.setSelected(false);
+                    wealthBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
 
             default:
                 break;
@@ -650,6 +907,133 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         }
         if(knittingBtn.isSelected() == true){
             hobbiesView.append(knittingBtn.getText() + " | ");
+        }
+
+        //Lifestyle
+        if(activeBtn.isSelected() == true){
+            hobbiesView.append(activeBtn.getText() + " | ");
+        }
+
+        if(healthyBtn.isSelected() == true){
+            hobbiesView.append(healthyBtn.getText() + " | ");
+        }
+
+        if(soloBtn.isSelected() == true){
+            hobbiesView.append(soloBtn.getText() + " | ");
+        }
+
+        if(ruralBtn.isSelected() == true){
+            hobbiesView.append(ruralBtn.getText() + " | ");
+        }
+
+        if(urbanBtn.isSelected() == true){
+            hobbiesView.append(urbanBtn.getText() + " | ");
+        }
+
+        if(nomadicBtn.isSelected() == true){
+            hobbiesView.append(nomadicBtn.getText() + " | ");
+        }
+
+        if(bohemianBtn.isSelected() == true){
+            hobbiesView.append(bohemianBtn.getText() + " | ");
+        }
+
+        if(digitalBtn.isSelected() == true){
+            hobbiesView.append(digitalBtn.getText() + " | ");
+        }
+
+
+        // Values
+        if(accountabilityBtn.isSelected() == true){
+            hobbiesView.append(accountabilityBtn.getText() + " | ");
+        }
+
+        if(achievementBtn.isSelected() == true){
+            hobbiesView.append(achievementBtn.getText() + " | ");
+        }
+
+        if(adaptabilityBtn.isSelected() == true){
+            hobbiesView.append(adaptabilityBtn.getText() + " | ");
+        }
+
+        if(adventureBtn.isSelected() == true){
+            hobbiesView.append(adventureBtn.getText() + " | ");
+        }
+
+        if(ambitionBtn.isSelected() == true){
+            hobbiesView.append(ambitionBtn.getText() + " | ");
+        }
+
+        if(careerBtn.isSelected() == true){
+            hobbiesView.append(careerBtn.getText() + " | ");
+        }
+
+        if(caringBtn.isSelected() == true){
+            hobbiesView.append(communityBtn.getText() + " | ");
+        }
+
+        if(friendshipBtn.isSelected() == true){
+            hobbiesView.append(friendshipBtn.getText() + " | ");
+        }
+
+        if(confidienceBtn.isSelected() == true){
+            hobbiesView.append(confidienceBtn.getText() + " | ");
+        }
+
+        if(harmonyBtn.isSelected() == true){
+            hobbiesView.append(harmonyBtn.getText() + " | ");
+        }
+
+        if(graceBtn.isSelected() == true){
+            hobbiesView.append(graceBtn.getText() + " | ");
+        }
+
+        if(honestyBtn.isSelected() == true){
+            hobbiesView.append(honestyBtn.getText() + " | ");
+        }
+
+        if(freedomBtn.isSelected() == true){
+            hobbiesView.append(freedomBtn.getText() + " | ");
+        }
+
+        if(faithBtn.isSelected() == true){
+            hobbiesView.append(faithBtn.getText() + " | ");
+        }
+
+        if(ethicsBtn.isSelected() == true){
+            hobbiesView.append(ethicsBtn.getText() + " | ");
+        }
+
+        if(patriotismBtn.isSelected() == true){
+            hobbiesView.append(patriotismBtn.getText() + " | ");
+        }
+
+        if(knowledgeBtn.isSelected() == true){
+            hobbiesView.append(knowledgeBtn.getText() + " | ");
+        }
+
+        if(leadershipBtn.isSelected() == true){
+            hobbiesView.append(leadershipBtn.getText() + " | ");
+        }
+
+        if(natureBtn.isSelected() == true){
+            hobbiesView.append(natureBtn.getText() + " | ");
+        }
+
+        if(sportsmanshipBtn.isSelected() == true){
+            hobbiesView.append(sportsmanshipBtn.getText() + " | ");
+        }
+
+        if(respectBtn.isSelected() == true){
+            hobbiesView.append(respectBtn.getText() + " | ");
+        }
+
+        if(teamworkBtn.isSelected() == true){
+            hobbiesView.append(teamworkBtn.getText() + " | ");
+        }
+
+        if(wealthBtn.isSelected() == true){
+            hobbiesView.append(wealthBtn.getText() + " | ");
         }
     }
 }

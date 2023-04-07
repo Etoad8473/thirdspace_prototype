@@ -162,7 +162,7 @@ class UserController {
         userRepo.save(u);
         userRepo.save(friend);
 
-        return "success";
+        return "added: " + friend.getUserName();
     }
 
     @PostMapping("/users/{uId}/hobby/{hId}")

@@ -55,6 +55,7 @@ public class User {
     private Event event;
 
     @ManyToMany
+    @JsonIgnore
     private List<User> friends;
 
     public User() {

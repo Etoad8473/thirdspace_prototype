@@ -13,7 +13,7 @@ public class GroupChatController {
     @Autowired
     private GroupChatRepository groupChatRepo;
 
-    @GetMapping("/groupChats")
+    @GetMapping("/groupChat")
     public List<GroupChat> returnGroupChats(){
         return groupChatRepo.findAll();
     }

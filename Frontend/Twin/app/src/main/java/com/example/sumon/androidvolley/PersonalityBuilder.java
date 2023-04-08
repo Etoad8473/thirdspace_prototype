@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -26,6 +27,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     private EditText age, ethnicity, sexuality, location, mobile,goal1, goal2;
     private String hobbies, lifestyle, values = ",";
     private String[] hobbiesArr, lifestyleArr, valuesArr;
+    private ArrayList<String> hobbiesArrList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,8 +202,8 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.personalityDoneButton:
                 checkSelected();
-                convertStringtoArr(hobbies, lifestyle, values);
-                //finish();
+                //convertStringtoArr(hobbies, lifestyle, values);
+                finish();
                 break;
 
             case R.id.sportsHobbiesButton:
@@ -909,7 +911,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             hobbies += chessBtn.getText() + ",";
         }
         if(knittingBtn.isSelected() == true){
-            hobbies += knittingBtn.getText();
+            hobbies += knittingBtn.getText() + ",";
         }
 
         //Lifestyle
@@ -1041,9 +1043,26 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     }
 
     public void convertStringtoArr(String hobbies, String lifestyle, String values){
-        hobbiesArr = hobbies.split(",");
-        lifestyleArr = lifestyle.split(",");
-        valuesArr = values.split(",");
+        if(hobbies != null)
+            hobbiesArr = hobbies.split(",");
+
+        if(lifestyle != null)
+            lifestyleArr = lifestyle.split(",");
+
+        if(values !=null)
+            valuesArr = values.split(",");
+
+        for(int i = 0; i< hobbiesArr.length; i++){
+                selectedView.append(hobbiesArr[i]);
+        }
+
+        for(int i =0; i< lifestyleArr.length; i++){
+            selectedView.append(lifestyleArr[i]);
+        }
+
+        for(int i =0; i< valuesArr.length; i++){
+            selectedView.append(valuesArr[i]);
+        }
     }
 
 }

@@ -121,8 +121,8 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 
     public void postChat(){
         GroupChat newChat = new GroupChat();
-        newChat.setGroupName(groupName.getText().toString());
-        newChat.setSender("Terminator");
+        //newChat.setGroupName(groupName.getText().toString());
+        newChat.setSender(null);
         newChat.setTime("10:25 pm");
         newChat.setData(chatBox.getText().toString());
         newChat.setDate("4/6/2023");

@@ -127,39 +127,64 @@ class UserController {
     {
         User u = userRepo.findById(id);
 
+        //get users hobbies
+        //for each hobby the user has
+        //for each hobby, return all users with that hobby
+        //check if in map
 
-            //get users hobbies
-            //for each hobby the user has
-            //for each hobby, return all users with that hobby
-            //check if in map
+        //potential list, return the highest connection
+        HashMap<Long, Integer> potential = new HashMap<Long, Integer>();
 
-            //potential list, return the highest connection
-            HashMap<Long, Integer> potential = new HashMap<Long, Integer>();
-
-            List<Hobby> hobbies = u.getPersonality().getHobbies();
-            for(Hobby h:hobbies)
+        List<Hobby> hobbies = u.getPersonality().getHobbies();
+        for(Hobby h:hobbies)
+        {
+            List<Personality> personalities = h.getPersonalities();
+            for(Personality p : personalities)
             {
-                List<Personality> personalities = h.getPersonalities();
-                for(Personality p : personalities)
-                {
-                    Long potentialID = p.getId();
-                    if(potential.containsKey(potentialID))
-                        potential.put(potentialID, potential.get(potentialID) + 1);
-                    else
-                        potential.put(potentialID, 1);
-                }
+                Long potentialID = p.getUser().getId();
+                //skip this users own ID
+                if(potentialID == id) continue;
+
+                if(potential.containsKey(potentialID))
+                    potential.put(potentialID, potential.get(potentialID) + 1);
+                else
+                    potential.put(potentialID, 1);
             }
+        }
 
-            Long friendId = Collections.max(potential.entrySet(), Map.Entry.comparingByValue()).getKey();
 
-            User friend = userRepo.findById(friendId).get();
+        //get the friend object from search
+        Long friendId = Collections.max(potential.entrySet(), Map.Entry.comparingByValue()).getKey();
+        User friend = userRepo.findById(friendId).get();
 
+
+        //create a String list of the potentials to print
+        String ratedFriends = "";
+        for(Long hashID: potential.keySet())
+        {
+            //find the user in the repo
+            User pot = userRepo.findById(hashID).get();
+
+            //add their username and connection level to a string with \n
+            String name = pot.getName();
+            int connection = potential.get(hashID);
+
+            ratedFriends += name + ": " + connection + "\n";
+        }
+
+
+        //check if friend already added
+        if(u.getFriends().contains(friend))
+            return "already added: " + friend.getName() + " from list:\n" + ratedFriends;
+        else {
+            //add friend
             u.addFriend(friend);
 
-        userRepo.save(u);
-        userRepo.save(friend);
+            userRepo.save(u);
+            userRepo.save(friend);
 
-        return "added: " + friend.getUserName();
+            return "added: " + friend.getUserName() + " from list:\n" + ratedFriends;
+        }
     }
 
     @PostMapping("/users/{id}/getRandMatch")
@@ -175,13 +200,27 @@ class UserController {
         List<Personality> persons = h.getPersonalities();
         User randFriend = persons.get(rand.nextInt(persons.size())).getUser();
 
-        u.addFriend(randFriend);
 
-        userRepo.save(u);
-        userRepo.save(randFriend);
+        //check self reference
+        if(randFriend.equals(u))
+            return "self reference";
 
-        return "added" + randFriend.getUserName();
+        //check if friend already added
+        if(u.getFriends().contains(randFriend))
+            return "already added: " + randFriend.getName();
+        else
+        {
+            //add friends
+            u.addFriend(randFriend);
+
+            userRepo.save(u);
+            userRepo.save(randFriend);
+
+            return "added" + randFriend.getUserName();
+        }
     }
+
+    
 
     @PostMapping("/users/{uId}/hobby/{hId}")
     public String addHobby(@PathVariable long uId, @PathVariable long hId)
@@ -190,13 +229,18 @@ class UserController {
         Personality p = u.getPersonality();
         Hobby h = hobbyRepo.findById(hId);
 
-        p.addHobby(h);
+        //check if hobby already exists
+        if(u.getPersonality().getHobbies().contains(h))
+            return "hobby already added";
+        else
+        {
+            p.addHobby(h);
 
-        personalityRepo.save(p);
-        hobbyRepo.save(h);
+            personalityRepo.save(p);
+            hobbyRepo.save(h);
 
-        //return "success";
-        return "finished";
+            return "added hobby: " + h.getHobbyN() + "  to user: " + u.getName();
+        }
     }
 
     @PostMapping("/users/{uId}/interest/{iId}")
@@ -210,6 +254,9 @@ class UserController {
 
         personalityRepo.save(p);
         interestRepo.save(i);
+
+
+        //add the same self checking functions from hobby
 
         //return "success";
         return "finished";
@@ -227,6 +274,8 @@ class UserController {
         personalityRepo.save(p);
         valueRepo.save(v);
 
+        //add the same self checking functions from hobby
+
         //return "success";
         return "finished";
     }
@@ -241,30 +290,5 @@ class UserController {
         userRepo.deleteById(id);
 
     }
-
-        /*@GetMapping("/user/{name}")
-    public @ResponseBody String getUser(@PathVariable String name)
-    {
-        User user = userList.get(name);
-        return user.toString();
-    }*/
-
-    /*@GetMapping("/user/{name}/friends")
-    public @ResponseBody String getUsersFriends(@PathVariable String name)
-    {
-        User user = userList.get(name);
-        ArrayList userFriends = new ArrayList<User>();
-
-        for(String i: userList.keySet())
-        {
-            if (user.getUserName() != i) {
-                if (user.getPersonality() == userList.get(i).getPersonality()) {
-                    userFriends.add(userList.get(i));
-                }
-            }
-        }
-
-        return user.toString() +"\n\n"+ userFriends;
-    }*/
 
 }

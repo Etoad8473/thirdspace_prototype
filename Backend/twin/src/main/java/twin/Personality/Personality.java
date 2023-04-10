@@ -118,4 +118,5 @@ public class Personality
     public List<Interest> getInterests(){return interests;}
 
     public List<Value> getValues(){return values;}
+
 }

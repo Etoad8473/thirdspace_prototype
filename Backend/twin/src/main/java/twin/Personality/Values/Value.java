@@ -17,7 +17,8 @@ public class Value {
     @Column(name="id")
     private long id;
 
-    @Column(name = "value_name")
+
+    @Column(name="value_name")
     private String valueN;
 
 

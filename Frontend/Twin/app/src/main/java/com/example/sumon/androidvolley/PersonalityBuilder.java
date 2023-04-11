@@ -1208,17 +1208,17 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
 
     public void postPersonality(){
         for(int i = 0; i<hobbiesIdArr.length; i++){
-            GetPersonalityApi().PostHobbyToUser(196,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
+            GetPersonalityApi().PostHobbyToUser(289,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
             }));
         }
 
         for(int i = 0; i< lifestyleIdArr.length; i++) {
-            GetPersonalityApi().PostInterestToUser(196, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
+            GetPersonalityApi().PostInterestToUser(289, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
             }));
         }
 
         for(int i = 0; i<valuesIdArr.length; i++) {
-            GetPersonalityApi().PostValueToUser(196, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
+            GetPersonalityApi().PostValueToUser(289, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
             }));
         }
 

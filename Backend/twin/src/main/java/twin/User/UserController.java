@@ -4,6 +4,7 @@ package twin.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import twin.Group.Group;
+import twin.Group.GroupRepository;
 import twin.Personality.Hobby.Hobby;
 import twin.Personality.Hobby.HobbyRepository;
 import twin.Personality.Interests.Interest;
@@ -32,6 +33,9 @@ class UserController {
 
     @Autowired
     private ValueRepository valueRepo;
+
+    @Autowired
+    private GroupRepository groupRepo;
 
 
     //-----------------------------GET---------------------//
@@ -244,7 +248,8 @@ class UserController {
 
 
         //get users hobbies
-        List<Hobby> hobbies = userRepo.findById(id).get().getPersonality().getHobbies();
+        User user = userRepo.findById(id).get();
+        List<Hobby> hobbies = user.getPersonality().getHobbies();
 
         //choose hobby with the most people
         Hobby commonHobby = hobbies.get(0);
@@ -259,22 +264,22 @@ class UserController {
         //select random people
         ArrayList<User> prospects = new ArrayList<User>();
 
-        if(numOfProspects < 3)//if there are less than 3 people, return too few
+        if(numOfProspects <= 1)//at least 2 prospects to make a group, return too few
             return "too few people with common hobbies";
 
-        if(numOfProspects <= 4)//if there are 3-4 people add them to group
+        if(numOfProspects <= 3)//if there are 2-3 propects add them to group
         {
             for(Personality p: commonHobby.getPersonalities())
             {
                 prospects.add(p.getUser());
             }
         }
-        else//if there are >4 people, randomly choose 4
+        else//if there are >3 prospects, randomly choose 3
         {
-            Random rand = new Random();
+            Random rand = new Random();//TODO
 
             //for 4 people randomly select
-            for(int i = 0; i<4; i++)
+            for(int i = 0; i<3; i++)
             {
                 //TODO: make the selection random
 
@@ -282,8 +287,15 @@ class UserController {
             }
         }
 
-        //create group object & return
+        //create group object return
         Group group = new Group();
+        group.setUsers(prospects);
+        group.addUser(user);
+
+        for(User u: prospects)
+        {
+            userRepo.save(u);
+        }
 
         return "fail";
     }

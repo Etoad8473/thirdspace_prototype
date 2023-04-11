@@ -3,7 +3,9 @@ package twin.User;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import twin.Event.Event;
+import twin.Group.Group;
 import twin.Personality.Personality;
 
 import java.util.ArrayList;
@@ -55,8 +57,12 @@ public class User {
     private Event event;
 
     @ManyToMany
-    @JsonIgnore
+    @JsonIgnoreProperties
     private List<User> friends;
+
+    @ManyToMany
+    @JsonIgnoreProperties
+    private List<Group> groups;
 
     public User() {
         personality = new Personality();
@@ -199,4 +205,11 @@ public class User {
 
     public void removeFriend(User friend) { this.friends.remove(friend); }
 
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void addGroup(Group g) {
+        groups.add(g);
+    }
 }

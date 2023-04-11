@@ -36,7 +36,7 @@ public class Group {
     @Column(name = "size")
     private int size; //size of the group
 
-    @OneToMany
+    @ManyToMany
     @Column(name = "users")
     private List<User> users;
 
@@ -44,7 +44,7 @@ public class Group {
         users = new ArrayList<User>();
     }
 
-    public Group(String name, int size){
+    public Group(String name, int size) {
         groupName = name;
         setSize(size);
         groupChat = new GroupChat();
@@ -103,12 +103,18 @@ public class Group {
         return users;
     }
 
-    public void setUsers(List<User> users){
-        this.users = users;
+    public void setUsers(List<User> userList)
+    {
+        this.users = userList;
+        for(User u : userList)
+        {
+            u.addGroup(this);
+        }
     }
 
-    public void addUser(User user){
-        this.users.add(user);
+    public void addUser(User u){
+        users.add(u);
+        u.addGroup(this);
     }
 
     public void removeUser(User user) { this.users.remove(user); }

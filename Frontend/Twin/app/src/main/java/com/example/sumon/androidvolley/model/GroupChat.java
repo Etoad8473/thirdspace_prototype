@@ -38,12 +38,12 @@ public class GroupChat {
         return data;
     }
 
-    public void setGroupName(String groupName){
-        this.groupName = groupName;
-    }
-    public String getGroupName(){
-        return groupName;
-    }
+//    public void setGroupName(String groupName){
+//        this.groupName = groupName;
+//    }
+//    public String getGroupName(){
+//        return groupName;
+//    }
 
     public String printable(){
         return getDate() + " | " +getTime() +

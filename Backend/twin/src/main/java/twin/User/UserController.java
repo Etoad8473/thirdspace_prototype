@@ -3,6 +3,7 @@ package twin.User;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import twin.Group.Group;
 import twin.Personality.Hobby.Hobby;
 import twin.Personality.Hobby.HobbyRepository;
 import twin.Personality.Interests.Interest;
@@ -12,6 +13,7 @@ import twin.Personality.Values.ValueRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
+import javax.persistence.Column;
 import java.util.*;
 
 @RestController
@@ -122,7 +124,7 @@ class UserController {
         return userRepo.findById(id);
     }
 
-    @PostMapping("/users/{id}/getBestMatch")
+    @PostMapping("/users/{id}/createBestMatch")
     public String getMatchB(@PathVariable long id)
     {
         User u = userRepo.findById(id);
@@ -187,7 +189,7 @@ class UserController {
         }
     }
 
-    @PostMapping("/users/{id}/getRandMatch")
+    @PostMapping("/users/{id}/createRandMatch")
     public String getMatchR(@PathVariable Long id)
     {
         User u = userRepo.findById(id).get();
@@ -220,7 +222,72 @@ class UserController {
         }
     }
 
-    
+
+    @PostMapping("/users/{id}/createGroupMatch")
+    public String createGroupMatchFromSingleMatch(@PathVariable Long id)
+    {
+
+        //ABSTRACT: get match, find others
+
+
+
+        return "fail";
+    }
+
+
+    @PostMapping("/users/{id}/createGroupMatchB")
+    public String createGroupMatchSimple(@PathVariable Long id)
+    {
+
+        //ABSTRACT: get users hobbies, choose hobby with the most people, then randomly select people
+        //TODO: make the selection random
+
+
+        //get users hobbies
+        List<Hobby> hobbies = userRepo.findById(id).get().getPersonality().getHobbies();
+
+        //choose hobby with the most people
+        Hobby commonHobby = hobbies.get(0);
+        for(Hobby h: hobbies)
+        {
+            if(h.getPersonalities().size() > commonHobby.getPersonalities().size())
+                commonHobby = h;
+        }
+        int numOfProspects = commonHobby.getPersonalities().size();
+
+
+        //select random people
+        ArrayList<User> prospects = new ArrayList<User>();
+
+        if(numOfProspects < 3)//if there are less than 3 people, return too few
+            return "too few people with common hobbies";
+
+        if(numOfProspects <= 4)//if there are 3-4 people add them to group
+        {
+            for(Personality p: commonHobby.getPersonalities())
+            {
+                prospects.add(p.getUser());
+            }
+        }
+        else//if there are >4 people, randomly choose 4
+        {
+            Random rand = new Random();
+
+            //for 4 people randomly select
+            for(int i = 0; i<4; i++)
+            {
+                //TODO: make the selection random
+
+                prospects.add(commonHobby.getPersonalities().get(i).getUser());
+            }
+        }
+
+        //create group object & return
+        Group group = new Group();
+
+        return "fail";
+    }
+
 
     @PostMapping("/users/{uId}/hobby/{hId}")
     public String addHobby(@PathVariable long uId, @PathVariable long hId)

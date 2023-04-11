@@ -127,7 +127,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 
     public void postChat(){
         GroupChat newChat = new GroupChat();
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        String currentDate = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(new Date());
         String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         //newChat.setGroupName(groupName.getText().toString());
         newChat.setSender(null);

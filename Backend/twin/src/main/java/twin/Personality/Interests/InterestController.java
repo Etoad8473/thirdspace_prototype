@@ -6,18 +6,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class InterestController {
+public class InterestController
+{
+
+    @Autowired
+    private twin.Personality.Interests.InterestRepository interestRepo;
+
 
     //-------------------------GET---------------------------------//
-    @Autowired
-    private InterestRepository interestRepo;
 
     @GetMapping("/interest")
     public List<Interest> returnInterests() { return interestRepo.findAll(); }
 
+    @GetMapping("/interest/{id}")
+    public Interest getInterestById(@PathVariable int id){return interestRepo.findById(id);}
+
     //-------------------------POST--------------------------------//
-    public Interest createInterest(@RequestBody Interest interest) { return interestRepo.save(interest); }
+
+    @PostMapping("/interest/{name}")
+    public Interest createInterest(@PathVariable String name) {
+        if(name == null || name.equals(""))
+            return null;
+        Interest i = new Interest(name);
+        return interestRepo.save(i);
+    }
 
     //-------------------------Delete-------------------------------//
+
+    @DeleteMapping("/interest/{id}")
     public @ResponseBody void removeInterest(@PathVariable Long id) { interestRepo.deleteById(id); }
 }

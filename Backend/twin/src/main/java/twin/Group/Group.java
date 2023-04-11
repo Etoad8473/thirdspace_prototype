@@ -3,6 +3,9 @@ package twin.Group;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import twin.GroupChat.GroupChat;
+import twin.GroupChat.GroupChatController;
 import twin.User.User;
 
 @Entity
@@ -16,6 +19,10 @@ public class Group {
 
     @Column(name = "name")
     private String groupName;
+    @OneToOne(cascade = {CascadeType.ALL})
+    private GroupChat groupChat;
+
+
 
     //different group sizes
     public static int small = 4;
@@ -34,13 +41,14 @@ public class Group {
     private List<User> users;
 
     public Group() {
-        users = new ArrayList<>();
+        users = new ArrayList<User>();
     }
 
     public Group(String name, int size){
         groupName = name;
         setSize(size);
-        users = new ArrayList<>();
+        groupChat = new GroupChat();
+        users = new ArrayList<User>();
     }
 
     @Override
@@ -48,7 +56,20 @@ public class Group {
         return "Group{" +
                 "groupName=" + groupName +
                 ", size='" + size + '\'' +
+                "groupChat=" + groupChat + '\'' +
                 '}';
+    }
+
+    public long getId(){
+        return id;
+    }
+
+    public GroupChat getGroupChat(){
+        return groupChat;
+    }
+
+    public void setGroupChat(GroupChat groupChat){
+        this.groupChat = groupChat;
     }
 
     public String getGroupName(){

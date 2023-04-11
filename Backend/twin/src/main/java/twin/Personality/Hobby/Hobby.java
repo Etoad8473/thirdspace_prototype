@@ -26,7 +26,6 @@ public class Hobby {
     //@ManyToOne
     @ManyToMany
     @JsonIgnore
-    //private Personality personality;
     private List<Personality> personalities;
 
     //----------Constructor-------------//
@@ -41,22 +40,6 @@ public class Hobby {
         this.hobbyN = name;
     }
 
-    /*@ManyToOne
-    private Hobby parentHobby;
-    @OneToMany
-    private List<Hobby> subHobbies;
-    */
-
-    //----------Getter/Setter--------------//
-
-
-    /*public Personality getPersonality() {
-        return personality;
-    }
-
-    public void setPersonality(Personality personality) {
-        this.personality = personality;
-    }*/
 
     public String getHobbyN() {
         return hobbyN;

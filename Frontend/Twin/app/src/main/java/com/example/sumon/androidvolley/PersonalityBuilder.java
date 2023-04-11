@@ -192,7 +192,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             }
         };
 
-        timer.schedule(updateList, 0, 100);
+        timer.schedule(updateList, 0, 150);
     }
 
 

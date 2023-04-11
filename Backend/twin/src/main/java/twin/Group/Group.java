@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import twin.GroupChat.GroupChat;
 import twin.GroupChat.GroupChatController;
 import twin.User.User;
@@ -22,7 +23,9 @@ public class Group {
     @OneToOne(cascade = {CascadeType.ALL})
     private GroupChat groupChat;
 
-
+    @ManyToMany (cascade = CascadeType.ALL)
+    @JsonIgnoreProperties
+    private List<User> users;
 
     //different group sizes
     public static int small = 4;
@@ -36,12 +39,10 @@ public class Group {
     @Column(name = "size")
     private int size; //size of the group
 
-    @ManyToMany
-    @Column(name = "users")
-    private List<User> users;
 
     public Group() {
         users = new ArrayList<User>();
+        groupChat = new GroupChat();
     }
 
     public Group(String name, int size) {

@@ -283,21 +283,27 @@ class UserController {
             {
                 //TODO: make the selection random
 
-                prospects.add(commonHobby.getPersonalities().get(i).getUser());
+                User user1 = commonHobby.getPersonalities().get(i).getUser();
+                prospects.add(user1);
+                System.out.println(user1);
             }
         }
 
-        //create group object return
+        //create and fill group object
         Group group = new Group();
         group.setUsers(prospects);
         group.addUser(user);
 
-        for(User u: prospects)
-        {
-            userRepo.save(u);
+        //save repositories
+        groupRepo.save(group);
+        //userRepo.save(user);
+        String message = "";
+        for(User u: prospects) {
+            //userRepo.save(u);
+            message += " " + u.getName();
         }
 
-        return "fail";
+        return "Created group for " + user.getName() + " with:" + message;
     }
 
 

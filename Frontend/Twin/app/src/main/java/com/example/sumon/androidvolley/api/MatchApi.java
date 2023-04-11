@@ -10,10 +10,13 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface MatchApi {
-    @GET("matches")
+    @GET("users/{id}/friends")
     Call<List<Match>> GetAllMatches();
 
-    @POST("users/{id}")
-    Call<Match> PostEventByPath(@Path("q") String question, @Path("a") String answer);
+    @GET("users/{id}/friends")
+    Call<List<Match>> GetNewMatch();
+
+    @POST("users/{uid}/hobby/{hid}")
+    Call<Match> PostHobbytoUser(@Path("uId") int userId, @Path("hId") int hobbyId);
 
 }

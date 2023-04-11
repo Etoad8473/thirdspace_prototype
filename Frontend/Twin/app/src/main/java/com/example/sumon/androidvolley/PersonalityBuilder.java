@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley;
 
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetPersonalityApi;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.sumon.androidvolley.api.PersonalityApi;
+import com.example.sumon.androidvolley.api.SlimCallback;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -25,8 +30,16 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     private TextView selectedView;
 
     private EditText age, ethnicity, sexuality, location, mobile,goal1, goal2;
-    private String hobbies, lifestyle, values = ",";
+    private String hobbies = "";
+    private String lifestyle = "";
+    private String values = "";
+    private String hobbiesId = "";
+    private String lifestyleId = "";
+    private String valuesId = "";
+
     private String[] hobbiesArr, lifestyleArr, valuesArr;
+    private String[] tempHobbiesId, tempLifestyleId, tempValuesId;
+    private int[] hobbiesIdArr, lifestyleIdArr, valuesIdArr;
     private ArrayList<String> hobbiesArrList = new ArrayList<>();
 
     @Override
@@ -203,7 +216,11 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             case R.id.personalityDoneButton:
                 checkSelected();
                 //convertStringtoArr(hobbies, lifestyle, values);
-                finish();
+                convertIdtoArrId(hobbiesId, lifestyleId, valuesId);
+                postPersonality();
+                //updateAvailableSelection(hobbiesArr, lifestyleArr, valuesArr);
+
+                //finish();
                 break;
 
             case R.id.sportsHobbiesButton:
@@ -626,6 +643,17 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                 }
                 break;
 
+            case R.id.caringBtn:
+                if(caringBtn.isSelected() == false){
+                    caringBtn.setSelected(true);
+                    caringBtn.setBackgroundColor(getResources().getColor(R.color.grey));
+                }
+                else if(caringBtn.isSelected() == true) {
+                    caringBtn.setSelected(false);
+                    caringBtn.setBackgroundColor(getResources().getColor(R.color.red_grey));
+                }
+                break;
+
             case R.id.communityBtn:
                 if(communityBtn.isSelected() == false){
                     communityBtn.setSelected(true);
@@ -822,223 +850,284 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     public void checkSelected(){
         if(bikingBtn.isSelected() == true){
             hobbies += bikingBtn.getText() + ",";
+            hobbiesId += "198,";
         }
 
         if(sportsBtn.isSelected() == true){
             hobbies += sportsBtn.getText() + ",";
+            hobbiesId += "199,";
         }
+
 
         if(gardeningBtn.isSelected() == true){
             hobbies += gardeningBtn.getText() + ",";
+            hobbiesId += "200,";
         }
 
         if(bakingBtn.isSelected() == true){
             hobbies += bakingBtn.getText() + ",";
+            hobbiesId += "201,";
         }
 
         if(archeryBtn.isSelected() == true){
             hobbies += archeryBtn.getText() + ",";
+            hobbiesId += "202,";
         }
 
         if(singingBtn.isSelected() == true){
             hobbies += singingBtn.getText() + ",";
+            hobbiesId += "203,";
         }
 
         if(bloggingBtn.isSelected() == true){
             hobbies += bloggingBtn.getText() + ",";
+            hobbiesId += "204,";
         }
 
         if(bowlingBtn.isSelected() == true){
             hobbies += bowlingBtn.getText() + ",";
+            hobbiesId += "205,";
         }
 
         if(photographyBtn.isSelected() == true){
             hobbies += photographyBtn.getText() + ",";
+            hobbiesId += "206,";
         }
 
         if(cookingBtn.isSelected() == true){
             hobbies += cookingBtn.getText() + ",";
+            hobbiesId += "207,";
         }
 
         if(readingBtn.isSelected() == true){
             hobbies += readingBtn.getText() + ",";
+            hobbiesId += "208,";
         }
 
         if(travelBtn.isSelected() == true){
             hobbies += travelBtn.getText() + ",";
+            hobbiesId += "209,";
         }
 
         if(artBtn.isSelected() == true){
             hobbies += artBtn.getText() + ",";
+            hobbiesId += "210,";
         }
 
         if(potteryBtn.isSelected() == true){
             hobbies += potteryBtn.getText() + ",";
+            hobbiesId += "211,";
         }
 
         if(hikingBtn.isSelected() == true){
             hobbies += hikingBtn.getText() + ",";
+            hobbiesId += "212,";
         }
 
         if(fishingBtn.isSelected() == true){
             hobbies += fishingBtn.getText() + ",";
+            hobbiesId += "213,";
         }
 
         if(paintingBtn.isSelected() == true){
             hobbies += paintingBtn.getText() + ",";
+            hobbiesId += "214,";
         }
 
         if(danceBtn.isSelected() == true){
             hobbies += danceBtn.getText() + ",";
+            hobbiesId += "215,";
         }
 
         if(musicBtn.isSelected() == true){
             hobbies += musicBtn.getText() + ",";
+            hobbiesId += "216,";
         }
 
         if(woodworkingBtn.isSelected() == true){
             hobbies += woodworkingBtn.getText() + ",";
+            hobbiesId += "217,";
         }
 
         if(yogaBtn.isSelected() == true){
             hobbies += yogaBtn.getText() + ",";
+            hobbiesId += "218,";
         }
         if(calligraphyBtn.isSelected() == true){
             hobbies += calligraphyBtn.getText() + ",";
+            hobbiesId += "219,";
         }
 
         if(chessBtn.isSelected() == true){
             hobbies += chessBtn.getText() + ",";
+            hobbiesId += "220,";
         }
         if(knittingBtn.isSelected() == true){
             hobbies += knittingBtn.getText() + ",";
+            hobbiesId += "221,";
         }
 
         //Lifestyle
         if(activeBtn.isSelected() == true){
             lifestyle += activeBtn.getText() +  ",";
+            lifestyleId += "222,";
         }
 
         if(healthyBtn.isSelected() == true){
             lifestyle += healthyBtn.getText() +  ",";
+            lifestyleId += "223,";
         }
 
         if(soloBtn.isSelected() == true){
             lifestyle += soloBtn.getText() +  ",";
+            lifestyleId += "224,";
         }
 
         if(ruralBtn.isSelected() == true){
             lifestyle += ruralBtn.getText() +  ",";
+            lifestyleId += "225,";
         }
 
         if(urbanBtn.isSelected() == true){
             lifestyle += urbanBtn.getText() +  ",";
+            lifestyleId += "226,";
         }
 
         if(nomadicBtn.isSelected() == true){
             lifestyle += nomadicBtn.getText() + ",";
+            lifestyleId += "227,";
         }
 
         if(bohemianBtn.isSelected() == true){
             lifestyle += bohemianBtn.getText() + ",";
+            lifestyleId += "228,";
         }
 
         if(digitalBtn.isSelected() == true){
             lifestyle += digitalBtn.getText() + ",";
+            lifestyleId += "229,";
         }
 
 
         // Values
         if(accountabilityBtn.isSelected() == true){
             values += accountabilityBtn.getText() + ",";
+            valuesId += "230,";
         }
 
         if(achievementBtn.isSelected() == true){
             values += achievementBtn.getText() + ",";
+            valuesId += "231,";
         }
 
         if(adaptabilityBtn.isSelected() == true){
             values += adaptabilityBtn.getText() + ",";
+            valuesId += "232,";
         }
 
         if(adventureBtn.isSelected() == true){
             values += adventureBtn.getText() + ",";
+            valuesId += "233,";
         }
 
         if(ambitionBtn.isSelected() == true){
             values += ambitionBtn.getText() + ",";
+            valuesId += "234,";
         }
 
         if(careerBtn.isSelected() == true){
             values += careerBtn.getText() + ",";
+            valuesId += "235,";
         }
 
         if(caringBtn.isSelected() == true){
+            values += caringBtn.getText() + ",";
+            valuesId += "236,";
+        }
+
+        if(communityBtn.isSelected() == true){
             values += communityBtn.getText() + ",";
+            valuesId += "237,";
         }
 
         if(friendshipBtn.isSelected() == true){
             values += friendshipBtn.getText() + ",";
+            valuesId += "238,";
         }
 
         if(confidenceBtn.isSelected() == true){
             values += confidenceBtn.getText() + ",";
+            valuesId += "239,";
         }
 
         if(harmonyBtn.isSelected() == true){
             values += harmonyBtn.getText() + ",";
+            valuesId += "240,";
         }
 
         if(graceBtn.isSelected() == true){
             values += graceBtn.getText() + ",";
+            valuesId += "241,";
         }
 
         if(honestyBtn.isSelected() == true){
             values += honestyBtn.getText() + ",";
+            valuesId += "242,";
         }
 
         if(freedomBtn.isSelected() == true){
             values += freedomBtn.getText() + ",";
+            valuesId += "243,";
         }
 
         if(faithBtn.isSelected() == true){
             values += faithBtn.getText() + ",";
+            valuesId += "244,";
         }
 
         if(ethicsBtn.isSelected() == true){
             values += ethicsBtn.getText() + ",";
+            valuesId += "245,";
         }
 
         if(patriotismBtn.isSelected() == true){
             values += patriotismBtn.getText() + ",";
+            valuesId += "246,";
         }
 
         if(knowledgeBtn.isSelected() == true){
             values += knowledgeBtn.getText() + ",";
+            valuesId += "247,";
         }
 
         if(leadershipBtn.isSelected() == true){
             values += leadershipBtn.getText() + ",";
+            valuesId += "248,";
         }
 
         if(natureBtn.isSelected() == true){
             values += natureBtn.getText() + ",";
+            valuesId += "249,";
         }
 
         if(sportsmanshipBtn.isSelected() == true){
             values += sportsmanshipBtn.getText() + ",";
+            valuesId += "250,";
         }
 
         if(respectBtn.isSelected() == true){
             values += respectBtn.getText() + ",";
+            valuesId += "251,";
         }
 
         if(teamworkBtn.isSelected() == true){
             values += teamworkBtn.getText() + ",";
+            valuesId += "252,";
         }
 
         if(wealthBtn.isSelected() == true){
             values += wealthBtn.getText() + ",";
+            valuesId += "253,";
         }
     }
 
@@ -1064,5 +1153,82 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             selectedView.append(valuesArr[i]);
         }
     }
+
+    public void convertIdtoArrId(String hobbiesId, String lifestyleId, String valuesId){
+        if(hobbiesId != null) {
+            tempHobbiesId = hobbiesId.split(",");
+            hobbiesIdArr = new int[tempHobbiesId.length];
+        }
+
+        if(lifestyleId != null) {
+            tempLifestyleId = lifestyleId.split(",");
+            lifestyleIdArr = new int[tempLifestyleId.length];
+        }
+        if(valuesId !=null) {
+            tempValuesId = valuesId.split(",");
+            valuesIdArr = new int[tempValuesId.length];
+        }
+
+        for(int i = 0; i< tempHobbiesId.length; i++){
+            if(tempHobbiesId[i] != "")
+                hobbiesIdArr[i] = Integer.parseInt(tempHobbiesId[i]);
+            //selectedView.append(tempHobbiesId[i]);
+        }
+
+        for(int i = 0; i< tempLifestyleId.length; i++){
+            //selectedView.append(tempLifestyleId[i]);
+            if(tempLifestyleId[i] != "")
+                lifestyleIdArr[i] = Integer.parseInt(tempLifestyleId[i]);
+        }
+
+        for(int i = 0; i< tempValuesId.length; i++){
+            //selectedView.append(tempValuesId[i]);
+            if(tempValuesId[i] != "")
+                valuesIdArr[i] = Integer.parseInt(tempValuesId[i]);
+        }
+
+    }
+
+    public void updateAvailableSelection(String[] hobbiesArr, String[] lifestyleArr, String[] valuesArr){
+        for(int i = 0; i<hobbiesArr.length; i++){
+            GetPersonalityApi().AddHobby(hobbiesArr[i]).enqueue(new SlimCallback<PersonalityApi>(personalityHobby->{
+            }));
+        }
+
+        for(int i = 0; i<lifestyleArr.length; i++){
+            GetPersonalityApi().AddInterest(lifestyleArr[i]).enqueue(new SlimCallback<PersonalityApi>(personalityInterest->{
+            }));
+        }
+
+        for(int i = 0; i<valuesArr.length; i++){
+            GetPersonalityApi().AddValue(valuesArr[i]).enqueue(new SlimCallback<PersonalityApi>(personalityValue->{
+            }));
+        }
+    }
+
+    public void postPersonality(){
+        for(int i = 0; i<hobbiesIdArr.length; i++){
+            GetPersonalityApi().PostHobbyToUser(196,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
+            }));
+        }
+
+        for(int i = 0; i< lifestyleIdArr.length; i++) {
+            GetPersonalityApi().PostInterestToUser(196, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
+            }));
+        }
+
+        for(int i = 0; i<valuesIdArr.length; i++) {
+            GetPersonalityApi().PostValueToUser(196, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
+            }));
+        }
+
+
+    }
+
+
+
+
+
+
 
 }

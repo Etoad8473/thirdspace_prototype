@@ -16,7 +16,10 @@ import android.widget.TextView;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.model.GroupChat;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -59,6 +62,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
                         try{
                             RegenerateAllGroupChatOnScreen(chatHistory);
                             chatHistoryScrollView.fullScroll(View.FOCUS_DOWN);
+                            chatBox.requestFocus();
                         }
                         catch(Exception e){
 
@@ -68,7 +72,9 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
             }
         };
 
-        timer.schedule(chatList, 0, 100);
+
+
+        timer.schedule(chatList, 0, 300);
     }
 
     @Override
@@ -121,11 +127,13 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 
     public void postChat(){
         GroupChat newChat = new GroupChat();
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         //newChat.setGroupName(groupName.getText().toString());
         newChat.setSender(null);
-        newChat.setTime("10:25 pm");
+        newChat.setTime(currentTime);
         newChat.setData(chatBox.getText().toString());
-        newChat.setDate("4/6/2023");
+        newChat.setDate(currentDate);
         GetGroupChatApi().PostGroupChatByBody(newChat).enqueue(new SlimCallback<GroupChat>(groupChat->{
             RegenerateAllGroupChatOnScreen(chatHistory);
         }));

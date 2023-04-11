@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -94,6 +95,8 @@ public class MainActivity extends Activity implements OnClickListener {
         eventTabButton.setOnClickListener(this);
         RegenerateAllEventsOnScreen(eventView);
 
+        matchView.setMovementMethod(new ScrollingMovementMethod());
+
         final Handler handler = new Handler();
         Timer timer = new Timer();
         TimerTask updateEventList = new TimerTask() {
@@ -102,7 +105,10 @@ public class MainActivity extends Activity implements OnClickListener {
                 handler.post(new Runnable(){
                     public void run(){
                         try{
+                            matchView.setText("");
                             RegenerateAllEventsOnScreen(eventView);
+                            makeJsonArrReq();
+
 //                            eventScrollView.fullScroll(View.FOCUS_DOWN); ""
                         }
                         catch(Exception e){
@@ -128,14 +134,6 @@ public class MainActivity extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.saveButton:
-                postObj();
-                break;
-
-            case R.id.getDataButton:
-                makeJsonArryReq();
-                break;
-
             case R.id.EditProfileButton:
                 startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
                 break;
@@ -150,35 +148,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 break;
         }
     }
-    public void postObj(){
-        Trivia newTrivia = new Trivia();
-        //newTrivia.setId(4);
-        newTrivia.setEmail(email.getText().toString());
-        newTrivia.setPhoneNumber(phoneNumber.getText().toString());
-        newTrivia.setName(name.getText().toString());
-        //newTrivia.setAboutMe(aboutMe.getText().toString());
-        //newTrivia.setPersonality(personality.getText().toString());
-        newTrivia.setGender(gender.getText().toString());
-        newTrivia.setPassword("jhjk");
-        newTrivia.setUsername("hayday");
-        //newTrivia.setPersonalityId(3);
-        //newTrivia.setEventId(0);
-        GetTrivaApi().PostTriviaByBody(newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
-            RegenerateAllTriviasOnScreen(username);
-        }));
-        /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {
-            String result = "email:  "+ response.getEmail()
-                    +"\n  phone:  "+ response.getPhoneNumber()
-                    +"\n  name:  "+ response.getName()
-                    +"\n  aboutMe:  "+ response.getAboutMe()
-                    +"\n  personality:  "+ response.getPersonality()
-                    +"\n  gender:  "+ response.getGender()
-                    +"\n  Body:    "+ response.getBigText();
-            System.out.println(result);
-        }, "CustomTagForFirstApi"));
 
-         */
-    }
     void RegenerateAllTriviasOnScreen( TextView apiText1){
 
         GetTrivaApi().GetAllTrivia().enqueue(new SlimCallback<List<Trivia>>(trivias ->{
@@ -283,9 +253,9 @@ public class MainActivity extends Activity implements OnClickListener {
     /**
      * Making json array request
      * */
-    private void makeJsonArryReq() {
+    private void makeJsonArrReq() {
         showProgressDialog();
-        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_NEW_MATCH,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -327,7 +297,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     public void getJsonArrayData(JSONArray arr) throws JSONException {
         String email_i = null, phoneNumber_i = null, name_i = null, aboutMe_i = null, gender_i = null,
-                username_i = null, hobby_i = null;
+                username_i = null, hobby_i = "";
         String personalityArr = null;
         for(int i = 0; i< arr.length(); i++){
             JSONObject obj = arr.getJSONObject(i);
@@ -336,7 +306,7 @@ public class MainActivity extends Activity implements OnClickListener {
             JSONArray hobbyArr = personalityObj.getJSONArray("hobbies");
             for(int j = 0; j<hobbyArr.length(); j++){
                 JSONObject hobbyObj = hobbyArr.getJSONObject(j);
-                hobby_i = hobbyObj.getString("hobbyN");
+                hobby_i += hobbyObj.getString("hobbyN") + ",";
             }
             email_i = obj.getString("email");
             phoneNumber_i = obj.getString("phoneNumber");
@@ -345,13 +315,12 @@ public class MainActivity extends Activity implements OnClickListener {
             username_i = obj.getString("userName");
             gender_i = obj.getString("gender");
         }
-        email.setText((String) email_i);
-        phoneNumber.setText(phoneNumber_i);
-        name.setText(name_i);
-        aboutMe.setText(aboutMe_i);
-        username.setText(username_i);
-        personality.setText(hobby_i);
-        gender.setText(gender_i);
+        matchView.append("Name: " + name_i);
+        matchView.append("\nUsername: " + username_i);
+        matchView.append("\nEmail: " + email_i);
+        matchView.append("\nPhone Number: " + phoneNumber_i);
+        matchView.append("\nHobby: " + hobby_i.substring(0, hobby_i.length()-1));
+        matchView.append("\nGender: " + gender_i);
     }
 
 }

@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     public void run(){
                         try{
                             RegenerateAllEventsOnScreen(eventView);
-//                            eventScrollView.fullScroll(View.FOCUS_DOWN);
+//                            eventScrollView.fullScroll(View.FOCUS_DOWN); ""
                         }
                         catch(Exception e){
 

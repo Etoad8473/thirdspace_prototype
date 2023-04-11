@@ -222,12 +222,12 @@ class UserController {
             userRepo.save(u);
             userRepo.save(randFriend);
 
-            return "added" + randFriend.getUserName();
+            return "added: " + randFriend.getUserName();
         }
     }
 
 
-    @PostMapping("/users/{id}/createGroupMatch")
+    @PostMapping("/users/{id}/createGroupMatchA")
     public String createGroupMatchFromSingleMatch(@PathVariable Long id)
     {
 
@@ -240,12 +240,13 @@ class UserController {
 
 
     @PostMapping("/users/{id}/createGroupMatchB")
-    public String createGroupMatchSimple(@PathVariable Long id)
+    public String createGroupMatchB(@PathVariable Long id, @RequestBody Group g)
     {
 
         //ABSTRACT: get users hobbies, choose hobby with the most people, then randomly select people
         //TODO: make the selection random
 
+        groupRepo.save(g);
 
         //get users hobbies
         User user = userRepo.findById(id).get();
@@ -262,7 +263,7 @@ class UserController {
 
 
         //select random people
-        ArrayList<User> prospects = new ArrayList<User>();
+        HashSet<User> prospects = new HashSet<User>();
 
         if(numOfProspects <= 1)//at least 2 prospects to make a group, return too few
             return "too few people with common hobbies";
@@ -277,33 +278,50 @@ class UserController {
         else//if there are >3 prospects, randomly choose 3
         {
             Random rand = new Random();//TODO
+            //int skip = 0;//in order to skip self referential elements
+
+            prospects.add(user);
 
             //for 4 people randomly select
-            for(int i = 0; i<3; i++)
+            for(int i = 0; i<4; i++)
             {
                 //TODO: make the selection random
 
-                User user1 = commonHobby.getPersonalities().get(i).getUser();
-                prospects.add(user1);
-                System.out.println(user1);
+                //make sure there's no self reference in prospects,, skip to next prospect if self reference
+                //if(commonHobby.getPersonalities().get(i).getUser().getId() == id)
+                //    skip=1;
+
+                User addU = commonHobby.getPersonalities().get(i /*+ skip*/).getUser();
+                prospects.add(addU);
+                //System.out.println(addU);
             }
         }
 
         //create and fill group object
-        Group group = new Group();
-        group.setUsers(prospects);
-        group.addUser(user);
-
-        //save repositories
-        groupRepo.save(group);
-        //userRepo.save(user);
         String message = "";
         for(User u: prospects) {
-            //userRepo.save(u);
             message += " " + u.getName();
         }
+        //prospects.add(user);
+        for(User u: prospects)
+            g.addUser(u);
+
+        //save to repo
+        groupRepo.save(g);
 
         return "Created group for " + user.getName() + " with:" + message;
+    }
+
+    @PostMapping("/users/{uId}/group/{gId}")
+    public String addUserToGroup(@PathVariable long uId, @PathVariable long gId)
+    {
+        User u = userRepo.findById(uId);
+        Group g = groupRepo.findById(gId);
+
+        g.addUser(u);
+        groupRepo.save(g);
+
+        return "Added user-"+u.getName()+":" +u.getId()+ " to group-" +g.getGroupName()+ ":"+g.getId();
     }
 
 

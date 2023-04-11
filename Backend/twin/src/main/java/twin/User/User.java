@@ -2,6 +2,7 @@ package twin.User;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import twin.Event.Event;
@@ -57,11 +58,11 @@ public class User {
     private Event event;
 
     @ManyToMany
-    @JsonIgnoreProperties
+    @JsonIgnore
     private List<User> friends;
 
     @ManyToMany
-    @JsonIgnoreProperties
+    @JsonIgnore
     private List<Group> groups;
 
     public User() {

@@ -100,12 +100,15 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         //newTrivia.setAboutMe(aboutMe.getText().toString());
         //newTrivia.setPersonality(personality.getText().toString());
         newTrivia.setGender(gender.getText().toString());
-        newTrivia.setPassword("jhjk");
-        newTrivia.setUsername("hayday");
+        newTrivia.setPassword("Demo 3");
+        newTrivia.setUsername("Profile Demo 3");
         //newTrivia.setPersonalityId(3);
         //newTrivia.setEventId(0);
         GetTrivaApi().PostTriviaByBody(newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
             RegenerateAllTriviasOnScreen(username);
+        }));
+
+        GetTrivaApi().PostHobbytoUser(123,1).enqueue(new SlimCallback<Trivia>(hobby->{
         }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {
             String result = "email:  "+ response.getEmail()
@@ -258,7 +261,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
             JSONArray hobbyArr = personalityObj.getJSONArray("hobbies");
             for(int j = 0; j<hobbyArr.length(); j++){
                 JSONObject hobbyObj = hobbyArr.getJSONObject(j);
-                hobby_i = hobbyObj.getString("hobbyN");
+                hobby_i = hobby_i + hobbyObj.getString("hobbyN") + ",";
             }
             email_i = obj.getString("email");
             phoneNumber_i = obj.getString("phoneNumber");
@@ -272,7 +275,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         name.setText(name_i);
         aboutMe.setText(aboutMe_i);
         username.setText(username_i);
-        personality.setText(hobby_i);
+        personality.setText(hobby_i.substring(0,hobby_i.length()-1));
         gender.setText(gender_i);
     }
 }

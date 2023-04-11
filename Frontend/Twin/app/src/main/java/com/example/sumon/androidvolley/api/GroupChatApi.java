@@ -10,9 +10,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface GroupChatApi {
-    @GET("groupChat")
+    @GET("message")
     Call<List<GroupChat>> GetAllGroupChat();
 
-    @POST("groupChat")
+    @POST("message")
     Call<GroupChat> PostGroupChatByBody(@Body GroupChat newChat);
 }

@@ -15,6 +15,8 @@ import twin.User.User;
 @Table(name="groups")
 public class Group {
 
+    //abstract these into a abstract class
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

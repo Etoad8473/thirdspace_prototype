@@ -1,7 +1,9 @@
 package com.example.sumon.androidvolley.model;
 
 import com.google.gson.annotations.SerializedName;
-
+/**
+ * @author kaiheng
+ */
 public class Post{
     private String email;
     private String phone;

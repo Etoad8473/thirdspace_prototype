@@ -5,7 +5,9 @@ import android.util.Log;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+/**
+ * @author kaiheng
+ */
 public class SlimCallback<T> implements Callback<T> {
 
     LambaInterface<T> lambdaInterface;

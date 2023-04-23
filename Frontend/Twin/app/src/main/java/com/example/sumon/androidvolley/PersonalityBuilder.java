@@ -16,7 +16,9 @@ import com.example.sumon.androidvolley.api.SlimCallback;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**
+ * @author kaiheng
+ */
 public class PersonalityBuilder extends AppCompatActivity implements View.OnClickListener {
     //Hobby Buttons
     private Button sportsBtn, bikingBtn, gardeningBtn, bakingBtn, archeryBtn, singingBtn, bloggingBtn, bowlingBtn,

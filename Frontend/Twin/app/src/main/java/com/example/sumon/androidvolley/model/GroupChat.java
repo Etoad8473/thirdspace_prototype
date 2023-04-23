@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley.model;
-
+/**
+ * @author kaiheng
+ */
 public class GroupChat {
     private String sender;
     private String time;

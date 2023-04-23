@@ -23,6 +23,11 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author kaiheng
+ *
+ * This is the group chat page for Twin
+ */
 public class GroupChatActivity extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener {
     private Button backButton;
     private TextView chatHistory, groupName;

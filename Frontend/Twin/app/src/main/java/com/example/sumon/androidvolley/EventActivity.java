@@ -15,7 +15,9 @@ import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.model.Event;
 
 import java.util.List;
-
+/**
+ * @author kaiheng
+ */
 public class EventActivity extends AppCompatActivity implements View.OnClickListener {
     private Button getEventBtn, saveEventBtn, backButton;
     private EditText eventName, eventTime, eventLocation;

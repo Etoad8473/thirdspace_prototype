@@ -7,7 +7,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-
+/**
+ * @author kaiheng
+ */
 public interface PhotoApi {
 
     @GET("photos/1")

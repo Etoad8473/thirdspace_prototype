@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import twin.GroupChat.GroupChat;
 import twin.GroupChat.GroupChatController;
 import twin.User.User;
@@ -11,6 +14,8 @@ import twin.User.User;
 @Entity
 @Table(name="groups")
 public class Group {
+
+    //abstract these into a abstract class
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +27,8 @@ public class Group {
     @OneToOne(cascade = {CascadeType.ALL})
     private GroupChat groupChat;
 
-
+    @ManyToMany
+    private List<User> users;
 
     //different group sizes
     public static int small = 4;
@@ -36,15 +42,13 @@ public class Group {
     @Column(name = "size")
     private int size; //size of the group
 
-    @OneToMany
-    @Column(name = "users")
-    private List<User> users;
 
     public Group() {
         users = new ArrayList<User>();
+        groupChat = new GroupChat();
     }
 
-    public Group(String name, int size){
+    public Group(String name, int size) {
         groupName = name;
         setSize(size);
         groupChat = new GroupChat();
@@ -103,12 +107,18 @@ public class Group {
         return users;
     }
 
-    public void setUsers(List<User> users){
-        this.users = users;
+    public void setUsers(List<User> userList)
+    {
+        this.users = userList;
+        for(User u : userList)
+        {
+            u.addGroup(this);
+        }
     }
 
-    public void addUser(User user){
-        this.users.add(user);
+    public void addUser(User u){
+        users.add(u);
+        //u.addGroup(this);
     }
 
     public void removeUser(User user) { this.users.remove(user); }

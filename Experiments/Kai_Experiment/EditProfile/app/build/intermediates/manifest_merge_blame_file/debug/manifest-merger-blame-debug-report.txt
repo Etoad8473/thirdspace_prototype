@@ -1,0 +1,57 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.editprofile"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:4:5-67
+11-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:4:22-64
+12
+13    <application
+13-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:6:5-24:19
+14        android:allowBackup="true"
+14-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:7:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.0.0] /Users/kaiheng/.gradle/caches/transforms-3/0caedb9e5bc6e504fc77c4b9fbb4b681/transformed/core-1.0.0/AndroidManifest.xml:22:18-86
+16        android:dataExtractionRules="@xml/data_extraction_rules"
+16-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:8:9-65
+17        android:debuggable="true"
+18        android:extractNativeLibs="false"
+19        android:fullBackupContent="@xml/backup_rules"
+19-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:9:9-54
+20        android:icon="@mipmap/ic_launcher"
+20-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:10:9-43
+21        android:label="@string/app_name"
+21-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:11:9-41
+22        android:supportsRtl="true"
+22-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:12:9-35
+23        android:testOnly="true"
+24        android:theme="@style/Theme.EditProfile" >
+24-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:13:9-49
+25        <activity
+25-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:15:9-23:20
+26            android:name="com.example.editprofile.MainActivity"
+26-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:16:13-41
+27            android:exported="true" >
+27-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:17:13-36
+28            <intent-filter>
+28-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:18:13-22:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:19:17-69
+29-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:19:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:21:17-77
+31-->/Users/kaiheng/Android-Team/1_cw_2/Experiments/Kai_Experiment/EditProfile/app/src/main/AndroidManifest.xml:21:27-74
+32            </intent-filter>
+33        </activity>
+34    </application>
+35
+36</manifest>

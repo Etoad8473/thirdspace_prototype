@@ -3,6 +3,8 @@ package twin.User;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import twin.Group.Group;
+import twin.Group.GroupRepository;
 import twin.Personality.Hobby.Hobby;
 import twin.Personality.Hobby.HobbyRepository;
 import twin.Personality.Interests.Interest;
@@ -12,6 +14,7 @@ import twin.Personality.Values.ValueRepository;
 import twin.Personality.Personality;
 import twin.Personality.PersonalityRepository;
 
+import javax.persistence.Column;
 import java.util.*;
 
 @RestController
@@ -30,6 +33,9 @@ class UserController {
 
     @Autowired
     private ValueRepository valueRepo;
+
+    @Autowired
+    private GroupRepository groupRepo;
 
 
     //-----------------------------GET---------------------//
@@ -122,7 +128,7 @@ class UserController {
         return userRepo.findById(id);
     }
 
-    @PostMapping("/users/{id}/getBestMatch")
+    @PostMapping("/users/{id}/createBestMatch")
     public String getMatchB(@PathVariable long id)
     {
         User u = userRepo.findById(id);
@@ -187,7 +193,7 @@ class UserController {
         }
     }
 
-    @PostMapping("/users/{id}/getRandMatch")
+    @PostMapping("/users/{id}/createRandMatch")
     public String getMatchR(@PathVariable Long id)
     {
         User u = userRepo.findById(id).get();
@@ -216,11 +222,108 @@ class UserController {
             userRepo.save(u);
             userRepo.save(randFriend);
 
-            return "added" + randFriend.getUserName();
+            return "added: " + randFriend.getUserName();
         }
     }
 
-    
+
+    @PostMapping("/users/{id}/createGroupMatchA")
+    public String createGroupMatchFromSingleMatch(@PathVariable Long id)
+    {
+
+        //ABSTRACT: get match, find others
+
+
+
+        return "fail";
+    }
+
+
+    @PostMapping("/users/{id}/createGroupMatchB")
+    public String createGroupMatchB(@PathVariable Long id, @RequestBody Group g)
+    {
+
+        //ABSTRACT: get users hobbies, choose hobby with the most people, then randomly select people
+        //TODO: make the selection random
+
+        groupRepo.save(g);
+
+        //get users hobbies
+        User user = userRepo.findById(id).get();
+        List<Hobby> hobbies = user.getPersonality().getHobbies();
+
+        //choose hobby with the most people
+        Hobby commonHobby = hobbies.get(0);
+        for(Hobby h: hobbies)
+        {
+            if(h.getPersonalities().size() > commonHobby.getPersonalities().size())
+                commonHobby = h;
+        }
+        int numOfProspects = commonHobby.getPersonalities().size();
+
+
+        //select random people
+        HashSet<User> prospects = new HashSet<User>();
+
+        if(numOfProspects <= 1)//at least 2 prospects to make a group, return too few
+            return "too few people with common hobbies";
+
+        if(numOfProspects <= 3)//if there are 2-3 propects add them to group
+        {
+            for(Personality p: commonHobby.getPersonalities())
+            {
+                prospects.add(p.getUser());
+            }
+        }
+        else//if there are >3 prospects, randomly choose 3
+        {
+            Random rand = new Random();//TODO
+            //int skip = 0;//in order to skip self referential elements
+
+            prospects.add(user);
+
+            //for 4 people randomly select
+            for(int i = 0; i<4; i++)
+            {
+                //TODO: make the selection random
+
+                //make sure there's no self reference in prospects,, skip to next prospect if self reference
+                //if(commonHobby.getPersonalities().get(i).getUser().getId() == id)
+                //    skip=1;
+
+                User addU = commonHobby.getPersonalities().get(i /*+ skip*/).getUser();
+                prospects.add(addU);
+                //System.out.println(addU);
+            }
+        }
+
+        //create and fill group object
+        String message = "";
+        for(User u: prospects) {
+            message += " " + u.getName();
+        }
+        //prospects.add(user);
+        for(User u: prospects)
+            g.addUser(u);
+
+        //save to repo
+        groupRepo.save(g);
+
+        return "Created group for " + user.getName() + " with:" + message;
+    }
+
+    @PostMapping("/users/{uId}/group/{gId}")
+    public String addUserToGroup(@PathVariable long uId, @PathVariable long gId)
+    {
+        User u = userRepo.findById(uId);
+        Group g = groupRepo.findById(gId);
+
+        g.addUser(u);
+        groupRepo.save(g);
+
+        return "Added user-"+u.getName()+":" +u.getId()+ " to group-" +g.getGroupName()+ ":"+g.getId();
+    }
+
 
     @PostMapping("/users/{uId}/hobby/{hId}")
     public String addHobby(@PathVariable long uId, @PathVariable long hId)

@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley.model;
-
+/**
+ * @author kaiheng
+ */
 public class Photo {
     private int albumId;
     private int id;

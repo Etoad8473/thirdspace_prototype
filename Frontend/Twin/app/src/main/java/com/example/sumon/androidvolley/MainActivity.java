@@ -41,7 +41,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/**
+ * @author kaiheng
+ */
 public class MainActivity extends Activity implements OnClickListener {
     private Button getButton, saveButton, eventTabButton, profileTabBtn, groupChatButton;
     private TextView matchView, eventView;

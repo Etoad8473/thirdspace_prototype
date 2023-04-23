@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley.model;
-
+/**
+ * @author kaiheng
+ */
 public class Match {
     private String groupName;
     private String email;

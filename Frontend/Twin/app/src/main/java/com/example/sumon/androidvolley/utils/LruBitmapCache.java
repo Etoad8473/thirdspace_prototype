@@ -1,10 +1,12 @@
 package com.example.sumon.androidvolley.utils;
 
-import com.android.volley.toolbox.ImageLoader.ImageCache;
-
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
+import com.android.volley.toolbox.ImageLoader.ImageCache;
+/**
+ * @author kaiheng
+ */
 public class LruBitmapCache extends LruCache<String, Bitmap> implements ImageCache {
 	public static int getDefaultLruCacheSize() {
 		final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);

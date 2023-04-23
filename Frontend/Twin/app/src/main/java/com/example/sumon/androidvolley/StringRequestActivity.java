@@ -14,7 +14,9 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.sumon.androidvolley.app.AppController;
 import com.example.sumon.androidvolley.utils.Const;
-
+/**
+ * @author kaiheng
+ */
 public class StringRequestActivity extends Activity {
 
     private String TAG = StringRequestActivity.class.getSimpleName();

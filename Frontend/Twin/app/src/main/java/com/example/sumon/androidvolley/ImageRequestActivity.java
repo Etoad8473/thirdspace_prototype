@@ -15,7 +15,9 @@ import com.example.sumon.androidvolley.app.AppController;
 import com.example.sumon.androidvolley.utils.Const;
 
 import java.io.UnsupportedEncodingException;
-
+/**
+ * @author kaiheng
+ */
 public class ImageRequestActivity extends Activity {
 
     private static final String TAG = ImageRequestActivity.class

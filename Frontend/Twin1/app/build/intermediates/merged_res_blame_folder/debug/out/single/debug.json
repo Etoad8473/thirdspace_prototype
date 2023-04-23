@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/layout_image_request.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/layout/image_request.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable-v24_ico_error.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable-v24/ico_error.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable-v24_ico_loading.GIF.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable-v24/ico_loading.GIF"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/layout_string_request.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/layout/string_request.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable_baseline_manage_accounts_24.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable/baseline_manage_accounts_24.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable_baseline_home_24.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable/baseline_home_24.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/layout_activity_edit_profile_windows.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/layout/activity_edit_profile_windows.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable_baseline_calendar_month_24.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable/baseline_calendar_month_24.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/layout_activity_main.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable_baseline_groups_24.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable/baseline_groups_24.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/drawable_baseline_account_circle_24.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/drawable/baseline_account_circle_24.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/layout_activity_event.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/layout/activity_event.xml"
+    },
+    {
+        "merged": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/build/intermediates/merged_res/debug/layout_json_request.xml.flat",
+        "source": "/Users/kaiheng/Android-Team/1_cw_2/Frontend/Twin/app/src/main/res/layout/json_request.xml"
+    }
+]

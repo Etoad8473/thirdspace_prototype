@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley.model;
-
+/**
+ * @author kaiheng
+ */
 public class Event {
     private String eventName;
     private String time;

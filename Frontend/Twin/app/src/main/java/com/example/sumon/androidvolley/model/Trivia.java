@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley.model;
-
+/**
+ * @author kaiheng
+ */
 public class Trivia {
     private int id;
     private String email;

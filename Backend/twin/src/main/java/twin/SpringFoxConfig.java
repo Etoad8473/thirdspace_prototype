@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SpringFoxConfig {
     @Bean
     public Docket api() {
-            return new Docket(DocumentationType.SWAGGER_2).host("http://coms-309-015.class.las.iastate.edu/docs/Server_side_does_by_Ezra_Odole_and_Charles_Millar")
+            return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())

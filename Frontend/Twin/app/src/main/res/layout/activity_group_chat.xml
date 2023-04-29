@@ -30,7 +30,6 @@
                 android:id="@+id/groupNameTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:labelFor="@id/ethnicityEditText"
                 android:text="Group Name"
                 android:background="@color/peach_pink"
                 android:layout_marginTop="64dp"

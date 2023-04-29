@@ -1,5 +1,7 @@
 package com.example.sumon.androidvolley.api;
 
+import com.example.sumon.androidvolley.model.Personality;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -29,5 +31,8 @@ public interface PersonalityApi {
 
     @POST("value/{name}")
     Call<PersonalityApi> AddValue(@Path("name") String valueName);
+
+    @POST("users/{uId}")
+    Call<PersonalityApi> PostDemographicsToUser(@Path("uId") int userId, @Body Personality newPersonality);
 
 }

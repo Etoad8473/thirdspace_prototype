@@ -41,7 +41,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
     private EditText email;
     private EditText phoneNumber;
-    private EditText name;
+    protected EditText name;
     private EditText gender;
     private EditText aboutMe;
     private EditText personality;
@@ -102,16 +102,16 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         //newTrivia.setAboutMe(aboutMe.getText().toString());
         //newTrivia.setPersonality(personality.getText().toString());
         newTrivia.setGender(gender.getText().toString());
-        newTrivia.setPassword("Demo 3");
-        newTrivia.setUsername("Profile Demo 3");
+//        newTrivia.setPassword("Demo 3");
+//        newTrivia.setUsername("Profile Demo 3");
         //newTrivia.setPersonalityId(3);
         //newTrivia.setEventId(0);
-        GetTrivaApi().PostTriviaByBody(newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
+        GetTrivaApi().PostTriviaByPath(Const.USER_ID,newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
             RegenerateAllTriviasOnScreen(username);
         }));
 
-        GetTrivaApi().PostHobbytoUser(123,1).enqueue(new SlimCallback<Trivia>(hobby->{
-        }));
+//        GetTrivaApi().PostHobbytoUser(123,1).enqueue(new SlimCallback<Trivia>(hobby->{
+//        }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {
             String result = "email:  "+ response.getEmail()
                     +"\n  phone:  "+ response.getPhoneNumber()
@@ -210,7 +210,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
     /**
      * Making json array request
      * */
-    private void makeJsonArryReq() {
+    public void makeJsonArryReq() {
         showProgressDialog();
         JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
                 new Response.Listener<JSONArray>() {
@@ -253,11 +253,13 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
     }
 
     public void getJsonArrayData(JSONArray arr) throws JSONException {
+        int id_i;
         String email_i = null, phoneNumber_i = null, name_i = null, aboutMe_i = null, gender_i = null,
                 username_i = null, hobby_i = null;
         String personalityArr = null;
         for(int i = 0; i< arr.length(); i++){
             JSONObject obj = arr.getJSONObject(i);
+            id_i = obj.getInt("id");
             personalityArr = obj.getString("personality");
             JSONObject personalityObj = new JSONObject(personalityArr);
             JSONArray hobbyArr = personalityObj.getJSONArray("hobbies");
@@ -271,6 +273,9 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
             //aboutMe_i = obj.getString("aboutMe");
             username_i = obj.getString("userName");
             gender_i = obj.getString("gender");
+            if(id_i == Const.USER_ID){
+                break;
+            }
         }
         email.setText((String) email_i);
         phoneNumber.setText(phoneNumber_i);

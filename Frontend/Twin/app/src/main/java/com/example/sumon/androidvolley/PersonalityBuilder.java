@@ -2,20 +2,31 @@ package com.example.sumon.androidvolley;
 
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetPersonalityApi;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.sumon.androidvolley.api.PersonalityApi;
 import com.example.sumon.androidvolley.api.SlimCallback;
+import com.example.sumon.androidvolley.app.AppController;
+import com.example.sumon.androidvolley.model.Personality;
+import com.example.sumon.androidvolley.utils.Const;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+
 /**
  * @author kaiheng
  */
@@ -31,23 +42,34 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             patriotismBtn, knowledgeBtn, leadershipBtn, natureBtn, sportsmanshipBtn, respectBtn, teamworkBtn, wealthBtn;
     private TextView selectedView;
 
-    private EditText age, ethnicity, sexuality, location, mobile,goal1, goal2;
+    private EditText age, name, sexuality, location, phoneNumber,goal1, goal2;
     private String hobbies = "";
     private String lifestyle = "";
     private String values = "";
     private String hobbiesId = "";
     private String lifestyleId = "";
     private String valuesId = "";
+    private String userName = "";
+    private String password = "";
+    private String email = "";
+    private int id = 0;
 
     private String[] hobbiesArr, lifestyleArr, valuesArr;
     private String[] tempHobbiesId, tempLifestyleId, tempValuesId;
     private int[] hobbiesIdArr, lifestyleIdArr, valuesIdArr;
     private ArrayList<String> hobbiesArrList = new ArrayList<>();
+    private ProgressDialog pDialog;
+    private String TAG = PersonalityBuilder.class.getSimpleName();
+    private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personality_builder);
+
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Loading...");
+        pDialog.setCancelable(false);
 
         // Hobby Buttons
         sportsBtn = (Button) findViewById(R.id.sportsHobbiesButton);
@@ -116,10 +138,10 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         selectedView = (TextView) findViewById(R.id.viewSelected);
 
         age = (EditText) findViewById(R.id.ageEditText);
-        ethnicity = (EditText) findViewById(R.id.ethnicityEditText);
+        name = (EditText) findViewById(R.id.nameEditText);
         sexuality = (EditText) findViewById(R.id.sexualityEditText);
         location = (EditText) findViewById(R.id.locationEditText);
-        mobile = (EditText) findViewById(R.id.mobileEditText);
+        phoneNumber = (EditText) findViewById(R.id.mobileEditText);
         goal1 = (EditText) findViewById(R.id.goalEditText1);
         goal2 = (EditText) findViewById(R.id.goalEditText2);
 
@@ -189,25 +211,27 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
 
         doneBtn.setOnClickListener(this);
 
-        final Handler handler = new Handler();
-        Timer timer = new Timer();
-        TimerTask updateList = new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(new Runnable(){
-                    public void run(){
-                        try{
+        makeJsonArryReq();
 
-                        }
-                        catch(Exception e){
-
-                        }
-                    }
-                });
-            }
-        };
-
-        timer.schedule(updateList, 0, 150);
+//        final Handler handler = new Handler();
+//        Timer timer = new Timer();
+//        TimerTask updateList = new TimerTask() {
+//            @Override
+//            public void run() {
+//                handler.post(new Runnable(){
+//                    public void run(){
+//                        try{
+//
+//                        }
+//                        catch(Exception e){
+//
+//                        }
+//                    }
+//                });
+//            }
+//        };
+//
+//        timer.schedule(updateList, 0, 150);
     }
 
 
@@ -217,9 +241,11 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.personalityDoneButton:
                 checkSelected();
-                //convertStringtoArr(hobbies, lifestyle, values);
+                convertStringtoArr(hobbies, lifestyle, values);
                 convertIdtoArrId(hobbiesId, lifestyleId, valuesId);
                 postPersonality();
+                postInterest();
+
                 //updateAvailableSelection(hobbiesArr, lifestyleArr, valuesArr);
 
                 //finish();
@@ -1208,22 +1234,114 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void postPersonality(){
+    public void postPersonality() {
+        Personality userPersonality = new Personality();
+        userPersonality.setGender(sexuality.getText().toString());
+        userPersonality.setName(name.getText().toString());
+        userPersonality.setPhoneNumber(phoneNumber.getText().toString());
+        userPersonality.setEmail(email);
+        userPersonality.setUsername(userName);
+        userPersonality.setPassword(password);
+
+        GetPersonalityApi().PostDemographicsToUser(Const.USER_ID, userPersonality).enqueue(new SlimCallback<PersonalityApi>(demographics->{
+        }));
+    }
+
+    public void postInterest(){
         for(int i = 0; i<hobbiesIdArr.length; i++){
-            GetPersonalityApi().PostHobbyToUser(289,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
+            GetPersonalityApi().PostHobbyToUser(id,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
             }));
         }
 
+
         for(int i = 0; i< lifestyleIdArr.length; i++) {
-            GetPersonalityApi().PostInterestToUser(289, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
+            GetPersonalityApi().PostInterestToUser(id, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
             }));
         }
 
         for(int i = 0; i<valuesIdArr.length; i++) {
-            GetPersonalityApi().PostValueToUser(289, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
+            GetPersonalityApi().PostValueToUser(id, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
             }));
         }
+//
+//        GetPersonalityApi().PostValueToUser(379, 249).enqueue(new SlimCallback<PersonalityApi>(value -> {
+//        }));
+    }
 
+    private void showProgressDialog() {
+        if (!pDialog.isShowing())
+
+            pDialog.show();
+    }
+
+    private void hideProgressDialog() {
+        if (pDialog.isShowing())
+            pDialog.hide();
+    }
+
+    /**
+     * Making json array request
+     * */
+    public void makeJsonArryReq() {
+        showProgressDialog();
+        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+                        //msgResponse.setText(response.toString());
+                        try {
+                            getJsonArrayData(response);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                        hideProgressDialog();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+                hideProgressDialog();
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(req,
+                tag_json_arry);
+
+        // Cancelling request
+        // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_arry);
+    }
+
+    public void getJsonArrayData(JSONArray arr) throws JSONException {
+        int id_i = 0;
+        String email_i = null, phoneNumber_i = null, name_i = null, aboutMe_i = null, gender_i = null,
+                username_i = null, hobby_i = null, password_i = null;
+        String personalityArr = null;
+        for(int i = 0; i< arr.length(); i++){
+            JSONObject obj = arr.getJSONObject(i);
+            id_i = obj.getInt("id");
+            personalityArr = obj.getString("personality");
+            JSONObject personalityObj = new JSONObject(personalityArr);
+            JSONArray hobbyArr = personalityObj.getJSONArray("hobbies");
+            for(int j = 0; j<hobbyArr.length(); j++){
+                JSONObject hobbyObj = hobbyArr.getJSONObject(j);
+                hobby_i = hobby_i + hobbyObj.getString("hobbyN") + ",";
+            }
+            email_i = obj.getString("email");
+            phoneNumber_i = obj.getString("phoneNumber");
+            name_i = obj.getString("name");
+            username_i = obj.getString("userName");
+            password_i = obj.getString("password");
+            gender_i = obj.getString("gender");
+            if(id_i == Const.USER_ID){
+                id = id_i;
+                break;
+            }
+        }
+        userName = username_i;
+        password = password_i;
+        email = email_i;
 
     }
 

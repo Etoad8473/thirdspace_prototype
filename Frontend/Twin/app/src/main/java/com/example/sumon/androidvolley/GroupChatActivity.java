@@ -1,6 +1,6 @@
 package com.example.sumon.androidvolley;
 
-import static com.example.sumon.androidvolley.api.ApiClientFactory.GetGroupChatApi;
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetMessageApi;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.sumon.androidvolley.api.SlimCallback;
-import com.example.sumon.androidvolley.model.GroupChat;
+import com.example.sumon.androidvolley.model.Message;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -121,17 +121,20 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 
     public void RegenerateAllGroupChatOnScreen(TextView apiText1){
 
-        GetGroupChatApi().GetAllGroupChat().enqueue(new SlimCallback<List<GroupChat>>(groupChats ->{
+        GetMessageApi().GetAllMessages().enqueue(new SlimCallback<List<Message>>(messages ->{
             apiText1.setText("");
 
-            for (int i = 0; i < groupChats.size(); i++){
-                apiText1.append(groupChats.get(i).printable());
+            for (int i = 0; i < messages.size(); i++){
+                apiText1.append(messages.get(i).printable());
             }
         }, "GetAllGroupChats"));
     }
 
     public void postChat(){
-        GroupChat newChat = new GroupChat();
+        Message newChat = new Message();
+        //EditProfileWindows editProfileWindows = new EditProfileWindows();
+        //editProfileWindows.makeJsonArryReq();
+        //String userName = String.valueOf(editProfileWindows.name.getText());
         String currentDate = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(new Date());
         String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
         //newChat.setGroupName(groupName.getText().toString());
@@ -139,7 +142,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         newChat.setTime(currentTime);
         newChat.setData(chatBox.getText().toString());
         newChat.setDate(currentDate);
-        GetGroupChatApi().PostGroupChatByBody(newChat).enqueue(new SlimCallback<GroupChat>(groupChat->{
+        GetMessageApi().PostMessageByBody(newChat).enqueue(new SlimCallback<Message>(message ->{
             RegenerateAllGroupChatOnScreen(chatHistory);
         }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {

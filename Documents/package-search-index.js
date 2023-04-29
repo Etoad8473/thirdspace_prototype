@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"twin"},{"l":"twin.Event"},{"l":"twin.Group"},{"l":"twin.GroupChat"},{"l":"twin.Message"},{"l":"twin.Personality"},{"l":"twin.Personality.Hobby"},{"l":"twin.Personality.Interests"},{"l":"twin.Personality.Scaleable"},{"l":"twin.Personality.Values"},{"l":"twin.User"}]

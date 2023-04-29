@@ -1,0 +1,11 @@
+twin
+twin.Event
+twin.Group
+twin.GroupChat
+twin.Message
+twin.Personality
+twin.Personality.Hobby
+twin.Personality.Interests
+twin.Personality.Scaleable
+twin.Personality.Values
+twin.User

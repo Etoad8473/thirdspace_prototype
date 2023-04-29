@@ -9,8 +9,35 @@ public class Personality {
     private String lifestyle;
     private String values;
     private String goals;
+    private String name;
+    private String gender;
+    private String phoneNumber;
+    private String email;
+    private String userName;
+    private String password;
 
     public Personality(){
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUsername(String uName){
+        this.userName = uName;
+    }
+
+    public String getUsername(){
+        return userName;
+    }
+    public void setPassword(String pass){
+        this.password = pass;
+    }
+    public String getPassword(){
+        return password;
     }
 
     public void setHobbies(String hobbies){
@@ -59,6 +86,30 @@ public class Personality {
 
     public String getGoals(){
         return goals;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public void setGender(String gender){
+        this.gender = gender;
+    }
+
+    public String getGender(){
+        return gender;
+    }
+
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber= phoneNumber;
+    }
+
+    public String getPhoneNumber(){
+        return phoneNumber;
     }
 
     public String printable(){

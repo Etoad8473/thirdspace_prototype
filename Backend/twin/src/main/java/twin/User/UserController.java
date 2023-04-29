@@ -80,33 +80,31 @@ class UserController {
         return u.getFriends();
     }
 
-    @GetMapping("/users/login")
-    public String loginUserWithPassword(@RequestBody User check)
+    @GetMapping("/users/login/{username}/{password}")
+    public User loginUserWithPassword(@PathVariable String username, @PathVariable String password)
     {
-
-        String userName = check.getUserName();
-        String password = check.getPassword();
 
         List<User> userList = userRepo.findAll();
 
-        User dBUser = null;
+        User userFound = null;
 
+        //check if any users have the username
         for(User u: userList)
         {
-            if(userName.equals(u.getUserName()))
+            if(username.equals(u.getUserName()))
             {
-                dBUser = u;
+                userFound = u;
                 break;
             }
         }
 
-        if(dBUser == null)
-            return "user not found";
+        if(userFound == null)
+            return null;
 
-        if(password.equals(dBUser.getPassword()))
-            return "success";
+        if(password.equals(userFound.getPassword()))
+            return userFound;
         else
-            return "incorrect password";
+            return null;
     }
 
     //----------------------------POST----------------------//

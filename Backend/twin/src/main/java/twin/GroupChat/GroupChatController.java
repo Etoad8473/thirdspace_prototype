@@ -23,6 +23,12 @@ public class GroupChatController {
         return groupChatRepo.findAll();
     }
 
+    @GetMapping("/groupChat/{id}/message")
+    public Message returnMessage(@PathVariable long id) { return messageRepo.findById(id);}
+
+    @GetMapping("/groupChat/messages")
+    public List<Message> returnGroupChatMessages(@RequestBody GroupChat groupchat){ return groupchat.getMessages();}
+
     @GetMapping("/groupChat/{id}")
     public GroupChat getGroupChat(@PathVariable long id){ return groupChatRepo.findById(id);}
 

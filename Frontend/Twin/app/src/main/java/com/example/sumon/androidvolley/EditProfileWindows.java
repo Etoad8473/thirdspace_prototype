@@ -41,7 +41,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
     private EditText email;
     private EditText phoneNumber;
-    private EditText name;
+    protected EditText name;
     private EditText gender;
     private EditText aboutMe;
     private EditText personality;
@@ -210,7 +210,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
     /**
      * Making json array request
      * */
-    private void makeJsonArryReq() {
+    public void makeJsonArryReq() {
         showProgressDialog();
         JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
                 new Response.Listener<JSONArray>() {

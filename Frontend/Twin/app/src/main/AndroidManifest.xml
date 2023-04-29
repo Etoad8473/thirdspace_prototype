@@ -13,12 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".PersonalityBuilder"
             android:exported="false" />
         <activity
             android:name=".GroupChatActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".EditProfileWindows"
             android:exported="false" />

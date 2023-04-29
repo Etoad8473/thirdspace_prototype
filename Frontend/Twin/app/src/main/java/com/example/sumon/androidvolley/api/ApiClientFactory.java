@@ -34,7 +34,15 @@ public class ApiClientFactory {
     public static EventApi GetEventApi(){
         return GetApiClientSeed().create(EventApi.class);
     }
-    public static GroupChatApi GetGroupChatApi(){return GetApiClientSeed().create(GroupChatApi.class);}
+    public static MessageApi GetMessageApi(){return GetApiClientSeed().create(MessageApi.class);}
     public static MatchApi GetMatchApi(){return  GetApiClientSeed().create(MatchApi.class);}
     public static PersonalityApi GetPersonalityApi(){return GetApiClientSeed().create(PersonalityApi.class);}
+    public static LoginApi GetLoginApi(){
+        return GetApiClientSeed().create(LoginApi.class);
+    }
+
+    public static GroupApi GetGroupApi(){
+        return GetApiClientSeed().create(GroupApi.class);
+    }
+    public static SignUpApi GetSignUpApi(){return GetApiClientSeed().create(SignUpApi.class);}
 }

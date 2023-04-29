@@ -3,6 +3,7 @@ package com.example.sumon.androidvolley;
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetSignUpApi;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -57,6 +58,8 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
                 postObj();
                 makeJsonArryReq();
                 Const.USER_ID = userId;
+                finish();
+                startActivity(new Intent(SignUpPageActivity.this, PersonalityBuilder.class));
         }
     }
 

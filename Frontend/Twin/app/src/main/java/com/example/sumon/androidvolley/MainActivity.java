@@ -66,8 +66,8 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //startActivity(new Intent(MainActivity.this, PersonalityBuilder.class));
-        startActivity(new Intent(MainActivity.this, LoginPageActivity.class));
+        startActivity(new Intent(MainActivity.this, PersonalityBuilder.class));
+        //startActivity(new Intent(MainActivity.this, LoginPageActivity.class));
 
         profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
         groupChatButton = (Button) findViewById(R.id.groupChatButton);

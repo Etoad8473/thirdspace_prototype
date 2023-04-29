@@ -341,7 +341,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayout_ethnicity"
+                    android:id="@+id/linearLayout_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -349,13 +349,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:labelFor="@id/ethnicityEditText"
-                        android:text="Ethnicity"
+                        android:labelFor="@id/nameEditText"
+                        android:text="Name"
                         android:textStyle="italic"
                         android:textSize="25sp" />
 
                     <EditText
-                        android:id="@+id/ethnicityEditText"
+                        android:id="@+id/nameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="0dp"

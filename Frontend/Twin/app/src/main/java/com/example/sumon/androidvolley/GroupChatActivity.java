@@ -142,7 +142,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         newChat.setTime(currentTime);
         newChat.setData(chatBox.getText().toString());
         newChat.setDate(currentDate);
-        GetMessageApi().PostMessageByBody(220,newChat).enqueue(new SlimCallback<Message>(message ->{
+        GetMessageApi().PostMessageByBody(newChat).enqueue(new SlimCallback<Message>(message ->{
             RegenerateAllGroupChatOnScreen(chatHistory);
         }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {

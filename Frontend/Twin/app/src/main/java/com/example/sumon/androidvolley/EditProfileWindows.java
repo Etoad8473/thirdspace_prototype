@@ -143,11 +143,21 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
             username.setText(trivias.getUsername());
         }, "GetAUser"));
 
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
+
         GetPersonalityApi().GetUserHobby(Const.USER_ID).enqueue(new SlimCallback<List<Hobby>>(hobbies ->{
             for(int i = 0; i<hobbies.size(); i++){
                 personality.append(hobbies.get(i).getHobbyN() + ",");
             }
         }, "GetUserHobby"));
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
 
         GetPersonalityApi().GetUserInterest(Const.USER_ID).enqueue(new SlimCallback<List<Interest>>(interests ->{
             for(int i = 0; i<interests.size(); i++){

@@ -1,6 +1,7 @@
 package com.example.sumon.androidvolley;
 
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetPersonalityApi;
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.sumon.androidvolley.api.PersonalityApi;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.app.AppController;
-import com.example.sumon.androidvolley.model.Personality;
+import com.example.sumon.androidvolley.model.Trivia;
 import com.example.sumon.androidvolley.utils.Const;
 
 import org.json.JSONArray;
@@ -243,12 +244,24 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                 checkSelected();
                 convertStringtoArr(hobbies, lifestyle, values);
                 convertIdtoArrId(hobbiesId, lifestyleId, valuesId);
+//                for(int i = 0; i< hobbiesIdArr.length; i++){
+//                    selectedView.append(Integer.toString(hobbiesIdArr[i]));
+//                }
                 postPersonality();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
+
                 postInterest();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
 
                 //updateAvailableSelection(hobbiesArr, lifestyleArr, valuesArr);
 
-                //finish();
+                finish();
                 break;
 
             case R.id.sportsHobbiesButton:
@@ -1235,34 +1248,37 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     }
 
     public void postPersonality() {
-        Personality userPersonality = new Personality();
+        Trivia userPersonality = new Trivia();
         userPersonality.setGender(sexuality.getText().toString());
         userPersonality.setName(name.getText().toString());
         userPersonality.setPhoneNumber(phoneNumber.getText().toString());
         userPersonality.setEmail(email);
         userPersonality.setUsername(userName);
         userPersonality.setPassword(password);
+//        userPersonality.setEmail("postman@gmail.com");
+//        userPersonality.setUsername("postman");
+//        userPersonality.setPassword("asdf1234");
 
-        GetPersonalityApi().PostDemographicsToUser(Const.USER_ID, userPersonality).enqueue(new SlimCallback<PersonalityApi>(demographics->{
+        GetTrivaApi().PostTriviaByPath(Const.USER_ID, userPersonality).enqueue(new SlimCallback<Trivia>(demographics->{
         }));
     }
 
     public void postInterest(){
         for(int i = 0; i<hobbiesIdArr.length; i++){
-            GetPersonalityApi().PostHobbyToUser(id,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
+            GetPersonalityApi().PostHobbyToUser(Const.USER_ID,hobbiesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(hobby->{
             }));
         }
 
 
         for(int i = 0; i< lifestyleIdArr.length; i++) {
-            GetPersonalityApi().PostInterestToUser(id, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
+            GetPersonalityApi().PostInterestToUser(Const.USER_ID, lifestyleIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(interest -> {
             }));
         }
 
-        for(int i = 0; i<valuesIdArr.length; i++) {
-            GetPersonalityApi().PostValueToUser(id, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
-            }));
-        }
+//        for(int i = 0; i<valuesIdArr.length; i++) {
+//            GetPersonalityApi().PostValueToUser(Const.USER_ID, valuesIdArr[i]).enqueue(new SlimCallback<PersonalityApi>(value -> {
+//            }));
+//        }
 //
 //        GetPersonalityApi().PostValueToUser(379, 249).enqueue(new SlimCallback<PersonalityApi>(value -> {
 //        }));

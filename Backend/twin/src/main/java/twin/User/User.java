@@ -57,11 +57,11 @@ public class User {
     @JsonIgnore
     private Event event;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JsonIgnore
     private List<User> friends;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JsonIgnore
     private List<Group> groups;
 

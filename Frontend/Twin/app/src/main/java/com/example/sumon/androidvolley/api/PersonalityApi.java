@@ -1,15 +1,26 @@
 package com.example.sumon.androidvolley.api;
 
+import com.example.sumon.androidvolley.model.Hobby;
+import com.example.sumon.androidvolley.model.Interest;
 import com.example.sumon.androidvolley.model.Personality;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 /**
  * @author kaiheng
  */
 public interface PersonalityApi {
+
+    @GET("users/{uId}/hobby")
+    Call<List<Hobby>> GetUserHobby(@Path("uId") int userId);
+
+    @GET("users/{uId}/interest")
+    Call<List<Interest>> GetUserInterest(@Path("uId") int userId);
 
     @POST("personality")
     Call<PersonalityApi> PostPersonalityByBody(@Body PersonalityApi newPersonality);

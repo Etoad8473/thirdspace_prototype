@@ -11,11 +11,14 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface GroupChatApi {
-    @GET("/groupChat")
+    @GET("groupChat")
     Call<List<GroupChat>> GetAllGroupChats();
 
-    @POST("/groupChat")
+    @POST("groupChat")
     Call<Group> PostGroupChat(@Body GroupChat newGroupChat);
+
+    @GET("groupChat/message")
+    Call<List<GroupChat>> GetGroupMessages();
 
 
 }

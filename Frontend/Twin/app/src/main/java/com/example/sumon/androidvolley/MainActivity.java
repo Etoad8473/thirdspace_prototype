@@ -45,7 +45,7 @@ import java.util.TimerTask;
  * @author kaiheng
  */
 public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupChatButton;
+    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupButton;
     private TextView matchView, eventView;
 
     private ScrollView eventScrollView;
@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements OnClickListener {
         startActivity(new Intent(MainActivity.this, LoginPageActivity.class));
 
         profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
-        groupChatButton = (Button) findViewById(R.id.groupChatButton);
+        groupButton = (Button) findViewById(R.id.groupButton);
         eventTabButton = (Button) findViewById(R.id.eventTabButton);
         matchView = (TextView) findViewById(R.id.newMatchView);
         eventView = (TextView) findViewById(R.id.eventListView);
@@ -94,7 +94,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
         profileTabBtn.setOnClickListener(this);
-        groupChatButton.setOnClickListener(this);
+        groupButton.setOnClickListener(this);
         eventTabButton.setOnClickListener(this);
         RegenerateAllEventsOnScreen(eventView);
 
@@ -141,8 +141,8 @@ public class MainActivity extends Activity implements OnClickListener {
                 startActivity(new Intent(MainActivity.this, EditProfileWindows.class));
                 break;
 
-            case R.id.groupChatButton:
-                startActivity(new Intent(MainActivity.this, GroupChatActivity.class));
+            case R.id.groupButton:
+                startActivity(new Intent(MainActivity.this, GroupActivity.class));
                 break;
 
             case R.id.eventTabButton:

@@ -80,6 +80,14 @@ class UserController {
         return u.getFriends();
     }
 
+    @GetMapping("/users/{id}/groups")
+    public List<Group> returnGroups(@PathVariable long id)
+    {
+        User u = userRepo.findById(id);
+
+        return u.getGroups();
+    }
+
     @GetMapping("/users/login/{username}/{password}")
     public User loginUserWithPassword(@PathVariable String username, @PathVariable String password)
     {

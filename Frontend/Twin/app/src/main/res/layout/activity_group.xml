@@ -28,16 +28,19 @@
             android:layout_height="600dp"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/groupBtn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:textColor="@color/white"
-                android:background="@color/purple_500"
-                android:text="Group 1" />
+
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/groupFinishBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="665dp"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:background="@color/red_grey"
+        android:text="Back" />
 
 </RelativeLayout>

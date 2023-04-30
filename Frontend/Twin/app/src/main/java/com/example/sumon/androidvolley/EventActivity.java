@@ -48,6 +48,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         backButton.setOnClickListener(this);
         viewEvent.setMovementMethod(new ScrollingMovementMethod());
 
+        RegenerateAllEventsOnScreen(viewEvent);
     }
 
     @Override

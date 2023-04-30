@@ -72,6 +72,8 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         getButton.setOnClickListener(this);
         saveButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
+
+        makeJsonArryReq();
     }
 
     @Override

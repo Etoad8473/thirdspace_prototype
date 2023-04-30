@@ -204,6 +204,21 @@ public class User {
         friend.friends.add(this);
     }
 
+    //updates all fields of a user
+    public void updateUser(User updated)
+    {
+        this.friends = updated.getFriends();
+        this.email = updated.getEmail();
+        this.personality = updated.getPersonality();
+        this.name = updated.getName();
+        this.userName = updated.getUserName();
+        this.password = updated.getPassword();
+        this.gender = updated.getGender();
+        this.phoneNumber = updated.getPhoneNumber();
+        this.event = updated.getEvent();
+        this.groups = updated.getGroups();
+    }
+
     public void removeFriend(User friend) { this.friends.remove(friend); }
 
     public List<Group> getGroups() {

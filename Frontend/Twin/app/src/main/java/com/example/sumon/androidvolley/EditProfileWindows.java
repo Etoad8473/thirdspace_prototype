@@ -1,5 +1,6 @@
 package com.example.sumon.androidvolley;
 
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetPersonalityApi;
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.Activity;
@@ -20,6 +21,8 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.app.AppController;
+import com.example.sumon.androidvolley.model.Hobby;
+import com.example.sumon.androidvolley.model.Interest;
 import com.example.sumon.androidvolley.model.Trivia;
 import com.example.sumon.androidvolley.utils.Const;
 
@@ -73,7 +76,9 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         saveButton.setOnClickListener(this);
         backButton.setOnClickListener(this);
 
-        makeJsonArryReq();
+//        email.setText(Integer.toString(Const.USER_ID));
+
+        GetUserInformation();
     }
 
     @Override
@@ -84,7 +89,9 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
                 break;
 
             case R.id.getDataButton:
-                makeJsonArryReq();
+//                makeJsonArryReq();
+                personality.setText("");
+                GetUserInformation();
                 break;
 
             case R.id.editProfileBackButton:
@@ -109,7 +116,7 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
         //newTrivia.setPersonalityId(3);
         //newTrivia.setEventId(0);
         GetTrivaApi().PostTriviaByPath(Const.USER_ID,newTrivia).enqueue(new SlimCallback<Trivia>(trivia->{
-            RegenerateAllTriviasOnScreen(username);
+            GetUserInformation();
         }));
 
 //        GetTrivaApi().PostHobbytoUser(123,1).enqueue(new SlimCallback<Trivia>(hobby->{
@@ -127,16 +134,26 @@ public class EditProfileWindows extends Activity implements View.OnClickListener
 
          */
     }
-    void RegenerateAllTriviasOnScreen( TextView apiText1){
+    void GetUserInformation(){
+        GetTrivaApi().GetAUser(Const.USER_ID).enqueue(new SlimCallback<Trivia>(trivias ->{
+            email.setText(trivias.getEmail());
+            phoneNumber.setText(trivias.getPhoneNumber());
+            name.setText(trivias.getName());
+            gender.setText(trivias.getGender());
+            username.setText(trivias.getUsername());
+        }, "GetAUser"));
 
-        GetTrivaApi().GetAllTrivia().enqueue(new SlimCallback<List<Trivia>>(trivias ->{
-            apiText1.setText("");
-
-            for (int i = trivias.size()-1; i>= 0; i--){
-                apiText1.append(trivias.get(i).printable());
+        GetPersonalityApi().GetUserHobby(Const.USER_ID).enqueue(new SlimCallback<List<Hobby>>(hobbies ->{
+            for(int i = 0; i<hobbies.size(); i++){
+                personality.append(hobbies.get(i).getHobbyN() + ",");
             }
-        }, "GetAllTrivia"));
+        }, "GetUserHobby"));
 
+        GetPersonalityApi().GetUserInterest(Const.USER_ID).enqueue(new SlimCallback<List<Interest>>(interests ->{
+            for(int i = 0; i<interests.size(); i++){
+                personality.append(interests.get(i).getInterestN()+",");
+            }
+        }, "GetUserInterest"));
     }
 
     private void showProgressDialog() {

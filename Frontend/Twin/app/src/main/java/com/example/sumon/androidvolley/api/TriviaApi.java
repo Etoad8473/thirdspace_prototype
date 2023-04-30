@@ -18,7 +18,7 @@ public interface TriviaApi {
     Call<List<Trivia>> GetAllTrivia();
 
     @GET("users/{id}")
-    Call<List<Trivia>> getAUser();
+    Call<Trivia> GetAUser(@Path("id") int id);
 
     @POST("users/{id}")
     Call<Trivia> PostTriviaByPath(@Path("id") int id, @Body Trivia newTrivia);

@@ -22,7 +22,7 @@ public class Personality
     @Column(name="id")
     private long id;
 
-    @OneToOne
+    @OneToOne (cascade = {CascadeType.ALL})
     @JsonIgnore
     private User user;
 

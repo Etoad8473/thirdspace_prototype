@@ -131,9 +131,7 @@ class UserController {
 
         user.updateUser(updatedU);
 
-        userRepo.save(user);
-
-        return userRepo.findById(id);
+        return userRepo.save(user);
     }
 
     @PostMapping("/users/{id}/createBestMatch")

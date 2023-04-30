@@ -12,41 +12,41 @@ import java.util.List;
 
 @RestController
 public class GroupChatController {
-
-    @Autowired
-    private GroupChatRepository groupChatRepo;
-
-    @Autowired
-    private MessageRepository messageRepo ;
-
-    @GetMapping("/groupChat")
-    public List<GroupChat> returnGroupChats(){
-        return groupChatRepo.findAll();
-    }
-
-    @GetMapping("/groupChat/{id}/message")
-    public Message returnMessage(@PathVariable long id) { return messageRepo.findById(id);}
-
-    @GetMapping("/groupChat/message")
-    public List<Message> returnGroupChatMessages(@RequestBody GroupChat g){
-        return g.getMessages();
-    }
-
-    @GetMapping("/groupChat/{id}")
-    public GroupChat getGroupChat(@PathVariable long id){ return groupChatRepo.findById(id);}
-
-    @PostMapping("/groupChat")
-    public GroupChat createGroupChat(@RequestBody GroupChat groupChat) { return groupChatRepo.save(groupChat); }
-    @PostMapping("/groupChat/{id}/message")
-    public GroupChat addingMessage(@PathVariable long id, @RequestBody Message m) {
-        GroupChat g = groupChatRepo.findById(id);
-        g.addMessage(m);
-
-        messageRepo.save(m);
-        return groupChatRepo.save(g);
-    }
-
-
-    @DeleteMapping("/groupChat/{id}")
-    public @ResponseBody void removeGroupChat(@PathVariable Long id) { groupChatRepo.deleteById(id); }
+//
+//    @Autowired
+//    private GroupChatRepository groupChatRepo;
+//
+//    @Autowired
+//    private MessageRepository messageRepo ;
+//
+//    @GetMapping("/groupChat")
+//    public List<GroupChat> returnGroupChats(){
+//        return groupChatRepo.findAll();
+//    }
+//
+//    @GetMapping("/groupChat/{id}/message")
+//    public Message returnMessage(@PathVariable long id) { return messageRepo.findById(id);}
+//
+//    @GetMapping("/groupChat/message")
+//    public List<Message> returnGroupChatMessages(@RequestBody GroupChat g){
+//        return g.getMessages();
+//    }
+//
+//    @GetMapping("/groupChat/{id}")
+//    public GroupChat getGroupChat(@PathVariable long id){ return groupChatRepo.findById(id);}
+//
+//    @PostMapping("/groupChat")
+//    public GroupChat createGroupChat(@RequestBody GroupChat groupChat) { return groupChatRepo.save(groupChat); }
+//    @PostMapping("/groupChat/{id}/message")
+//    public GroupChat addingMessage(@PathVariable long id, @RequestBody Message m) {
+//        GroupChat g = groupChatRepo.findById(id);
+//        g.addMessage(m);
+//
+//        messageRepo.save(m);
+//        return groupChatRepo.save(g);
+//    }
+//
+//
+//    @DeleteMapping("/groupChat/{id}")
+//    public @ResponseBody void removeGroupChat(@PathVariable Long id) { groupChatRepo.deleteById(id); }
 }

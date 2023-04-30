@@ -18,6 +18,9 @@ public class GroupController {
     @GetMapping("/group")
     public List<Group> returnGroups() { return groupRepo.findAll(); }
 
+    @GetMapping("/group/{id}")
+    public Group returnGroup(@PathVariable long id) { return groupRepo.findById(id); }
+
     //-------------------------POST--------------------------------//
     @PostMapping("/group")
     public Group createGroup(@RequestBody Group group) { return groupRepo.save(group); }

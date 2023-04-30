@@ -3,6 +3,7 @@ package twin.GroupChat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import twin.Event.Event;
+import twin.Group.Group;
 import twin.Message.Message;
 import twin.Message.MessageRepository;
 import twin.User.User;
@@ -26,9 +27,8 @@ public class GroupChatController {
     @GetMapping("/groupChat/{id}/message")
     public Message returnMessage(@PathVariable long id) { return messageRepo.findById(id);}
 
-    @GetMapping("/groupChat/{id}/messages")
-    public List<Message> returnGroupChatMessages(@PathVariable long id){
-        GroupChat g = groupChatRepo.findById(id);
+    @GetMapping("/groupChat/messages")
+    public List<Message> returnGroupChatMessages(@RequestBody GroupChat g){
         return g.getMessages();
     }
 

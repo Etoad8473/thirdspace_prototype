@@ -121,7 +121,9 @@ class UserController {
     {
         User user = userRepo.findById(id);
 
-        userRepo.save(updatedU);
+        user.updateUser(updatedU);
+
+        userRepo.save(user);
 
         return userRepo.findById(id);
     }

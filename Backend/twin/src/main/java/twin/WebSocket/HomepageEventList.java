@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@ServerEndpoint(value="/eventWebSocket")
+@ServerEndpoint(value="/eventWebSocket/{uId}")
 @Component
 public class HomepageEventList {
     private static Map <Session, String> sessionUsernameMap = new Hashtable<>();

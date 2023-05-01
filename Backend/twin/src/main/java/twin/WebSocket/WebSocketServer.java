@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
-@ServerEndpoint("/groupChat/{uId}")
+@ServerEndpoint(value="/testwebsocket/{uId}")
 @Component
 public class WebSocketServer {
     private static Map <Session, String> sessionUsernameMap = new Hashtable<>();

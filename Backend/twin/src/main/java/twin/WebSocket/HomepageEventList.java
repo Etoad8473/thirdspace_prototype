@@ -4,21 +4,21 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import javax.websocket.OnOpen;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@ServerEndpoint(value="/testwebsocket/{uId}")
+@ServerEndpoint(value="/eventWebSocket")
 @Component
-public class WebSocketServer {
+public class HomepageEventList {
     private static Map <Session, String> sessionUsernameMap = new Hashtable<>();
     private static Map <String, Session> usernameSessionMap = new Hashtable<>();
 
@@ -31,8 +31,8 @@ public class WebSocketServer {
         sessionUsernameMap.put(session, username);
         usernameSessionMap.put(username, session);
 
-        String message = "User:" + username + " has Joined the chat";
-        broadcast(message);
+        //String message = "User:" + username + "has Joined the chat";
+        //broadcast(message);
     }
 
     @OnMessage

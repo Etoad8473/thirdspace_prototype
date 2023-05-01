@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.model.Event;
+import com.example.sumon.androidvolley.utils.Const;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
@@ -63,7 +64,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
                 new Draft_6455()
         };
 
-        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/eventWebSocket";
+        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/eventWebSocket/" + Const.USER_ID;
         //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
         try{
             Log.d("Socket:", "Trying socket");

@@ -11,11 +11,15 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.example.sumon.androidvolley.utils.Const;
-import com.example.sumon.androidvolley.webSocket.WebSocketListener;
-import com.example.sumon.androidvolley.webSocket.WebSocketManager;
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_6455;
+import org.java_websocket.handshake.ServerHandshake;
 
-public class MessageActivity extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener, WebSocketListener {
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class MessageActivity extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener {
 
     private Button backButton;
     private TextView chatHistory, groupName;
@@ -26,16 +30,14 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
     private ScrollView chatHistoryScrollView;
     private EditText chatBox;
 
+    private WebSocketClient cc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        String serverUrl = "http://coms-309-015.class.las.iastate.edu:8080/groupChat" + Integer.toString(Const.USER_ID);
 
-        Log.d("Socket:", "Trying socket");
-        WebSocketManager.getInstance().connect(serverUrl);
-        WebSocketManager.getInstance().setWebSocketListener(MessageActivity.this);
 
         backButton = (Button) findViewById(R.id.messageBackButton);
         chatBox = (EditText) findViewById(R.id.messageBox);
@@ -43,18 +45,59 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         groupName = (TextView) findViewById(R.id.messageNameTextView);
         chatHistoryScrollView = (ScrollView) findViewById(R.id.messageHistory_scrollView);
 
+        backButton.setOnClickListener(this);
+        chatBox.setOnKeyListener(this);
+
+        Draft[] drafts = {
+                new Draft_6455()
+        };
+
+        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/testwebsocket/Test";
+        //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
+        try{
+            Log.d("Socket:", "Trying socket");
+            cc = new WebSocketClient(new URI(serverUrl), (Draft) drafts[0]) {
+                @Override
+                public void onOpen(ServerHandshake serverHandshake) {
+                    Log.d("OPEN", "run() returned: " + "is connecting");
+
+                }
+
+                @Override
+                public void onMessage(String message) {
+                    Log.d("", "run() returned: " + message);
+                    String s = chatHistory.getText().toString();
+                    chatHistory.setText(s + "\nServer:" + message);
+                }
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    Log.d("CLOSE", "onClose() returned: " + reason);
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.d("Exception: ", e.toString());
+
+                }
+            };
+        }catch (URISyntaxException e){
+            Log.d("Exception:", e.toString());
+        }
+        cc.connect();
+
 //        pDialog = new ProgressDialog(this);
 //        pDialog.setMessage("Loading...");
 //        pDialog.setCancelable(false);
 
-        backButton.setOnClickListener(this);
-        chatBox.setOnKeyListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.GroupChatBackButton:
+            case R.id.messageBackButton:
                 finish();
                 break;
 
@@ -70,31 +113,16 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         {
 //            chatHistory.append(chatBox.getText() + "\n");
 //            postChat();
-            WebSocketManager.getInstance().sendMessage(chatBox.getText().toString());
+            try {
+                cc.send(chatBox.getText().toString());
+            }catch(Exception e){
+                Log.d("ExceptionSendMessage:", e.getMessage().toString());
+            }
             chatHistoryScrollView.fullScroll(View.FOCUS_DOWN);
             chatBox.getText().clear();
             chatBox.requestFocus();
             return true;
         }
         return false;
-    }
-
-
-    @Override
-    public void onWebSocketMessage(String message) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("","run() returned: " + message);
-                String s = chatHistory.getText().toString();
-                chatHistory.setText(s+ "\n" + message);
-            }
-        });
-    }
-
-    @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        WebSocketManager.getInstance().removeWebSocketListener();
     }
 }

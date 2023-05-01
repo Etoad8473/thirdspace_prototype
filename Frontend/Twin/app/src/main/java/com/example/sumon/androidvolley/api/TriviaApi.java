@@ -14,13 +14,13 @@ import retrofit2.http.Path;
  */
 public interface TriviaApi {
 
-    @GET("users")
+    @GET("/users")
     Call<List<Trivia>> GetAllTrivia();
 
-    @GET("users/{id}")
+    @GET("/users/{id}")
     Call<Trivia> GetAUser(@Path("id") int id);
 
-    @POST("users/{id}")
+    @POST("/users/{id}")
     Call<Trivia> PostTriviaByPath(@Path("id") int id, @Body Trivia newTrivia);
 
     @POST("users")

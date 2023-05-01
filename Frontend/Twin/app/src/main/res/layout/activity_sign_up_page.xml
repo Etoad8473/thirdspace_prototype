@@ -79,6 +79,24 @@
         android:text="Create"
         android:textSize="25sp"/>
 
+    <EditText
+        android:id="@+id/userIdTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:hint="Do not change anything here"
+        android:layout_marginTop="520dp"
+        android:textStyle="italic"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/doneSignUpButton"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:text="Done"
+        android:textSize="25sp"/>
+
 
 
 </RelativeLayout>

@@ -16,6 +16,10 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Kai Heng Gan
+ */
+
 @ServerEndpoint(value="/testwebsocket/{uId}")
 @Component
 public class WebSocketServer {
@@ -31,7 +35,7 @@ public class WebSocketServer {
         sessionUsernameMap.put(session, username);
         usernameSessionMap.put(username, session);
 
-        String message = "User:" + username + " has Joined the chat";
+        String message = "User: " + username + " has Joined the chat";
         broadcast(message);
     }
 

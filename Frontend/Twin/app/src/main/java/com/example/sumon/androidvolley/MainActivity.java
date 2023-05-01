@@ -137,7 +137,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 new Draft_6455()
         };
 
-        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/eventWebSocket";
+        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/eventWebSocket/HOME";
         //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
         try{
             Log.d("Socket:", "Trying socket");

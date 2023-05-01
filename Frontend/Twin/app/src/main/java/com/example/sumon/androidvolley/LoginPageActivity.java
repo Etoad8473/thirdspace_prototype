@@ -4,6 +4,7 @@ import static com.example.sumon.androidvolley.api.ApiClientFactory.GetLoginApi;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -52,6 +53,8 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
         switch(v.getId()){
             case R.id.loginButton:
                 checkLogins();
+                loginDetailsCheck.setText("Login Successful");
+                loginDetailsCheck.setTextColor(Color.parseColor("#00CC66"));
                 loginDetailsCheck.setVisibility(View.VISIBLE);
 
                 break;

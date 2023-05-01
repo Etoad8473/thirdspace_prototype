@@ -32,10 +32,16 @@ import com.example.sumon.androidvolley.model.Match;
 import com.example.sumon.androidvolley.model.Trivia;
 import com.example.sumon.androidvolley.utils.Const;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_6455;
+import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +66,7 @@ public class MainActivity extends Activity implements OnClickListener {
     private EditText aboutMe;
     private EditText personality;
     private TextView username;
+    private WebSocketClient cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +118,7 @@ public class MainActivity extends Activity implements OnClickListener {
                     public void run(){
                         try{
                             matchView.setText("");
-                            RegenerateAllEventsOnScreen(eventView);
+                            //RegenerateAllEventsOnScreen(eventView);
                             makeJsonArrReq();
 
 //                            eventScrollView.fullScroll(View.FOCUS_DOWN); ""
@@ -126,14 +133,44 @@ public class MainActivity extends Activity implements OnClickListener {
 
         timer.schedule(updateEventList, 0, 5000);
 
-//        while(true){
-//            try {
-//                Thread.sleep(1000);
-//                RegenerateAllEventsOnScreen(eventView);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
+        Draft[] drafts = {
+                new Draft_6455()
+        };
+
+        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/eventWebSocket";
+        //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
+        try{
+            Log.d("Socket:", "Trying socket");
+            cc = new WebSocketClient(new URI(serverUrl), (Draft) drafts[0]) {
+                @Override
+                public void onOpen(ServerHandshake serverHandshake) {
+                    Log.d("OPEN", "run() returned: " + "is connecting");
+
+                }
+
+                @Override
+                public void onMessage(String message) {
+                    Log.d("", "run() returned: " + message);
+                    String s = eventView.getText().toString();
+                    eventView.setText(message + s);
+                }
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    Log.d("CLOSE", "onClose() returned: " + reason);
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.d("Exception: ", e.toString());
+
+                }
+            };
+        }catch (URISyntaxException e){
+            Log.d("Exception:", e.toString());
+        }
+        cc.connect();
     }
 
     @Override
@@ -149,9 +186,11 @@ public class MainActivity extends Activity implements OnClickListener {
 
             case R.id.eventTabButton:
                 startActivity(new Intent(MainActivity.this, EventActivity.class));
+                break;
 
             case R.id.messageButton:
                 startActivity(new Intent(MainActivity.this, MessageActivity.class));
+                break;
 
             default:
                 break;

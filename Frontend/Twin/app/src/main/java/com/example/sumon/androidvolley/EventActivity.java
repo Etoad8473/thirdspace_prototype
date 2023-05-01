@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,13 @@ import android.widget.TextView;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.model.Event;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_6455;
+import org.java_websocket.handshake.ServerHandshake;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 /**
  * @author kaiheng
@@ -25,6 +33,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
     private ProgressDialog pDialog;
     private String TAG = MainActivity.class.getSimpleName();
+    private WebSocketClient cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,45 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         viewEvent.setMovementMethod(new ScrollingMovementMethod());
 
         RegenerateAllEventsOnScreen(viewEvent);
+
+        Draft[] drafts = {
+                new Draft_6455()
+        };
+
+        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/eventWebSocket";
+        //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
+        try{
+            Log.d("Socket:", "Trying socket");
+            cc = new WebSocketClient(new URI(serverUrl), (Draft) drafts[0]) {
+                @Override
+                public void onOpen(ServerHandshake serverHandshake) {
+                    Log.d("OPEN", "run() returned: " + "is connecting");
+
+                }
+
+                @Override
+                public void onMessage(String message) {
+                    Log.d("", "run() returned: " + message);
+                    String s = viewEvent.getText().toString();
+                    viewEvent.setText(message + s);
+                }
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    Log.d("CLOSE", "onClose() returned: " + reason);
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.d("Exception: ", e.toString());
+
+                }
+            };
+        }catch (URISyntaxException e){
+            Log.d("Exception:", e.toString());
+        }
+        cc.connect();
     }
 
     @Override
@@ -56,12 +104,20 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()){
             case R.id.createEventBtn:
                 postEvent();
+                try {
+                    String message = "Event:  " + eventName.getText().toString() + "\nTime:  " + eventTime.getText().toString()
+                            + "\nLocation:  " + eventLocation.getText().toString() + "\n\n";
+                    cc.send(message);
+                }catch(Exception e){
+                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
+                }
                 break;
             case R.id.getEventBtn:
-                RegenerateAllEventsOnScreen(viewEvent);
+                //RegenerateAllEventsOnScreen(viewEvent);
                 break;
 
             case R.id.eventBackButton:
+                cc.close();
                 finish();
                 break;
 
@@ -77,7 +133,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         newEvent.setTime(eventTime.getText().toString());
         newEvent.setLocation(eventLocation.getText().toString());
         GetEventApi().PostEventByBody(newEvent).enqueue(new SlimCallback<Event>(event->{
-            RegenerateAllEventsOnScreen(viewEvent);
+            //RegenerateAllEventsOnScreen(viewEvent);
         }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {
             String result = "email:  "+ response.getEmail()

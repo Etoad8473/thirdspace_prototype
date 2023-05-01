@@ -37,8 +37,6 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-
-
         backButton = (Button) findViewById(R.id.messageBackButton);
         chatBox = (EditText) findViewById(R.id.messageBox);
         chatHistory = (TextView) findViewById(R.id.messageHistory);
@@ -67,7 +65,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                 public void onMessage(String message) {
                     Log.d("", "run() returned: " + message);
                     String s = chatHistory.getText().toString();
-                    chatHistory.setText(s + "\nServer:" + message);
+                    chatHistory.setText(s + message + "\n");
                 }
 
                 @Override
@@ -98,6 +96,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.messageBackButton:
+                cc.close();
                 finish();
                 break;
 

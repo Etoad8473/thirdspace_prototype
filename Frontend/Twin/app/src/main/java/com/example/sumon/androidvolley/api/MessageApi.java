@@ -13,7 +13,7 @@ import retrofit2.http.POST;
  * @author kaiheng
  */
 public interface MessageApi {
-    @GET("message")
+    @GET("/message")
     Call<List<Message>> GetAllMessages();
 
 //    @POST("/group/{gId}/groupChat/message")

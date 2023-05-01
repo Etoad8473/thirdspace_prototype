@@ -48,7 +48,7 @@ public class HomepageEventList {
         sendMessageToPArticularUser(username, "[DM] " + username + ": " + message);
       } else // Message to whole chat
       {
-        broadcast(username + ": " + message);
+        broadcast(message);
       }
     }
   
@@ -60,8 +60,8 @@ public class HomepageEventList {
       sessionUsernameMap.remove(session);
       usernameSessionMap.remove(username);
   
-      String message = username + " disconnected";
-      broadcast(message);
+      //String message = username + " disconnected";
+      //broadcast(message);
     }
   
     @OnError

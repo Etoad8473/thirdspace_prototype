@@ -16,10 +16,10 @@ import retrofit2.http.Path;
  */
 public interface PersonalityApi {
 
-    @GET("users/{uId}/hobby")
+    @GET("/users/{uId}/hobby")
     Call<List<Hobby>> GetUserHobby(@Path("uId") int userId);
 
-    @GET("users/{uId}/interest")
+    @GET("/users/{uId}/interest")
     Call<List<Interest>> GetUserInterest(@Path("uId") int userId);
 
     @POST("personality")
@@ -44,6 +44,6 @@ public interface PersonalityApi {
     Call<PersonalityApi> AddValue(@Path("name") String valueName);
 
     @POST("users/{uId}")
-    Call<PersonalityApi> PostDemographicsToUser(@Path("uId") int userId, @Body Personality newPersonality);
+    Call<Personality> PostDemographicsToUser(@Path("uId") int userId, @Body Personality updateUser);
 
 }

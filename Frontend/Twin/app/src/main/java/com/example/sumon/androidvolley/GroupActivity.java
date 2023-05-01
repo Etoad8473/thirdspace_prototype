@@ -12,10 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.model.Group;
+import com.example.sumon.androidvolley.utils.Const;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +27,9 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog pDialog;
     private String TAG = GroupActivity.class.getSimpleName();
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
+    private ArrayList<Integer> groupIdList = new ArrayList<>();
+    private int groupId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +62,15 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                for(int i = 0; i<groupIdList.size(); i++){
+                    int checkPressedButton = button.getId();
+                    checkPressedButton -= 1000;
+                    if(button.isPressed() && (checkPressedButton == i)){
+                        Const.GROUP_ID = groupIdList.get(i);
+                        Toast toast = Toast.makeText(getApplicationContext(),Integer.toString(Const.GROUP_ID),Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                }
                 startActivity(new Intent(GroupActivity.this, GroupChatActivity.class));
             }
         };
@@ -96,6 +111,8 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
                 groupButton.setId(1000+i);
 
                 groupLinearLay.addView(groupButton);
+                groupIdList.add(groups.get(i).getId());
+
                 groupButton.setOnClickListener(assignGroupChat(groupButton));
             }
 

@@ -1,6 +1,7 @@
 package com.example.sumon.androidvolley;
 
 import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.CoreMatchers.startsWith;
 
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;
@@ -30,19 +31,19 @@ public class SystemTest2 {
      */
     @Test
     public void checkUserInfo(){
-        Const.USER_ID = 435;
-        String resultUsername = "HelloPostman";
-        String resultEmail = "postMan@gmail.com";
-        String resultPhoneNumber = "jhdkhad";
-        String resultName = "postman";
-        String resultInterest = "Dance,Fishing,Music,Active,Solo,Healthy,";
+        Const.USER_ID = 703;
+        String resultUsername = "systemTestAcc";
+        String resultEmail = "systemTestAcc@gmail.com";
+        String resultPhoneNumber = "5163732343";
+        String resultName = "System Tester";
+        String resultInterest = "Travel,Hiking,Rural,Nomadic,Digital,";
         String resultGender = "M";
 
-        Espresso.onView(ViewMatchers.withId(R.id.saveButton)).perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.getDataButton)).perform(ViewActions.click());
 
         // Put thread to sleep to allow volley to handle the request
         try {
-            Thread.sleep(SIMULATED_DELAY_MS);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
         }
 
@@ -56,7 +57,7 @@ public class SystemTest2 {
         Espresso.onView(ViewMatchers.withId(R.id.editprofilewindows_name))
                 .check(ViewAssertions.matches(ViewMatchers.withText(endsWith(resultName))));
         Espresso.onView(ViewMatchers.withId(R.id.editprofilewindows_interest))
-                .check(ViewAssertions.matches(ViewMatchers.withText(endsWith(resultInterest))));
+                .check(ViewAssertions.matches(ViewMatchers.withText(startsWith(resultInterest))));
         Espresso.onView(ViewMatchers.withId(R.id.editprofilewindows_gender))
                 .check(ViewAssertions.matches(ViewMatchers.withText(endsWith(resultGender))));
 

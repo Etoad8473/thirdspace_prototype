@@ -1,6 +1,7 @@
 package com.example.sumon.androidvolley;
 
 import static com.example.sumon.androidvolley.api.ApiClientFactory.GetSignUpApi;
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetTrivaApi;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -18,19 +20,26 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.app.AppController;
 import com.example.sumon.androidvolley.model.SignUp;
+import com.example.sumon.androidvolley.model.Trivia;
 import com.example.sumon.androidvolley.utils.Const;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class SignUpPageActivity extends AppCompatActivity implements View.OnClickListener {
     private ProgressDialog pDialog;
     private String TAG = SignUpPageActivity.class.getSimpleName();
     private String tag_json_obj = "jobj_req", tag_json_arry = "jarray_req";
-    private Button createUserBtn;
+    private Button createUserBtn, doneBtn;
     private EditText usernameEditText, emailAdrrEditText, passwordEditText;
-    private int userId;
+    private EditText userIdView;
+    private TextView signUpTitle;
+
+    private String stringUserId = "";
+//    public int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +51,16 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
         pDialog.setCancelable(false);
 
         createUserBtn = (Button) findViewById(R.id.createUserButton);
+        doneBtn = (Button) findViewById(R.id.doneSignUpButton);
         usernameEditText = (EditText) findViewById(R.id.newUsernameInputText);
         emailAdrrEditText = (EditText) findViewById(R.id.emailAddrInputText);
         passwordEditText = (EditText) findViewById(R.id.newPasswordInputText);
 
-        userId = 0;
+        userIdView = (EditText) findViewById(R.id.userIdTextView);
+        signUpTitle = (TextView) findViewById(R.id.signUpPageTitle);
 
         createUserBtn.setOnClickListener(this);
+        doneBtn.setOnClickListener(this);
     }
 
     @Override
@@ -56,11 +68,39 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
         switch (v.getId()){
             case R.id.createUserButton:
                 postObj();
+                //username = usernameEditText.getText().toString();
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                }
+                //testView.setText(username);
+//                getNewUserInfo();
+
+
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                }
                 makeJsonArryReq();
-                Const.USER_ID = userId;
+//                Const.USER_ID = Integer.parseInt(userIdView.getText().toString());
+//               userIdView.setText(Integer.toString(Const.USER_ID));
+//                Const.USER_ID = userId;
+
+
+                //finish();
+                //startActivity(new Intent(SignUpPageActivity.this, PersonalityBuilder.class));
+                break;
+
+            case R.id.doneSignUpButton:
+                Const.USER_ID = Integer.parseInt(userIdView.getText().toString());
                 finish();
                 startActivity(new Intent(SignUpPageActivity.this, PersonalityBuilder.class));
+                break;
+
+            default:
+                break;
         }
+
     }
 
     private void showProgressDialog() {
@@ -82,11 +122,21 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
         GetSignUpApi().PostNewUser(newUser).enqueue(new SlimCallback<SignUp>(newUsers->{
         }));
     }
+    void getNewUserInfo(){
+        GetTrivaApi().GetAllTrivia().enqueue(new SlimCallback <List<Trivia>>(newUser ->{
+            for(int i = 0; i<newUser.size(); i++){
+                userIdView.append(newUser.get(i).getUsername());
+            }
+
+        }, "GetAllUsers"));
+
+    }
 
     /**
      * Making json array request
      * */
     public void makeJsonArryReq() {
+        int value;
         showProgressDialog();
         JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
                 new Response.Listener<JSONArray>() {
@@ -96,6 +146,7 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
                         //msgResponse.setText(response.toString());
                         try {
                             getJsonArrayData(response);
+
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -118,11 +169,11 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void getJsonArrayData(JSONArray arr) throws JSONException {
-        int id_i = 0;
-        String email_i = null, phoneNumber_i = null, name_i = null, aboutMe_i = null, gender_i = null,
-                username_i = null, hobby_i = null;
+        int id_i;
+        String email_i = "", phoneNumber_i = "", name_i = "", aboutMe_i = "", gender_i = "",
+                username_i = "", hobby_i = "";
         String personalityArr = null;
-        for(int i = 0; i< arr.length(); i++){
+        for(int i = arr.length()-1; i>=0; i--){
             JSONObject obj = arr.getJSONObject(i);
             id_i = obj.getInt("id");
             personalityArr = obj.getString("personality");
@@ -137,11 +188,17 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
             name_i = obj.getString("name");
             //aboutMe_i = obj.getString("aboutMe");
             username_i = obj.getString("userName");
-            if(username_i == String.valueOf(usernameEditText.getText())){
-                userId = id_i;
-            }
-            gender_i = obj.getString("gender");
-        }
 
+//            testView.append(username_i + " | " + usernameEditText.getText().toString()
+//                    + " | "+Integer.toString(username_i.compareTo(username)) + "\n");
+
+            gender_i = obj.getString("gender");
+            if(username_i.compareTo(usernameEditText.getText().toString()) == 0){
+//                testView.append(username_i + " | " + usernameEditText.getText().toString()
+//                        + " | "+Integer.toString(username_i.compareTo(username_i)) + "\n");
+
+                userIdView.setText(Integer.toString(id_i));
+            }
+        }
     }
 }

@@ -3,20 +3,19 @@ package com.example.sumon.androidvolley.model;
  * @author kaiheng
  */
 public class Message {
-    private String sender;
+    private Trivia sender;
     private String time;
     private String date;
     private String data;
-    private String groupName;
 
     public Message(){
     }
 
-    public void setSender(String sender){
+    public void setSender(Trivia sender){
         this.sender = sender;
     }
     public String getSender(){
-        return sender;
+        return sender.getName();
     }
 
     public void setTime(String time){

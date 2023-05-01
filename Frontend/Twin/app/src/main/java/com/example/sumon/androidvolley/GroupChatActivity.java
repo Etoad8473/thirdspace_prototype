@@ -1,6 +1,6 @@
 package com.example.sumon.androidvolley;
 
-import static com.example.sumon.androidvolley.api.ApiClientFactory.GetMessageApi;
+import static com.example.sumon.androidvolley.api.ApiClientFactory.GetGroupApi;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.sumon.androidvolley.api.SlimCallback;
 import com.example.sumon.androidvolley.model.Message;
+import com.example.sumon.androidvolley.utils.Const;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -121,13 +122,13 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 
     public void RegenerateAllGroupChatOnScreen(TextView apiText1){
 
-        GetMessageApi().GetAllMessages().enqueue(new SlimCallback<List<Message>>(messages ->{
+        GetGroupApi().GetAllMessage(Const.GROUP_ID).enqueue(new SlimCallback<List<Message>>(messages ->{
             apiText1.setText("");
 
             for (int i = 0; i < messages.size(); i++){
                 apiText1.append(messages.get(i).printable());
             }
-        }, "GetAllGroupChats"));
+        }, "GetAllChats"));
     }
 
     public void postChat(){
@@ -142,7 +143,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         newChat.setTime(currentTime);
         newChat.setData(chatBox.getText().toString());
         newChat.setDate(currentDate);
-        GetMessageApi().PostMessageByBody(newChat).enqueue(new SlimCallback<Message>(message ->{
+        GetGroupApi().PostAMessage(Const.USER_ID,newChat).enqueue(new SlimCallback<Message>(message ->{
             RegenerateAllGroupChatOnScreen(chatHistory);
         }));
         /*GetPostApi().getFirstPost().enqueue(new SlimCallback<Post>(response -> {

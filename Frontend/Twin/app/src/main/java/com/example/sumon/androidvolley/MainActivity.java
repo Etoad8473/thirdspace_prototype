@@ -45,7 +45,7 @@ import java.util.TimerTask;
  * @author kaiheng
  */
 public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupButton;
+    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupButton, messageButton;
     private TextView matchView, eventView;
 
     private ScrollView eventScrollView;
@@ -72,6 +72,7 @@ public class MainActivity extends Activity implements OnClickListener {
         profileTabBtn = (Button) findViewById(R.id.EditProfileButton);
         groupButton = (Button) findViewById(R.id.groupButton);
         eventTabButton = (Button) findViewById(R.id.eventTabButton);
+        messageButton = (Button) findViewById(R.id.messageButton);
         matchView = (TextView) findViewById(R.id.newMatchView);
         eventView = (TextView) findViewById(R.id.eventListView);
         eventScrollView = (ScrollView) findViewById(R.id.eventScrollView);
@@ -96,6 +97,7 @@ public class MainActivity extends Activity implements OnClickListener {
         profileTabBtn.setOnClickListener(this);
         groupButton.setOnClickListener(this);
         eventTabButton.setOnClickListener(this);
+        messageButton.setOnClickListener(this);
         RegenerateAllEventsOnScreen(eventView);
 
         matchView.setMovementMethod(new ScrollingMovementMethod());
@@ -147,6 +149,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
             case R.id.eventTabButton:
                 startActivity(new Intent(MainActivity.this, EventActivity.class));
+
+            case R.id.messageButton:
+                startActivity(new Intent(MainActivity.this, MessageActivity.class));
+
             default:
                 break;
         }

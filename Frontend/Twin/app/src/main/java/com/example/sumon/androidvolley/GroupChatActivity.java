@@ -171,18 +171,18 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         GetMessageApi().GetAllMessages().enqueue(new SlimCallback<List<Message>>(messages ->{
             apiText1.setText("");
             for (int i = 0; i < messages.size(); i++){
-                if(messages.get(i).getSender() != null){
-                    existingUser = messages.get(i).getSender();
-                    makeJsonArryReq(existingUser.getId(), existingUser, onSessionUserPersonality);
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                    }
-                    apiText1.append(messages.get(i).printableUser());
-                }
-                else{
+//                if(messages.get(i).getSender() != null){
+//                    existingUser = messages.get(i).getSender();
+//                    makeJsonArryReq(existingUser.getId(), existingUser, onSessionUserPersonality);
+//                    try {
+//                        Thread.sleep(10);
+//                    } catch (InterruptedException e) {
+//                    }
+//                    apiText1.append(messages.get(i).printableUser());
+//                }
+//                else{
                     apiText1.append(messages.get(i).printable());
-                }
+//                }
 
 
             }
@@ -217,14 +217,12 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         String currentDate = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(new Date());
         String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
 
-        makeJsonArryReq(Const.USER_ID, onSessionUser, onSessionUserPersonality);
+       // makeJsonArryReq(Const.USER_ID, onSessionUser, onSessionUserPersonality);
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
         }
 
-        onSessionUser.getPersonality().setHobbies(onSessionUserPersonality.getHobbies());
-        onSessionUser.getPersonality().setInterests(onSessionUserPersonality.getInterests());
         //newChat.setGroupName(groupName.getText().toString());
 
         /**
@@ -234,7 +232,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 //            newChat.setSender(onSessionUser);
 //        }
 //        else{
-            newChat.setSender(null);
+        newChat.setSender(Const.USER_NAME);
 //        }
         newChat.setTime(currentTime);
         newChat.setData(chatBox.getText().toString());

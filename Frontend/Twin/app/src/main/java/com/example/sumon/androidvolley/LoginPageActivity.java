@@ -53,13 +53,12 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
         switch(v.getId()){
             case R.id.loginButton:
                 checkLogins();
-                loginDetailsCheck.setText("Login Successful");
-                loginDetailsCheck.setTextColor(Color.parseColor("#00CC66"));
                 loginDetailsCheck.setVisibility(View.VISIBLE);
 
                 break;
 
             case R.id.signUpButton:
+                finish();
                 startActivity(new Intent(LoginPageActivity.this, SignUpPageActivity.class));
                 break;
 
@@ -77,11 +76,18 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
         GetLoginApi().GetLoginCheck(usernameText.getText().toString(), passwordText.getText().toString()).enqueue(new SlimCallback<Login>(login ->{
             stringUserId = Integer.toString(login.getId());
             Const.USER_ID = Integer.parseInt(stringUserId);
+            Const.USER_NAME = login.getUsername();
 //            loginDetailsCheck.setText(stringUserId);
             userLoginDetails = true;
 
             if(userLoginDetails){
-                loginDetailsCheck.setVisibility(View.INVISIBLE);
+                loginDetailsCheck.setText("Login Successful");
+                loginDetailsCheck.setTextColor(Color.parseColor("#00CC66"));
+                loginDetailsCheck.setVisibility(View.VISIBLE);
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                }
                 //loginDetailsCheck.setText(Integer.toString(Const.USER_ID));
                 finish();
             }

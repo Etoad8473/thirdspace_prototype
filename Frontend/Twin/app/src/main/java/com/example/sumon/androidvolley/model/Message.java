@@ -3,7 +3,7 @@ package com.example.sumon.androidvolley.model;
  * @author kaiheng
  */
 public class Message {
-    private MessageUser sender;
+    private String sender;
     private int id;
     private String time;
     private String date;
@@ -20,14 +20,12 @@ public class Message {
         this.id = id;
     }
 
-    public void setSender(MessageUser sender){
+    public void setSender(String sender){
         this.sender = sender;
     }
-    public MessageUser getSender(){
+    public String getSender(){
         return sender;
     }
-
-    public String getSenderName(){return sender.getName();}
 
     public void setTime(String time){
         this.time = time;
@@ -59,9 +57,5 @@ public class Message {
 
     public String printable(){
         return getSender() + ": " + getData() + "\n";
-    }
-
-    public String printableUser(){
-        return getSenderName() + ": " + getData() + "\n";
     }
 }

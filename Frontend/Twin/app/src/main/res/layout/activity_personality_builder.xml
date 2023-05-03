@@ -844,4 +844,14 @@
         android:layout_marginLeft="300dp"
         android:layout_marginTop="650dp"/>
 
+    <Button
+        android:id="@+id/personalityCheckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pre-submit"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="650dp"/>
+
 </RelativeLayout>

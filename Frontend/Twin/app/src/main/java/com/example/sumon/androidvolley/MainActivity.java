@@ -115,7 +115,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
         final Handler handler = new Handler();
         Timer timer = new Timer();
-        TimerTask updateEventList = new TimerTask() {
+        TimerTask updateMatch = new TimerTask() {
             @Override
             public void run() {
                 handler.post(new Runnable(){
@@ -135,7 +135,7 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         };
 
-        timer.schedule(updateEventList, 0, 5000);
+        timer.schedule(updateMatch, 0, 5000);
 
         Draft[] drafts = {
                 new Draft_6455()
@@ -311,7 +311,9 @@ public class MainActivity extends Activity implements OnClickListener {
      * */
     private void makeJsonArrReq() {
         showProgressDialog();
-        JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_NEW_MATCH,
+        String newMatchURL = Const.URL_JSON_ARRAY + Const.USER_ID + "/friends";
+
+        JsonArrayRequest req = new JsonArrayRequest(newMatchURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -362,7 +364,7 @@ public class MainActivity extends Activity implements OnClickListener {
             JSONArray hobbyArr = personalityObj.getJSONArray("hobbies");
             for(int j = 0; j<hobbyArr.length(); j++){
                 JSONObject hobbyObj = hobbyArr.getJSONObject(j);
-                hobby_i += hobbyObj.getString("hobbyN") + ",";
+                hobby_i += hobbyObj.getString("hobbyN") + ", ";
             }
             email_i = obj.getString("email");
             phoneNumber_i = obj.getString("phoneNumber");
@@ -375,7 +377,7 @@ public class MainActivity extends Activity implements OnClickListener {
         matchView.append("\nUsername: " + username_i);
         matchView.append("\nEmail: " + email_i);
         matchView.append("\nPhone Number: " + phoneNumber_i);
-        matchView.append("\nHobby: " + hobby_i.substring(0, hobby_i.length()-1));
+        matchView.append("\nHobby: " + hobby_i);
         matchView.append("\nGender: " + gender_i);
     }
 

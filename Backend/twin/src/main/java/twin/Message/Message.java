@@ -27,10 +27,12 @@ public class Message {
     @Column(name = "time")
     private String time; //time the message is sent
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JsonIgnore
     //@Column(name = "sender")
     private User sender; //sender of the message
 
+    private String senderName;
 
     public Message(){
     }
@@ -40,6 +42,7 @@ public class Message {
         this.date = date;
         this.time = time;
         this.sender = sender;
+        this.senderName = this.sender.getName();
     }
 
     @Override

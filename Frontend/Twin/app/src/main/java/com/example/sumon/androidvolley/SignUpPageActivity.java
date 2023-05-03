@@ -67,12 +67,15 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.createUserButton:
-                postObj();
+                Const.EMAIL = emailAdrrEditText.getText().toString();
+                Const.PASSWORD = passwordEditText.getText().toString();
+                Const.USER_NAME = usernameEditText.getText().toString();
+//                postObj();
                 //username = usernameEditText.getText().toString();
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                }
+//                try {
+//                    Thread.sleep(100);
+//                } catch (InterruptedException e) {
+//                }
                 //testView.setText(username);
 //                getNewUserInfo();
 
@@ -81,17 +84,20 @@ public class SignUpPageActivity extends AppCompatActivity implements View.OnClic
 //                    Thread.sleep(100);
 //                } catch (InterruptedException e) {
 //                }
-                makeJsonArryReq();
+//                makeJsonArryReq();
 //                Const.USER_ID = Integer.parseInt(userIdView.getText().toString());
 //               userIdView.setText(Integer.toString(Const.USER_ID));
 //                Const.USER_ID = userId;
 
 
-                //finish();
-                //startActivity(new Intent(SignUpPageActivity.this, PersonalityBuilder.class));
+                finish();
+                startActivity(new Intent(SignUpPageActivity.this, PersonalityBuilder.class));
                 break;
 
             case R.id.doneSignUpButton:
+                Const.EMAIL = emailAdrrEditText.getText().toString();
+                Const.PASSWORD = passwordEditText.getText().toString();
+                Const.USER_NAME = usernameEditText.getText().toString();
                 Const.USER_ID = Integer.parseInt(userIdView.getText().toString());
                 finish();
                 startActivity(new Intent(SignUpPageActivity.this, PersonalityBuilder.class));

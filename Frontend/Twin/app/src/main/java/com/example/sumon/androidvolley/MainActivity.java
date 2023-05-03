@@ -51,7 +51,7 @@ import java.util.TimerTask;
  * @author kaiheng
  */
 public class MainActivity extends Activity implements OnClickListener {
-    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupButton, messageButton;
+    private Button getButton, saveButton, eventTabButton, profileTabBtn, groupButton, messageButton, groupChatButton;
     private TextView matchView, eventView;
 
     private ScrollView eventScrollView;
@@ -80,6 +80,8 @@ public class MainActivity extends Activity implements OnClickListener {
         groupButton = (Button) findViewById(R.id.groupButton);
         eventTabButton = (Button) findViewById(R.id.eventTabButton);
         messageButton = (Button) findViewById(R.id.messageButton);
+        groupChatButton = (Button) findViewById(R.id.openChatButton);
+
         matchView = (TextView) findViewById(R.id.newMatchView);
         eventView = (TextView) findViewById(R.id.eventListView);
         eventScrollView = (ScrollView) findViewById(R.id.eventScrollView);
@@ -105,6 +107,8 @@ public class MainActivity extends Activity implements OnClickListener {
         groupButton.setOnClickListener(this);
         eventTabButton.setOnClickListener(this);
         messageButton.setOnClickListener(this);
+        groupChatButton.setOnClickListener(this);
+
         RegenerateAllEventsOnScreen(eventView);
 
         matchView.setMovementMethod(new ScrollingMovementMethod());
@@ -190,6 +194,10 @@ public class MainActivity extends Activity implements OnClickListener {
 
             case R.id.messageButton:
                 startActivity(new Intent(MainActivity.this, MessageActivity.class));
+                break;
+
+            case R.id.openChatButton:
+                startActivity(new Intent(MainActivity.this, GroupChatActivity.class));
                 break;
 
             default:

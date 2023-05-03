@@ -35,7 +35,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     //Hobby Buttons
     private Button sportsBtn, bikingBtn, gardeningBtn, bakingBtn, archeryBtn, singingBtn, bloggingBtn, bowlingBtn,
             photographyBtn, cookingBtn, readingBtn, travelBtn, artBtn, potteryBtn, hikingBtn, fishingBtn,
-            paintingBtn, danceBtn, musicBtn, woodworkingBtn, yogaBtn, calligraphyBtn, chessBtn, knittingBtn, doneBtn;
+            paintingBtn, danceBtn, musicBtn, woodworkingBtn, yogaBtn, calligraphyBtn, chessBtn, knittingBtn, preSubBtn, doneBtn;
 
     private Button activeBtn, healthyBtn, soloBtn, ruralBtn, urbanBtn, nomadicBtn, bohemianBtn, digitalBtn;
     private Button accountabilityBtn, achievementBtn, adaptabilityBtn, adventureBtn, ambitionBtn, careerBtn, caringBtn,
@@ -136,6 +136,8 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
 
 
         doneBtn = (Button) findViewById(R.id.personalityDoneButton);
+        preSubBtn = (Button) findViewById(R.id.personalityCheckButton);
+
         selectedView = (TextView) findViewById(R.id.viewSelected);
 
         age = (EditText) findViewById(R.id.ageEditText);
@@ -211,8 +213,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
 
 
         doneBtn.setOnClickListener(this);
-
-        makeJsonArryReq();
+        preSubBtn.setOnClickListener(this);
 
 //        final Handler handler = new Handler();
 //        Timer timer = new Timer();
@@ -240,7 +241,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.personalityDoneButton:
+            case R.id.personalityCheckButton:
                 checkSelected();
                 convertStringtoArr(hobbies, lifestyle, values);
                 convertIdtoArrId(hobbiesId, lifestyleId, valuesId);
@@ -248,6 +249,23 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
 //                    selectedView.append(Integer.toString(hobbiesIdArr[i]));
 //                }
                 postPersonality();
+
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                }
+
+                makeJsonArryReq(selectedView);
+                break;
+
+            case R.id.personalityDoneButton:
+
+                makeJsonArryReq(selectedView);
+
+
+
+                Const.USER_ID = Integer.parseInt(selectedView.getText().toString());
+
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -1182,17 +1200,17 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         if(values !=null)
             valuesArr = values.split(",");
 
-        for(int i = 0; i< hobbiesArr.length; i++){
-                selectedView.append(hobbiesArr[i]);
-        }
-
-        for(int i =0; i< lifestyleArr.length; i++){
-            selectedView.append(lifestyleArr[i]);
-        }
-
-        for(int i =0; i< valuesArr.length; i++){
-            selectedView.append(valuesArr[i]);
-        }
+//        for(int i = 0; i< hobbiesArr.length; i++){
+//                selectedView.append(hobbiesArr[i]);
+//        }
+//
+//        for(int i =0; i< lifestyleArr.length; i++){
+//            selectedView.append(lifestyleArr[i]);
+//        }
+//
+//        for(int i =0; i< valuesArr.length; i++){
+//            selectedView.append(valuesArr[i]);
+//        }
     }
 
     public void convertIdtoArrId(String hobbiesId, String lifestyleId, String valuesId){
@@ -1252,14 +1270,14 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         userPersonality.setGender(sexuality.getText().toString());
         userPersonality.setName(name.getText().toString());
         userPersonality.setPhoneNumber(phoneNumber.getText().toString());
-        userPersonality.setEmail(email);
-        userPersonality.setUsername(userName);
-        userPersonality.setPassword(password);
+        userPersonality.setEmail(Const.EMAIL);
+        userPersonality.setUsername(Const.USER_NAME);
+        userPersonality.setPassword(Const.PASSWORD);
 //        userPersonality.setEmail("postman@gmail.com");
 //        userPersonality.setUsername("postman");
 //        userPersonality.setPassword("asdf1234");
 
-        GetTrivaApi().PostTriviaByPath(Const.USER_ID, userPersonality).enqueue(new SlimCallback<Trivia>(demographics->{
+        GetTrivaApi().PostTriviaByBody(userPersonality).enqueue(new SlimCallback<Trivia>(demographics->{
         }));
     }
 
@@ -1298,7 +1316,7 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
     /**
      * Making json array request
      * */
-    public void makeJsonArryReq() {
+    public void makeJsonArryReq(TextView thisView) {
         showProgressDialog();
         JsonArrayRequest req = new JsonArrayRequest(Const.URL_JSON_ARRAY,
                 new Response.Listener<JSONArray>() {
@@ -1307,7 +1325,8 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
                         Log.d(TAG, response.toString());
                         //msgResponse.setText(response.toString());
                         try {
-                            getJsonArrayData(response);
+                            getJsonArrayData(response, thisView);
+                            getUserId(thisView);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -1329,12 +1348,43 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
         // ApplicationController.getInstance().getRequestQueue().cancelAll(tag_json_arry);
     }
 
-    public void getJsonArrayData(JSONArray arr) throws JSONException {
-        int id_i = 0;
-        String email_i = null, phoneNumber_i = null, name_i = null, aboutMe_i = null, gender_i = null,
-                username_i = null, hobby_i = null, password_i = null;
+//    public void getJsonArrayData(JSONArray arr) throws JSONException {
+//        int id_i = 0;
+//        String email_i = null, phoneNumber_i = null, name_i = null, aboutMe_i = null, gender_i = null,
+//                username_i = null, hobby_i = null, password_i = null;
+//        String personalityArr = null;
+//        for(int i = 0; i< arr.length(); i++){
+//            JSONObject obj = arr.getJSONObject(i);
+//            id_i = obj.getInt("id");
+//            personalityArr = obj.getString("personality");
+//            JSONObject personalityObj = new JSONObject(personalityArr);
+//            JSONArray hobbyArr = personalityObj.getJSONArray("hobbies");
+//            for(int j = 0; j<hobbyArr.length(); j++){
+//                JSONObject hobbyObj = hobbyArr.getJSONObject(j);
+//                hobby_i = hobby_i + hobbyObj.getString("hobbyN") + ",";
+//            }
+//            email_i = obj.getString("email");
+//            phoneNumber_i = obj.getString("phoneNumber");
+//            name_i = obj.getString("name");
+//            username_i = obj.getString("userName");
+//            password_i = obj.getString("password");
+//            gender_i = obj.getString("gender");
+//            if(id_i == Const.USER_ID){
+//                id = id_i;
+//                break;
+//            }
+//        }
+//        userName = username_i;
+//        password = password_i;
+//        email = email_i;
+//
+//    }
+    public void getJsonArrayData(JSONArray arr, TextView v) throws JSONException {
+        int id_i;
+        String email_i = "", phoneNumber_i = "", name_i = "", aboutMe_i = "", gender_i = "",
+                username_i = "", hobby_i = "";
         String personalityArr = null;
-        for(int i = 0; i< arr.length(); i++){
+        for(int i = arr.length()-1; i>=0; i--){
             JSONObject obj = arr.getJSONObject(i);
             id_i = obj.getInt("id");
             personalityArr = obj.getString("personality");
@@ -1347,18 +1397,24 @@ public class PersonalityBuilder extends AppCompatActivity implements View.OnClic
             email_i = obj.getString("email");
             phoneNumber_i = obj.getString("phoneNumber");
             name_i = obj.getString("name");
+            //aboutMe_i = obj.getString("aboutMe");
             username_i = obj.getString("userName");
-            password_i = obj.getString("password");
+
+    //            testView.append(username_i + " | " + usernameEditText.getText().toString()
+    //                    + " | "+Integer.toString(username_i.compareTo(username)) + "\n");
+
             gender_i = obj.getString("gender");
-            if(id_i == Const.USER_ID){
-                id = id_i;
-                break;
+            if(username_i.compareTo(Const.USER_NAME) == 0){
+    //                testView.append(username_i + " | " + usernameEditText.getText().toString()
+    //                        + " | "+Integer.toString(username_i.compareTo(username_i)) + "\n");
+
+                v.setText(Integer.toString(id_i));
             }
         }
-        userName = username_i;
-        password = password_i;
-        email = email_i;
+    }
 
+    public void getUserId(TextView view){
+        selectedView = view;
     }
 
 

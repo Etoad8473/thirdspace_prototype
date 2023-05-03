@@ -99,7 +99,7 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
     }
 
     void getGroups(){
-        GetGroupApi().GetAllGroups().enqueue(new SlimCallback <List<Group>>(groups ->{
+        GetGroupApi().GetUserGroup(Const.USER_ID).enqueue(new SlimCallback <List<Group>>(groups ->{
             for(int i = 0; i< groups.size(); i++) {
                 Button groupButton = new Button(this);
                 groupButton.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

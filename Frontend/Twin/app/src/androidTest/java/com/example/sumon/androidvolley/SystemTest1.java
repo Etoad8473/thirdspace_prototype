@@ -21,35 +21,31 @@ public class SystemTest1 {
     private static final int SIMULATED_DELAY_MS = 500;
 
     @Rule   // needed to launch the activity
-    public ActivityTestRule<EventActivity> activityRule = new ActivityTestRule<>(EventActivity.class);
+    public ActivityTestRule<LoginPageActivity> activityRule = new ActivityTestRule<>(LoginPageActivity.class);
 
     /**
      * Start the server and run this test
      */
     @Test
     public void checkEventInfo(){
-        String testEventName = "SystemTest1";
-        String testEventTime = "4/30";
-        String testEventLocation = "ISU";
-        String result = "Event:  SystemTest1\nTime:  4/30\nLocation:  ISU\n\n";
-        String resultEventName = "SystemTest1";
-        String resultEventTime = "4/30";
-        String resultEventLocation = "ISU";
+        String loginUsername = "postman";
+        String loginPassword = "asdf1234";
+        String checkLogin = "correct";
         // Type in testString and send request
-        Espresso.onView(ViewMatchers.withId(R.id.eventNameTextField))
-                .perform(ViewActions.typeText(testEventName), ViewActions.closeSoftKeyboard());
-        Espresso.onView(ViewMatchers.withId(R.id.eventTimeTextField)).perform(ViewActions.typeText(testEventTime), ViewActions.closeSoftKeyboard());
-        Espresso.onView(ViewMatchers.withId(R.id.eventLocationTextField)).perform(ViewActions.typeText(testEventLocation), ViewActions.closeSoftKeyboard());
-        Espresso.onView(ViewMatchers.withId(R.id.createEventBtn)).perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.usernameInputText))
+                .perform(ViewActions.typeText(loginUsername), ViewActions.closeSoftKeyboard());
+        Espresso.onView(ViewMatchers.withId(R.id.passwordInputText)).perform(ViewActions.typeText(loginPassword), ViewActions.closeSoftKeyboard());
+        //Espresso.onView(ViewMatchers.withId(R.id.eventLocationTextField)).perform(ViewActions.typeText(testEventLocation), ViewActions.closeSoftKeyboard());
+        Espresso.onView(ViewMatchers.withId(R.id.loginButton)).perform(ViewActions.click());
 
         // Put thread to sleep to allow volley to handle the request
-        try {
-            Thread.sleep(SIMULATED_DELAY_MS);
-        } catch (InterruptedException e) {
-        }
+//        try {
+//            Thread.sleep(SIMULATED_DELAY_MS);
+//        } catch (InterruptedException e) {
+//        }
 
         // Verify that volley returned the correct value
-        Espresso.onView(ViewMatchers.withId(R.id.eventList)).check(ViewAssertions.matches(ViewMatchers.withText(startsWith(result))));
+        Espresso.onView(ViewMatchers.withId(R.id.loginDetailsWrongHint)).check(ViewAssertions.matches(ViewMatchers.withText(startsWith(checkLogin))));
 
     }
 

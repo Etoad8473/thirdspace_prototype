@@ -1,4 +1,4 @@
-package TESTING;
+package main.TESTING;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -10,14 +10,13 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import static org.testng.AssertJUnit.assertEquals;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 
 @RunWith(SpringRunner.class)
-public class hobbyTest {
+public class fakeTest {
 
     @LocalServerPort
     int port;
@@ -29,7 +28,7 @@ public class hobbyTest {
     }
 
     @Test
-    public void createHobby() {
+    public void usernameFailedTest() {
 
         // Send request and receive response
         Response response = RestAssured.given().

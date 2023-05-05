@@ -18,7 +18,7 @@ import com.example.sumon.androidvolley.utils.Const;
 
 public class LoginPageActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button loginBtn, signUpBtn;
+    private Button loginBtn, signUpBtn, closeBtn;
     private EditText usernameText, passwordText;
     private TextView loginDetailsCheck;
     protected String getLoginUsername = "";
@@ -36,6 +36,7 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
 
         loginBtn = (Button) findViewById(R.id.loginButton);
         signUpBtn = (Button) findViewById(R.id.signUpButton);
+        closeBtn = (Button) findViewById(R.id.congratulationButton);
         usernameText = (EditText) findViewById(R.id.usernameInputText);
         passwordText = (EditText) findViewById(R.id.passwordInputText);
         loginDetailsCheck = (TextView) findViewById(R.id.loginDetailsWrongHint);
@@ -43,9 +44,11 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
         userLoginDetails = false;
 
         loginDetailsCheck.setVisibility(View.INVISIBLE);
+        closeBtn.setVisibility(View.INVISIBLE);
 
         loginBtn.setOnClickListener(this);
         signUpBtn.setOnClickListener(this);
+        closeBtn.setOnClickListener(this);
     }
 
     @Override
@@ -53,7 +56,6 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
         switch(v.getId()){
             case R.id.loginButton:
                 checkLogins();
-                loginDetailsCheck.setVisibility(View.VISIBLE);
 
                 break;
 
@@ -61,6 +63,10 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 startActivity(new Intent(LoginPageActivity.this, SignUpPageActivity.class));
                 break;
+
+            case R.id.congratulationButton:
+                finish();
+
 
             default:
                 break;
@@ -81,6 +87,7 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
             userLoginDetails = true;
 
             if(userLoginDetails){
+                closeBtn.setVisibility(View.VISIBLE);
                 loginDetailsCheck.setText("Login Successful");
                 loginDetailsCheck.setTextColor(Color.parseColor("#00CC66"));
                 loginDetailsCheck.setVisibility(View.VISIBLE);
@@ -89,7 +96,11 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
 //                } catch (InterruptedException e) {
 //                }
                 //loginDetailsCheck.setText(Integer.toString(Const.USER_ID));
-                finish();
+            }
+            else{
+                loginDetailsCheck.setText("Username/Password was wrong");
+                loginDetailsCheck.setTextColor(Color.parseColor("#DE3731"));
+                loginDetailsCheck.setVisibility(View.VISIBLE);
             }
         }, "GetLoginDetails"));
 

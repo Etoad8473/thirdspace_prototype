@@ -30,7 +30,7 @@ public class SystemTest1 {
     public void checkEventInfo(){
         String loginUsername = "postman";
         String loginPassword = "asdf1234";
-        String checkLogin = "correct";
+        String checkLogin = "Login Successful";
         // Type in testString and send request
         Espresso.onView(ViewMatchers.withId(R.id.usernameInputText))
                 .perform(ViewActions.typeText(loginUsername), ViewActions.closeSoftKeyboard());
@@ -39,10 +39,10 @@ public class SystemTest1 {
         Espresso.onView(ViewMatchers.withId(R.id.loginButton)).perform(ViewActions.click());
 
         // Put thread to sleep to allow volley to handle the request
-//        try {
-//            Thread.sleep(SIMULATED_DELAY_MS);
-//        } catch (InterruptedException e) {
-//        }
+        try {
+            Thread.sleep(SIMULATED_DELAY_MS);
+        } catch (InterruptedException e) {
+        }
 
         // Verify that volley returned the correct value
         Espresso.onView(ViewMatchers.withId(R.id.loginDetailsWrongHint)).check(ViewAssertions.matches(ViewMatchers.withText(startsWith(checkLogin))));

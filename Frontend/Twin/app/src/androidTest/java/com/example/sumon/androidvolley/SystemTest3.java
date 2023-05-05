@@ -43,7 +43,10 @@ public class SystemTest3 {
         Espresso.onView(ViewMatchers.withId(R.id.eventTimeTextField)).perform(ViewActions.typeText(testEventTime), ViewActions.closeSoftKeyboard());
         Espresso.onView(ViewMatchers.withId(R.id.eventLocationTextField)).perform(ViewActions.typeText(testEventLocation), ViewActions.closeSoftKeyboard());
         Espresso.onView(ViewMatchers.withId(R.id.createEventBtn)).perform(ViewActions.click());
-
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+        }
 
         // Verify that volley returned the correct value
         Espresso.onView(ViewMatchers.withId(R.id.eventList)).check(ViewAssertions.matches(ViewMatchers.withText(startsWith(result))));

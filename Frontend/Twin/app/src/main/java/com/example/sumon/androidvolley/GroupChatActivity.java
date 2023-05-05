@@ -25,10 +25,16 @@ import com.example.sumon.androidvolley.model.MessageUser;
 import com.example.sumon.androidvolley.model.UserPersonality;
 import com.example.sumon.androidvolley.utils.Const;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_6455;
+import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +61,8 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
     private UserPersonality onSessionUserPersonality;
 
     private MessageUser existingUser;
+
+    private WebSocketClient cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,46 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
 //        }
 
         RegenerateAllGroupChatOnScreen(chatHistory);
+
+        Draft[] drafts = {
+                new Draft_6455()
+        };
+
+           String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/testwebsocket/" + Const.USER_NAME;
+
+        //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
+        try{
+            Log.d("Socket:", "Trying socket");
+            cc = new WebSocketClient(new URI(serverUrl), (Draft) drafts[0]) {
+                @Override
+                public void onOpen(ServerHandshake serverHandshake) {
+                    Log.d("OPEN", "run() returned: " + "is connecting");
+
+                }
+
+                @Override
+                public void onMessage(String message) {
+                    Log.d("", "run() returned: " + message);
+                    String s = chatHistory.getText().toString();
+                    chatHistory.setText(s + message + "\n");
+                }
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    Log.d("CLOSE", "onClose() returned: " + reason);
+
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    Log.d("Exception: ", e.toString());
+
+                }
+            };
+        }catch (URISyntaxException e){
+            Log.d("Exception:", e.toString());
+        }
+        cc.connect();
 
         final Handler handler = new Handler();
         Timer timer = new Timer();
@@ -126,12 +174,12 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if ((event.getAction() == KeyEvent.ACTION_DOWN) &&(keyCode == KeyEvent.KEYCODE_ENTER))
         {
-            chatHistory.append(chatBox.getText() + "\n");
-            postChat();
             try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
+                cc.send(chatBox.getText().toString());
+            }catch(Exception e){
+                Log.d("ExceptionSendMessage:", e.getMessage().toString());
             }
+            postChat();
             chatHistoryScrollView.fullScroll(View.FOCUS_DOWN);
             chatBox.getText().clear();
             chatBox.requestFocus();
@@ -238,7 +286,7 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
         newChat.setData(chatBox.getText().toString());
         newChat.setDate(currentDate);
         GetMessageApi().PostMessageByBody(newChat).enqueue(new SlimCallback<Message>(message ->{
-            RegenerateAllGroupChatOnScreen(chatHistory);
+//            RegenerateAllGroupChatOnScreen(chatHistory);
         }));
     }
 

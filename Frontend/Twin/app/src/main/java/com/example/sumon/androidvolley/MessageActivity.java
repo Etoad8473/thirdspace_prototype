@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.sumon.androidvolley.utils.Const;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_6455;
@@ -50,7 +52,7 @@ public class MessageActivity extends AppCompatActivity implements View.OnClickLi
                 new Draft_6455()
         };
 
-        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/testwebsocket/Test";
+        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/testwebsocket/" + Const.USER_NAME;
         //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
         try{
             Log.d("Socket:", "Trying socket");

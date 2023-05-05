@@ -56,7 +56,6 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
         switch(v.getId()){
             case R.id.loginButton:
                 checkLogins();
-                loginDetailsCheck.setVisibility(View.VISIBLE);
 
                 break;
 
@@ -97,6 +96,11 @@ public class LoginPageActivity extends AppCompatActivity implements View.OnClick
 //                } catch (InterruptedException e) {
 //                }
                 //loginDetailsCheck.setText(Integer.toString(Const.USER_ID));
+            }
+            else{
+                loginDetailsCheck.setText("Username/Password was wrong");
+                loginDetailsCheck.setTextColor(Color.parseColor("#DE3731"));
+                loginDetailsCheck.setVisibility(View.VISIBLE);
             }
         }, "GetLoginDetails"));
 

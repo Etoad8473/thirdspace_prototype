@@ -10,7 +10,7 @@ public class Const {
 	public static final String URL_STRING_REQ = "https://jsonplaceholder.typicode.com/users/1";
 	public static final String URL_IMAGE = "http://sharding.org/outgoing/temp/testimg3.jpg";
 	public static int USER_ID = 413;
-	public static String USER_NAME;
+	public static String USER_NAME = "SystemTester";
 	public static String EMAIL;
 	public static String PASSWORD;
 	public static int GROUP_ID;

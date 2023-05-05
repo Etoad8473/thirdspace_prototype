@@ -97,7 +97,8 @@ public class GroupChatActivity extends AppCompatActivity implements View.OnClick
                 new Draft_6455()
         };
 
-        String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/testwebsocket/" + Const.USER_NAME;
+           String serverUrl = "ws://coms-309-015.class.las.iastate.edu:8080/testwebsocket/" + Const.USER_NAME;
+
         //String serverUrl = "ws://10.0.2.2:8080/websocket/Test";
         try{
             Log.d("Socket:", "Trying socket");

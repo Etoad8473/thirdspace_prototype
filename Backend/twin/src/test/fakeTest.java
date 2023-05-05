@@ -1,4 +1,4 @@
-package main.TESTING;
+package test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -9,13 +9,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import static org.testng.AssertJUnit.assertEquals;
 
-import static org.junit.Assert.assertEquals;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 @RunWith(SpringRunner.class)
-public class UserTest {
+public class fakeTest {
 
     @LocalServerPort
     int port;
@@ -26,31 +27,29 @@ public class UserTest {
         RestAssured.baseURI = "http://localhost";
     }
 
-
     @Test
-    public void wrongPassword()
-    {
+    public void usernameFailedTest() {
+
         // Send request and receive response
         Response response = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
                 body("").
                 when().
-                get("/users/login/a2/password");
+                get("/users/id/58");
 
+
+        // Check status code
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode);
 
-//        // Check response body for correct response
-//        String returnString = response.getBody().asString();
-//        try {
-//            System.out.println(returnString);
-//            JSONObject returnObj = new JSONObject(returnString);
-//            System.out.println(returnObj);
-//            //assertEquals(null, returnObj.);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        // Check response body for correct response
+        String returnString = response.getBody().asString();
+        try {
+            JSONObject returnObj = new JSONObject(returnString);
+            assertEquals("failed", returnObj.get("username"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
-
 }

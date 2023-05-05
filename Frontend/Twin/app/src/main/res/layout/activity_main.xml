@@ -106,18 +106,20 @@
                 android:layout_height="wrap_content"
                 android:text="Message"/>
 
-            <Button
-                android:id="@+id/eventTabButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Event"/>
 
-            <Button
-                android:id="@+id/openChatButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Group Chat"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/eventTabButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event"/>
+
+        <Button
+            android:id="@+id/openChatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Group Chat"/>
+
     </LinearLayout>
 
     <!--    <android.support.design.widget.BottomNavigationView-->

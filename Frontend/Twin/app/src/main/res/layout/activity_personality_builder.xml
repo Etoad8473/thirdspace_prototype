@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/peach_pink"
+    android:background="@color/Ezra_pinklight"
     tools:context=".PersonalityBuilder">
 
     <TextView
@@ -15,7 +15,7 @@
         android:textSize="30sp"
         android:textStyle="italic"
         android:textColor="@color/white"
-        android:background="@color/maroon_pink"/>
+        android:background="@color/Ezra_pinkmid"/>
 
     <ScrollView
         android:id="@+id/personalityBuilder_scrollView"
@@ -27,6 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -838,16 +839,21 @@
         android:id="@+id/personalityDoneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/smoothbutton"
+        android:textColor="@color/white"
         android:text="Done"
         android:textSize="23sp"
         android:textStyle="bold"
-        android:layout_marginLeft="300dp"
+        android:layout_marginLeft="240dp"
         android:layout_marginTop="650dp"/>
 
     <Button
         android:id="@+id/personalityCheckButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/smoothbutton"
+        android:textColor="@color/white"
         android:text="Pre-submit"
         android:textSize="23sp"
         android:textStyle="bold"

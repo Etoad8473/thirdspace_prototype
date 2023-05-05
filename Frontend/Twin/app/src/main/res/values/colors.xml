@@ -11,8 +11,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#B9BAB6</color>
+    <color name="red">#FF0000</color>
     <color name="maroon_pink">#91093B</color>
     <color name="peach_pink">#D19DB7</color>
     <color name="red_grey">#C9C6C5</color>
-    <color name="red">#DE3731</color>
+    <color name="Ezra_greendark">#73A580</color>
+    <color name="Ezra_greenlight">#c5c392</color>
+    <color name="Ezra_pinkdark">#dd614a</color>
+    <color name="Ezra_pinklight">#f4a698</color>
+    <color name="Ezra_pinkmid">#f48668</color>
+
 </resources>

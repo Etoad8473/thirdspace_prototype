@@ -27,15 +27,13 @@ public class Message {
     @Column(name = "time")
     private String time; //time the message is sent
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    //@Column(name = "sender")
-    private User sender; //sender of the message
+    private String sender; //sender of the message
 
 
     public Message(){
     }
 
-    public Message(String data, String date, String time, User sender){
+    public Message(String data, String date, String time, String sender){
         this.data = data;
         this.date = date;
         this.time = time;
@@ -80,11 +78,11 @@ public class Message {
         time = newTime;
     }
 
-    public User getSender(){
+    public String getSender(){
         return sender;
     }
 
-    public void setSender(User newSender){
+    public void setSender(String newSender){
         sender = newSender;
     }
 

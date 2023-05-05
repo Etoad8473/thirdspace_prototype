@@ -145,6 +145,15 @@ public class User {
         return this.password.equals(pass);
     }
 
+    public boolean passwordSecurity(String pass){
+        if (pass.length() > 6){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     //returns user's name
     public String getName(){ return name; }
 

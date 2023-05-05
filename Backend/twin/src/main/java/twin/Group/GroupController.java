@@ -71,10 +71,11 @@ public class GroupController {
 
         Random rand = new Random();
 
-        if(conversationInterests.size()>0){
-        Interest suggestion = conversationInterests.get(rand.nextInt(conversationInterests.size()));
-
-        return "SUGGESTED CONVERSATION: What are your thoughts on " + suggestion.getInterestN() +"?";}
+        if(conversationInterests.size()>0)
+        {
+            Interest suggestion = conversationInterests.get(rand.nextInt(conversationInterests.size()));
+            return "SUGGESTED CONVERSATION: What are your thoughts on " + suggestion.getInterestN() +"?";
+        }
         else
             return "No common interests";
     }

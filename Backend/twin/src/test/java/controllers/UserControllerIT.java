@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
+import twin.Group.Group;
 import twin.TwinApplication;
 import twin.User.User;
 
@@ -136,10 +137,19 @@ public class UserControllerIT {
                 header("charset", "utf-8").
                 body("").
                 when().
-                get("/users/login/a2/password");
+                get("/users/117/friends");
 
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode);
+
+        User friend = RestAssured.given().
+                header("Content-Type", "text/plain").
+                header("charset", "utf-8").
+                body("").
+                when().
+                get("/users/117/friends").thenReturn().as(User.class);
+
+        assertEquals(119, friend.getId());
     }
 
     @Test
@@ -147,15 +157,15 @@ public class UserControllerIT {
         // Send request and receive response
         //TODO
 
-        Response response = RestAssured.given().
+        Group response = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
                 body("").
                 when().
-                get("/users/login/a2/password");
+                get("/users/117/groups").thenReturn().as(Group.class);
 
-        int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode);
+        //int statusCode = response.getStatusCode();
+        assertEquals(129, response.getId());
     }
 
     @Test

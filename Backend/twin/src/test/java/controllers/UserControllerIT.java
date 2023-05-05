@@ -155,10 +155,7 @@ public class UserControllerIT {
     public void getUserGroup() {
         // Send request and receive response
 
-        Group[] response = RestAssured.given().
-                header("Content-Type", "text/plain").
-                header("charset", "utf-8").
-                body("").
+        Group[] response = RestAssured.with().
                 when().
                 get("/users/117/groups").thenReturn().as(Group[].class);
 
@@ -171,11 +168,12 @@ public class UserControllerIT {
         // Send request and receive response
 
         //CREATE
-        //User u = new User("bobby", "123456", "bob", "bob@gmail.com", "M", "515-443-3763");
+        User u = new User("bobby", "123456", "bob", "bob@gmail.com", "M", "515-443-3763");
         User createdA = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
-                formParam("name", "bob").
+                contentType("application/json").
+                body(u).
                 when().
                 post("/users").thenReturn().as(User.class);
         assertEquals("bob", createdA.getName());

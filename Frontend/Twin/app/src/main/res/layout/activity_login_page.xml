@@ -20,10 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="50dp"
             android:text="Login"
             android:textAlignment="center"
             android:textSize="40sp"
+            android:textColor="@color/white"
             android:textStyle="bold"/>
 
         <TextView
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content"
             android:text="Username"
             android:labelFor="@+id/usernameInputText"
+            android:textColor="@color/white"
             android:textStyle="italic"
             android:textSize="25sp" />
 
@@ -49,13 +51,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="23sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textAlignment="textStart" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Password"
+            android:textColor="@color/white"
             android:labelFor="@+id/passwordInputText"
             android:textStyle="italic"
             android:textSize="25sp" />
@@ -65,36 +68,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="23sp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textAlignment="textStart" />
 
-        <Button
-            android:id="@+id/loginButton"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/smoothbutton"
-            android:textColor="@color/white"
-            android:text="Login"
-            android:textSize="25sp"/>
+            android:orientation="vertical"
+            android:paddingTop="35dp">
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smoothbutton"
+                android:textColor="@color/white"
+                android:text="Login"
+                android:textSize="25sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Or Sign up using"
-            android:labelFor="@+id/signUpButton"
-            android:textStyle="italic"
-            android:textSize="23sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:paddingTop="30dp"
+                android:text="Or Sign up using"
+                android:textColor="@color/Ezra_pinkdark"
+                android:labelFor="@+id/signUpButton"
+                android:textStyle="italic"
+                android:textSize="23sp" />
 
-        <Button
-            android:id="@+id/signUpButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/smoothbutton"
-            android:textColor="@color/white"
-            android:text="Sign Up"
-            android:textSize="25sp" />
-
+            <Button
+                android:id="@+id/signUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smoothbutton"
+                android:textColor="@color/white"
+                android:text="Sign Up"
+                android:textSize="25sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

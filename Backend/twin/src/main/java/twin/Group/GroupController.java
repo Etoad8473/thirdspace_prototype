@@ -6,9 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 import twin.GroupChat.GroupChat;
 import twin.GroupChat.GroupChatRepository;
 import twin.Message.Message;
+import twin.Personality.Hobby.Hobby;
 import twin.User.User;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 
 
 @RestController
@@ -31,6 +35,25 @@ public class GroupController {
     public List<Message> getGroupsMessages(@PathVariable long id)
     {
         return groupRepo.findById(id).getGroupChat().getMessages();
+    }
+
+    @GetMapping("/group/{id}/suggestActivity")
+    public String suggestActivity(@PathVariable long id)
+    {
+        Group g = groupRepo.findById(id);
+
+        ArrayList<Hobby> activities = new ArrayList<Hobby>();
+
+        for(User u: g.getUsers())
+        {
+            activities.addAll(u.getPersonality().getHobbies());
+        }
+
+        Random rand = new Random();
+
+        Hobby suggestion = activities.get(rand.nextInt(activities.size()));
+
+        return "SUGGESTED ACTIVITY: " + suggestion.getHobbyN() +"\nWhen is everyone available?";
     }
 
     //-------------------------POST--------------------------------//

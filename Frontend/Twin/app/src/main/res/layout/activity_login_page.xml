@@ -4,92 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/peach_pink"
+    android:background="@color/Ezra_pinklight"
+    android:padding="20dp"
     tools:context=".LoginPageActivity">
 
 
-    <TextView
-        android:id="@+id/loginPageTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="50dp"
-        android:text="Login"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:padding="25dp">
 
-    <TextView
-        android:id="@+id/loginDetailsWrongHint"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="120dp"
-        android:text="Username/Password was wrong"
-        android:textSize="18sp"
-        android:textColor="@color/red"
-        android:textStyle="italic" />
+        <TextView
+            android:id="@+id/loginPageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:paddingBottom="20dp"
+            android:text="Login"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:layout_marginTop="150dp"
-        android:labelFor="@+id/usernameInputText"
-        android:textStyle="italic"
-        android:textSize="25sp" />
+        <TextView
+            android:id="@+id/loginDetailsWrongHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Username/Password was wrong"
+            android:textSize="18sp"
+            android:textColor="@color/Ezra_pinkdark"
+            android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/usernameInputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="185dp"
-        android:textSize="23sp"
-        android:textColor="@color/black"
-        android:textAlignment="textStart" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:labelFor="@+id/usernameInputText"
+            android:textStyle="italic"
+            android:textSize="25sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:layout_marginTop="250dp"
-        android:labelFor="@+id/passwordInputText"
-        android:textStyle="italic"
-        android:textSize="25sp" />
+        <EditText
+            android:id="@+id/usernameInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textAlignment="textStart" />
 
-    <EditText
-        android:id="@+id/passwordInputText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="285dp"
-        android:textSize="23sp"
-        android:textColor="@color/black"
-        android:textAlignment="textStart" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:labelFor="@+id/passwordInputText"
+            android:textStyle="italic"
+            android:textSize="25sp" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:text="Login"
-        android:textSize="25sp"/>
+        <EditText
+            android:id="@+id/passwordInputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textAlignment="textStart" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="Or Sign up using"
-        android:layout_marginTop="420dp"
-        android:labelFor="@+id/signUpButton"
-        android:textStyle="italic"
-        android:textSize="23sp" />
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/smoothbutton"
+            android:textColor="@color/white"
+            android:text="Login"
+            android:textSize="25sp"/>
 
-    <Button
-        android:id="@+id/signUpButton"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="455dp"
-        android:text="Sign Up"
-        android:textSize="25sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Or Sign up using"
+            android:labelFor="@+id/signUpButton"
+            android:textStyle="italic"
+            android:textSize="23sp" />
 
+        <Button
+            android:id="@+id/signUpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/smoothbutton"
+            android:textColor="@color/white"
+            android:text="Sign Up"
+            android:textSize="25sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

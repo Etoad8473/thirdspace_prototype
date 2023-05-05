@@ -130,7 +130,6 @@ public class UserControllerIT {
     @Test
     public void getUserFriend() {
         // Send request and receive response
-        //TODO
 
         Response response = RestAssured.given().
                 header("Content-Type", "text/plain").
@@ -155,7 +154,6 @@ public class UserControllerIT {
     @Test
     public void getUserGroup() {
         // Send request and receive response
-        //TODO
 
         Group response = RestAssured.given().
                 header("Content-Type", "text/plain").
@@ -169,19 +167,34 @@ public class UserControllerIT {
     }
 
     @Test
-    public void testCreateUser() {
+    public void createAndDeleteUser() {
         // Send request and receive response
-        //TODO
 
+        //CREATE
+        User u = new User("bobby", "123456", "bob", "bob@gmail.com", "M", "515-443-3763");
+        User createdA = RestAssured.given().
+                header("Content-Type", "text/plain").
+                header("charset", "utf-8").
+                body(u).
+                when().
+                post("/users").thenReturn().as(User.class);
+        assertEquals("bob", createdA.getName());
+
+
+
+        //DELETE
         Response response = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
                 body("").
                 when().
-                get("/users/login/a2/password");
+                delete("/users/"+createdA.getId());
 
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode);
+
+        //int statusCode = created.getStatusCode();
+        //assertEquals(200, statusCode);
     }
 
     @Test
@@ -233,7 +246,7 @@ public class UserControllerIT {
     }
 
     @Test
-    public void addHobby() {
+    public void addHobbyToUser() {
         // Send request and receive response
         //TODO
 

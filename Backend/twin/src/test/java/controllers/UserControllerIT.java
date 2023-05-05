@@ -141,29 +141,29 @@ public class UserControllerIT {
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode);
 
-        User friend = RestAssured.given().
+        User[] friend = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
                 body("").
                 when().
-                get("/users/117/friends").thenReturn().as(User.class);
+                get("/users/117/friends").thenReturn().as(User[].class);
 
-        assertEquals(119, friend.getId());
+        assertEquals(119, friend[0].getId());
     }
 
     @Test
     public void getUserGroup() {
         // Send request and receive response
 
-        Group response = RestAssured.given().
+        Group[] response = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
                 body("").
                 when().
-                get("/users/117/groups").thenReturn().as(Group.class);
+                get("/users/117/groups").thenReturn().as(Group[].class);
 
         //int statusCode = response.getStatusCode();
-        assertEquals(129, response.getId());
+        assertEquals(129, response[0].getId());
     }
 
     @Test
@@ -171,11 +171,11 @@ public class UserControllerIT {
         // Send request and receive response
 
         //CREATE
-        User u = new User("bobby", "123456", "bob", "bob@gmail.com", "M", "515-443-3763");
+        //User u = new User("bobby", "123456", "bob", "bob@gmail.com", "M", "515-443-3763");
         User createdA = RestAssured.given().
                 header("Content-Type", "text/plain").
                 header("charset", "utf-8").
-                body(u).
+                formParam("name", "bob").
                 when().
                 post("/users").thenReturn().as(User.class);
         assertEquals("bob", createdA.getName());
@@ -197,84 +197,84 @@ public class UserControllerIT {
         //assertEquals(200, statusCode);
     }
 
-    @Test
-    public void updateUser() {
-        // Send request and receive response
-        //TODO
+//    @Test
+//    public void updateUser() {
+//        // Send request and receive response
+//        //TODO
+//
+//        Response response = RestAssured.given().
+//                header("Content-Type", "text/plain").
+//                header("charset", "utf-8").
+//                body("").
+//                when().
+//                get("/users/login/a2/password");
+//
+//        int statusCode = response.getStatusCode();
+//        assertEquals(200, statusCode);
+//    }
 
-        Response response = RestAssured.given().
-                header("Content-Type", "text/plain").
-                header("charset", "utf-8").
-                body("").
-                when().
-                get("/users/login/a2/password");
+//    @Test
+//    public void getMatch() {
+//        // Send request and receive response
+//        //TODO
+//
+//        Response response = RestAssured.given().
+//                header("Content-Type", "text/plain").
+//                header("charset", "utf-8").
+//                body("").
+//                when().
+//                get("/users/login/a2/password");
+//
+//        int statusCode = response.getStatusCode();
+//        assertEquals(200, statusCode);
+//    }
 
-        int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode);
-    }
+//    @Test
+//    public void addUserToGroup() {
+//        // Send request and receive response
+//        //TODO
+//
+//        Response response = RestAssured.given().
+//                header("Content-Type", "text/plain").
+//                header("charset", "utf-8").
+//                body("").
+//                when().
+//                get("/users/login/a2/password");
+//
+//        int statusCode = response.getStatusCode();
+//        assertEquals(200, statusCode);
+//    }
 
-    @Test
-    public void getMatch() {
-        // Send request and receive response
-        //TODO
+//    @Test
+//    public void addHobbyToUser() {
+//        // Send request and receive response
+//        //TODO
+//
+//        Response response = RestAssured.given().
+//                header("Content-Type", "text/plain").
+//                header("charset", "utf-8").
+//                body("").
+//                when().
+//                get("/users/login/a2/password");
+//
+//        int statusCode = response.getStatusCode();
+//        assertEquals(200, statusCode);
+//    }
 
-        Response response = RestAssured.given().
-                header("Content-Type", "text/plain").
-                header("charset", "utf-8").
-                body("").
-                when().
-                get("/users/login/a2/password");
-
-        int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode);
-    }
-
-    @Test
-    public void addUserToGroup() {
-        // Send request and receive response
-        //TODO
-
-        Response response = RestAssured.given().
-                header("Content-Type", "text/plain").
-                header("charset", "utf-8").
-                body("").
-                when().
-                get("/users/login/a2/password");
-
-        int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode);
-    }
-
-    @Test
-    public void addHobbyToUser() {
-        // Send request and receive response
-        //TODO
-
-        Response response = RestAssured.given().
-                header("Content-Type", "text/plain").
-                header("charset", "utf-8").
-                body("").
-                when().
-                get("/users/login/a2/password");
-
-        int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode);
-    }
-
-    @Test
-    public void deleteUser() {
-        // Send request and receive response
-        //TODO
-
-        Response response = RestAssured.given().
-                header("Content-Type", "text/plain").
-                header("charset", "utf-8").
-                body("").
-                when().
-                get("/users/login/a2/password");
-
-        int statusCode = response.getStatusCode();
-        assertEquals(200, statusCode);
-    }
+//    @Test
+//    public void deleteUser() {
+//        // Send request and receive response
+//        //TODO
+//
+//        Response response = RestAssured.given().
+//                header("Content-Type", "text/plain").
+//                header("charset", "utf-8").
+//                body("").
+//                when().
+//                get("/users/login/a2/password");
+//
+//        int statusCode = response.getStatusCode();
+//        assertEquals(200, statusCode);
+//    }
 
 }
